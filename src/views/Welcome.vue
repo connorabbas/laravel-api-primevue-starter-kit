@@ -1,5 +1,5 @@
 <script setup>
-import ToggleThemeButton from '@/components/ToggleThemeButton.vue';
+import ToggleDarkModeButton from '@/components/ToggleDarkModeButton.vue';
 import { useAuthStore } from '@/stores/auth';
 import { Card } from 'primevue';
 
@@ -76,7 +76,7 @@ await authStore.fetchUser();
                                     />
                                 </RouterLink>
                             </template>
-                            <ToggleThemeButton outlined />
+                            <ToggleDarkModeButton outlined />
                         </section>
                     </div>
                 </template>
