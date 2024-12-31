@@ -6,7 +6,7 @@ import Container from '@/components/Container.vue';
 import LinksMenu from '@/components/PrimeVue/LinksMenu.vue';
 import LinksMenuBar from '@/components/PrimeVue/LinksMenuBar.vue';
 import LinksPanelMenu from '@/components/PrimeVue/LinksPanelMenu.vue';
-import ToggleThemeButton from '@/components/ToggleThemeButton.vue';
+import ToggleDarkModeButton from '@/components/ToggleDarkModeButton.vue';
 import { useAuthStore } from '@/stores/auth';
 
 const authStore = useAuthStore();
@@ -106,7 +106,7 @@ watchEffect(() => {
                         <template #end>
                             <div class="hidden lg:flex items-center ms-6 space-x-3">
                                 <div>
-                                    <ToggleThemeButton
+                                    <ToggleDarkModeButton
                                         text
                                         severity="secondary"
                                         rounded
@@ -167,7 +167,7 @@ watchEffect(() => {
                     position="right"
                 >
                     <template #header>
-                        <ToggleThemeButton
+                        <ToggleDarkModeButton
                             text
                             severity="secondary"
                             rounded

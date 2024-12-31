@@ -2,7 +2,6 @@ import './assets/css/app.css';
 import 'nprogress/nprogress.css';
 import 'primeicons/primeicons.css';
 
-import { useTheme } from '@/composables/useTheme.js';
 import customThemePreset from '../theme-preset.js';
 
 import { createApp } from 'vue';
@@ -16,9 +15,6 @@ import ToastService from 'primevue/toastservice';
 
 const app = createApp(App);
 const pinia = createPinia();
-
-const { initSiteTheme } = useTheme();
-initSiteTheme();
 
 app.use(pinia)
     .use(router)

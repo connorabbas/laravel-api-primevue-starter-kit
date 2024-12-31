@@ -54,7 +54,7 @@ const customThemePreset = definePreset(Aura, {
 export default {
     preset: customThemePreset,
     options: {
-        darkModeSelector: '.dark-mode',
+        darkModeSelector: '.dark',
         cssLayer: {
             name: 'primevue',
             order: 'tailwind-base, primevue, tailwind-utilities',
