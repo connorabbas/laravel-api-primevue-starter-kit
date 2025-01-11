@@ -20,7 +20,8 @@
                 "hollowtree.vue-snippets",
                 "Vue.volar",
                 "bradlc.vscode-tailwindcss",
-                "shd101wyy.markdown-preview-enhanced"
+                "shd101wyy.markdown-preview-enhanced",
+                "formulahendry.auto-rename-tag"
             ],
             "settings": {
                 "terminal.integrated.shell.linux": "/bin/sh"

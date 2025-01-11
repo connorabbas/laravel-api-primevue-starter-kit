@@ -1,6 +1,5 @@
 import { ref } from 'vue';
 import axios from '@/utils/axios';
-import progress from '@/utils/progress';
 import { useAxiosErrorHandling } from '@/composables/useAxiosErrorHandling';
 
 export function useAxiosForm(initialData = {}) {
@@ -28,7 +27,6 @@ export function useAxiosForm(initialData = {}) {
         try {
             clearErrors();
             processing.value = true;
-            progress.start();
 
             if (options.onBefore) options.onBefore();
 
@@ -48,9 +46,7 @@ export function useAxiosForm(initialData = {}) {
         } finally {
             if (onFinishCallback) onFinishCallback();
             if (options.onFinish) options.onFinish();
-
             processing.value = false;
-            progress.done();
         }
     };
 

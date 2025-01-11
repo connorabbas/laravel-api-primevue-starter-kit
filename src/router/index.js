@@ -14,28 +14,38 @@ const router = createRouter({
         {
             path: '/:pathMatch(.*)*', // 404 route not found
             name: 'NotFound',
-            component: () => import('@/views/NotFound.vue'),
+            component: () => import('@/views/error/NotFound.vue'),
         },
     ],
 });
 
+let progressTimeout = null;
 router.beforeEach(async (to, from) => {
-    progress.start();
+    progressTimeout = setTimeout(() => progress.start(), 250);
     const authStore = useAuthStore();
 
     // Run middleware pipeline
-    const context = { to, from, authStore };
-    const routeMiddleware = to.meta.middleware || [];
-    for (const middleware of routeMiddleware) {
-        const result = await middleware(context);
-        if (result) {
-            return result; // Exit and redirect if middleware returns a route
+    try {
+        const context = { to, from, authStore };
+        const routeMiddleware = to.meta.middleware || [];
+        for (const middleware of routeMiddleware) {
+            const result = await middleware(context);
+            if (result) {
+                return result; // Exit and redirect if middleware returns a route
+            }
+        }
+    } finally {
+        clearTimeout(progressTimeout);
+        if (progress.isStarted()) {
+            progress.done();
         }
     }
 });
 
 router.afterEach(() => {
-    progress.done();
+    if (progress.isStarted()) {
+        progress.done();
+    }
 });
 
 export default router;
