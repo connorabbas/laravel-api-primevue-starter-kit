@@ -54,8 +54,8 @@ onMounted(() => {
 <template>
     <GuestLayout>
         <template
-            #message
             v-if="flashMessages.success"
+            #message
         >
             <Message
                 severity="success"
@@ -66,8 +66,8 @@ onMounted(() => {
             </Message>
         </template>
         <form
-            @submit.prevent="submit"
             class="space-y-6"
+            @submit.prevent="submit"
         >
             <div class="space-y-2">
                 <label
@@ -76,14 +76,14 @@ onMounted(() => {
                     >Email</label
                 >
                 <InputText
-                    required
-                    ref="email-input"
                     id="email"
-                    type="email"
+                    ref="email-input"
                     v-model="formData.email"
+                    type="email"
                     class="w-full"
                     :invalid="Boolean(validationErrors.email)"
                     autocomplete="username"
+                    required
                 />
                 <InputErrors :errors="validationErrors.email" />
             </div>
@@ -95,13 +95,13 @@ onMounted(() => {
                     >Password</label
                 >
                 <InputText
-                    required
                     id="password"
-                    type="password"
                     v-model="formData.password"
+                    type="password"
                     class="w-full"
                     :invalid="Boolean(validationErrors.password)"
                     autocomplete="current-password"
+                    required
                 />
                 <InputErrors :errors="validationErrors.password" />
             </div>
@@ -111,8 +111,8 @@ onMounted(() => {
                     <div class="flex items-center">
                         <Checkbox
                             id="remember"
-                            :binary="true"
                             v-model="formData.remember"
+                            :binary="true"
                             class="mr-2"
                         ></Checkbox>
                         <label for="remember">Remember me</label>
@@ -128,11 +128,11 @@ onMounted(() => {
                     Forgot your password?
                 </RouterLink>
                 <Button
-                    raised
                     type="submit"
-                    :loading="loading"
                     label="Log In"
                     severity="contrast"
+                    :loading="loading"
+                    raised
                 />
             </div>
         </form>

@@ -141,6 +141,9 @@ An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https:
         ->name('password.update');
     ```
 
+## TypeScript
+TypeScript is configured and ready for use if desired, but is not required.
+
 ## Theme
 This starter kit provides a light/dark mode and custom theme functionality provided by the powerful PrimeVue theming system, using styled mode and custom design token values.
 

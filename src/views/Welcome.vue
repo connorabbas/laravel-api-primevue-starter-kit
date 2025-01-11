@@ -43,10 +43,10 @@ await authStore.fetchUser();
                             <template v-if="authStore?.user">
                                 <RouterLink :to="{ name: 'dashboard' }">
                                     <Button
-                                        raised
                                         label="Dashboard"
                                         icon="pi pi-th-large"
                                         class="mr-4"
+                                        raised
                                     />
                                 </RouterLink>
                                 <RouterLink :to="{ name: 'profile' }">
@@ -61,10 +61,10 @@ await authStore.fetchUser();
                             <template v-else>
                                 <RouterLink :to="{ name: 'login' }">
                                     <Button
-                                        raised
                                         label="Login"
                                         icon="pi pi-sign-in"
                                         class="mr-4"
+                                        raised
                                     />
                                 </RouterLink>
                                 <RouterLink :to="{ name: 'register' }">

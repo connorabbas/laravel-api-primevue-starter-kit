@@ -1,4 +1,4 @@
-export default async function guest({ to, from, authStore }) {
+export default async function guest({ authStore }) {
     if (!authStore.user) {
         await authStore.fetchUser();
     }

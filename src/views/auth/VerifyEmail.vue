@@ -17,8 +17,8 @@ const submit = () => {
 <template>
     <GuestLayout>
         <template
-            #message
             v-if="verificationLinkSent"
+            #message
         >
             <Message
                 severity="success"
@@ -37,16 +37,16 @@ const submit = () => {
         <form @submit.prevent="submit">
             <div class="mt-6 flex justify-between items-center">
                 <Button
-                    raised
                     type="submit"
-                    :loading="authStore.sendingVerificationEmail"
                     label="Resend Verification Email"
                     severity="contrast"
+                    :loading="authStore.sendingVerificationEmail"
+                    raised
                 />
                 <a
-                    @click="authStore.logout()"
                     href="#"
                     class="underline text-muted-color hover:text-color"
+                    @click="authStore.logout()"
                 >
                     Log Out
                 </a>

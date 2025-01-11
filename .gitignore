@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 !Dockerfile.local
+components.d.ts
 
 # Editor directories and files
 .vscode/*
