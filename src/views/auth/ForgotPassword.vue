@@ -41,8 +41,8 @@ onMounted(() => {
 <template>
     <GuestLayout>
         <template
-            #message
             v-if="flashMessages.success"
+            #message
         >
             <Message
                 severity="success"

@@ -46,7 +46,7 @@ export const useAuthStore = defineStore('auth', () => {
     function logout() {
         return submitLogoutForm('/logout', {
             showProgress: true,
-            onSuccess: (response) => {
+            onSuccess: () => {
                 user.value = null;
                 router.push({ name: 'welcome' });
             },
