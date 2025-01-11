@@ -26,13 +26,13 @@ const {
 const submit = () => {
     submitForm('/profile', {
         onSuccess: async () => {
-            await authStore.fetchUser();
             toast.add({
                 severity: 'success',
                 summary: 'Saved',
                 detail: 'Profile information has been updated',
                 life: 3000,
             });
+            authStore.fetchUser();
         },
     });
 };
