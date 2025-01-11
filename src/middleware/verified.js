@@ -1,4 +1,4 @@
-export default async function verified({ to, from, authStore }) {
+export default async function verified({ to, authStore }) {
     if (to.name === 'verifyEmail') return;
 
     if (!authStore.user) {

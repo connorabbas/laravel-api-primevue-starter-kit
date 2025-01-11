@@ -17,9 +17,9 @@
                             >
                             <RouterLink :to="{ name: 'welcome' }">
                                 <Button
-                                    raised
                                     label="Back to homepage"
                                     icon="pi pi-arrow-left"
+                                    raised
                                 />
                             </RouterLink>
                         </section>

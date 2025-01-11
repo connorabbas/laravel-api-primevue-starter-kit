@@ -83,11 +83,11 @@ onMounted(() => {
 
             <div class="flex justify-end items-center">
                 <Button
-                    raised
                     type="submit"
                     :loading="loading"
                     label="Email Password Reset Link"
                     severity="contrast"
+                    raised
                 />
             </div>
         </form>

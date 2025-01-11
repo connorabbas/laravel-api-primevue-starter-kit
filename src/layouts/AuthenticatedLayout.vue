@@ -127,10 +127,10 @@ watchEffect(() => {
                                         class="relative"
                                     ></div>
                                     <LinksMenu
+                                        ref="user-menu"
                                         appendTo="#user-menu-append"
                                         :model="userMenuItems"
                                         popup
-                                        ref="user-menu"
                                         class="shadow"
                                         :pt="{
                                             root: {
@@ -148,12 +148,12 @@ watchEffect(() => {
                                         text
                                         severity="secondary"
                                         icon="pi pi-bars"
-                                        @click="mobileMenuOpen = true"
                                         :pt="{
                                             icon: {
                                                 class: 'text-xl',
                                             },
                                         }"
+                                        @click="mobileMenuOpen = true"
                                     />
                                 </div>
                             </div>
@@ -200,12 +200,12 @@ watchEffect(() => {
                             </div>
                             <div class="grow">
                                 <Button
-                                    @click="authStore.logout()"
                                     label="Logout"
                                     icon="pi pi-sign-out"
                                     class="w-full"
                                     severity="danger"
                                     text
+                                    @click="authStore.logout()"
                                 ></Button>
                             </div>
                         </div>
@@ -215,8 +215,8 @@ watchEffect(() => {
 
             <!-- Page Heading -->
             <header
-                class="dynamic-bg shadow"
                 v-if="$slots.header"
+                class="dynamic-bg shadow"
             >
                 <Container>
                     <div class="py-6">

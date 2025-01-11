@@ -128,11 +128,11 @@ onMounted(() => {
                     Forgot your password?
                 </RouterLink>
                 <Button
-                    raised
                     type="submit"
                     :loading="loading"
                     label="Log In"
                     severity="contrast"
+                    raised
                 />
             </div>
         </form>

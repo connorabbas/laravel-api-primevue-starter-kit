@@ -128,11 +128,11 @@ onMounted(() => {
                     Already registered?
                 </RouterLink>
                 <Button
-                    raised
                     type="submit"
                     :loading="loading"
                     label="Register"
                     severity="contrast"
+                    raised
                 />
             </div>
         </form>

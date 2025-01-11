@@ -82,20 +82,20 @@ function focusPasswordInput() {
                     @click="modalOpen = false"
                 />
                 <Button
-                    raised
                     @click="deleteAccount"
                     :loading="deleting"
                     label="Delete Account"
                     severity="danger"
+                    raised
                 />
             </template>
         </Dialog>
 
         <Button
-            raised
             @click="modalOpen = true"
             label="Delete Account"
             severity="danger"
+            raised
         />
     </section>
 </template>

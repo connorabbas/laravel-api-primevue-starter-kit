@@ -37,11 +37,11 @@ const submit = () => {
         <form @submit.prevent="submit">
             <div class="mt-6 flex justify-between items-center">
                 <Button
-                    raised
                     type="submit"
                     :loading="authStore.sendingVerificationEmail"
                     label="Resend Verification Email"
                     severity="contrast"
+                    raised
                 />
                 <a
                     @click="authStore.logout()"

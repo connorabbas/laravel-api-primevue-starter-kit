@@ -102,11 +102,11 @@ onMounted(() => {
         </div>
         <div>
             <Button
-                raised
                 type="submit"
                 :loading="updating"
                 label="Save"
                 severity="contrast"
+                raised
             />
         </div>
     </form>
