@@ -85,7 +85,7 @@ onMounted(() => {
                 <a
                     href="#"
                     @click="resendVerifyEmail"
-                    class="underline text-sm text-muted-color underline text-muted-color hover:text-color"
+                    class="text-sm underline text-muted-color hover:text-color"
                 >
                     Click here to re-send the verification email.
                 </a>

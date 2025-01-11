@@ -46,7 +46,7 @@ const submit = () => {
                 <a
                     @click="authStore.logout()"
                     href="#"
-                    class="text-muted-color underline text-muted-color hover:text-color"
+                    class="underline text-muted-color hover:text-color"
                 >
                     Log Out
                 </a>
