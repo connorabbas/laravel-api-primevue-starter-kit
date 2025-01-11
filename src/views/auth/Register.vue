@@ -33,7 +33,7 @@ const submit = () => {
 };
 
 const loading = computed(() => {
-    return registering.value || authStore.fetchingCsrfToken.value;
+    return registering.value || authStore.fetchingCsrfToken;
 });
 
 onMounted(() => {
@@ -123,7 +123,7 @@ onMounted(() => {
             <div class="flex justify-end items-center pt-2">
                 <RouterLink
                     :to="{ name: 'login' }"
-                    class="mr-4 text-muted-color underline text-muted-color hover:text-color"
+                    class="mr-4 underline text-muted-color hover:text-color"
                 >
                     Already registered?
                 </RouterLink>

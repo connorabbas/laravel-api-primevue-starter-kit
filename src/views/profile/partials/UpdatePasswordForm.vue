@@ -26,7 +26,6 @@ const {
 const submit = () => {
     submitForm('/password', {
         onSuccess: async () => {
-            await authStore.fetchUser();
             toast.add({
                 severity: 'success',
                 summary: 'Saved',
@@ -34,6 +33,7 @@ const submit = () => {
                 life: 3000,
             });
             resetFormFields();
+            authStore.fetchUser();
         },
         onError: () => {
             if (validationErrors.value?.password) {

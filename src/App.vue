@@ -1,12 +1,21 @@
 <script setup>
-import { RouterView } from "vue-router";
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
     <!-- Use key to re-generate the page view component on each navigation :key="$route.path" -->
     <!-- Alteratively, use a watch() on each component to re-render dynamic data as needed -->
     <Toast position="top-center" />
-    <Suspense>
-        <RouterView />
-    </Suspense>
+    <RouterView v-slot="{ Component }">
+        <Suspense timeout="0">
+            <template #default>
+                <component :is="Component" />
+            </template>
+            <template #fallback>
+                <div class="h-screen flex items-center justify-center">
+                    <ProgressSpinner />
+                </div>
+            </template>
+        </Suspense>
+    </RouterView>
 </template>

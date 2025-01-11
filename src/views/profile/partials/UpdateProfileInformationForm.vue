@@ -26,13 +26,13 @@ const {
 const submit = () => {
     submitForm('/profile', {
         onSuccess: async () => {
-            await authStore.fetchUser();
             toast.add({
                 severity: 'success',
                 summary: 'Saved',
                 detail: 'Profile information has been updated',
                 life: 3000,
             });
+            authStore.fetchUser();
         },
     });
 };
@@ -85,7 +85,7 @@ onMounted(() => {
                 <a
                     href="#"
                     @click="resendVerifyEmail"
-                    class="underline text-sm text-muted-color underline text-muted-color hover:text-color"
+                    class="text-sm underline text-muted-color hover:text-color"
                 >
                     Click here to re-send the verification email.
                 </a>
