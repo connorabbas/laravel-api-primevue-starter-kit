@@ -44,8 +44,8 @@ onMounted(() => {
 <template>
     <GuestLayout>
         <form
-            @submit.prevent="submit"
             class="space-y-6"
+            @submit.prevent="submit"
         >
             <div class="space-y-2">
                 <label
@@ -54,14 +54,14 @@ onMounted(() => {
                     >Name</label
                 >
                 <InputText
-                    ref="name-input"
                     id="name"
-                    type="text"
+                    ref="name-input"
                     v-model="formData.name"
+                    type="text"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.name)"
-                    required
                     autocomplete="name"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.name" />
             </div>
@@ -74,12 +74,12 @@ onMounted(() => {
                 >
                 <InputText
                     id="email"
-                    type="email"
                     v-model="formData.email"
+                    type="email"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.email)"
-                    required
                     autocomplete="username"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.email" />
             </div>
@@ -92,12 +92,12 @@ onMounted(() => {
                 >
                 <InputText
                     id="password"
-                    type="password"
                     v-model="formData.password"
+                    type="password"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.password)"
-                    required
                     autocomplete="new-password"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.password" />
             </div>
@@ -110,12 +110,12 @@ onMounted(() => {
                 >
                 <InputText
                     id="password_confirmation"
-                    type="password"
                     v-model="formData.password_confirmation"
+                    type="password"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.password_confirmation)"
-                    required
                     autocomplete="new-password"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.password_confirmation" />
             </div>
@@ -129,9 +129,9 @@ onMounted(() => {
                 </RouterLink>
                 <Button
                     type="submit"
-                    :loading="loading"
                     label="Register"
                     severity="contrast"
+                    :loading="loading"
                     raised
                 />
             </div>

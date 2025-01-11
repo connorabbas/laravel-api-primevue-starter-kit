@@ -56,8 +56,8 @@ onMounted(() => {
 <template>
     <GuestLayout>
         <form
-            @submit.prevent="submit"
             class="space-y-6"
+            @submit.prevent="submit"
         >
             <div class="space-y-2">
                 <label
@@ -66,14 +66,14 @@ onMounted(() => {
                     >Email</label
                 >
                 <InputText
-                    required
-                    ref="email-input"
                     id="email"
-                    type="email"
+                    ref="email-input"
                     v-model="formData.email"
+                    type="email"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.email)"
                     autocomplete="username"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.email" />
             </div>
@@ -86,12 +86,12 @@ onMounted(() => {
                 >
                 <InputText
                     id="password"
-                    type="password"
                     v-model="formData.password"
+                    type="password"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.password)"
-                    required
                     autocomplete="new-password"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.password" />
             </div>
@@ -104,12 +104,12 @@ onMounted(() => {
                 >
                 <InputText
                     id="password_confirmation"
-                    type="password"
                     v-model="formData.password_confirmation"
+                    type="password"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.password_confirmation)"
-                    required
                     autocomplete="new-password"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.password_confirmation" />
             </div>
@@ -117,9 +117,9 @@ onMounted(() => {
             <div class="flex justify-end items-center pt-2">
                 <Button
                     type="submit"
-                    :loading="loading"
                     label="Reset Password"
                     severity="contrast"
+                    :loading="loading"
                     raised
                 />
             </div>

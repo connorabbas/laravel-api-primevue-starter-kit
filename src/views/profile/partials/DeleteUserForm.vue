@@ -1,5 +1,5 @@
 <script setup>
-import { ref, useTemplateRef, reactive } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
@@ -41,9 +41,9 @@ function focusPasswordInput() {
 <template>
     <section>
         <Dialog
+            v-model:visible="modalOpen"
             :draggable="false"
             position="center"
-            v-model:visible="modalOpen"
             modal
             header="Are you sure you want to delete your account?"
             :style="{ width: '40rem' }"
@@ -58,16 +58,16 @@ function focusPasswordInput() {
 
             <div class="space-y-2">
                 <InputText
-                    autofocus
-                    required
                     id="password"
                     ref="password-input"
+                    v-model="formData.password"
                     type="password"
                     placeholder="Password"
-                    v-model="formData.password"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.password)"
                     autocomplete="current-password"
+                    autofocus
+                    required
                     @keyup.enter="deleteAccount"
                 />
                 <InputErrors :errors="validationErrors?.password" />
@@ -83,9 +83,9 @@ function focusPasswordInput() {
                 />
                 <Button
                     @click="deleteAccount"
-                    :loading="deleting"
                     label="Delete Account"
                     severity="danger"
+                    :loading="deleting"
                     raised
                 />
             </template>

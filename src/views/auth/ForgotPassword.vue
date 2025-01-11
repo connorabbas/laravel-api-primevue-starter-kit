@@ -59,8 +59,8 @@ onMounted(() => {
         </div>
 
         <form
-            @submit.prevent="submit"
             class="space-y-6"
+            @submit.prevent="submit"
         >
             <div class="space-y-2">
                 <label
@@ -69,14 +69,14 @@ onMounted(() => {
                     >Email</label
                 >
                 <InputText
-                    required
-                    ref="email-input"
                     id="email"
-                    type="email"
+                    ref="email-input"
                     v-model="formData.email"
+                    type="email"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.email)"
                     autocomplete="username"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.email" />
             </div>
@@ -84,9 +84,9 @@ onMounted(() => {
             <div class="flex justify-end items-center">
                 <Button
                     type="submit"
-                    :loading="loading"
                     label="Email Password Reset Link"
                     severity="contrast"
+                    :loading="loading"
                     raised
                 />
             </div>
