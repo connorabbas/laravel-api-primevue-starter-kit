@@ -57,7 +57,7 @@ export default {
         darkModeSelector: '.dark',
         cssLayer: {
             name: 'primevue',
-            order: 'tailwind-base, primevue, tailwind-utilities',
+            order: 'tailwind-theme, tailwind-base, primevue, tailwind-utilities',
         },
     },
 };

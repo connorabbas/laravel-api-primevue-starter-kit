@@ -1,4 +1,5 @@
 import './assets/css/app.css';
+import './assets/css/tailwind.css';
 import 'nprogress/nprogress.css';
 import 'primeicons/primeicons.css';
 

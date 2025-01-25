@@ -51,7 +51,7 @@ onMounted(() => {
         class="space-y-6"
         @submit.prevent="submit"
     >
-        <div class="space-y-2">
+        <div class="flex flex-col gap-2">
             <label for="name">Name</label>
             <InputText
                 id="name"
@@ -65,7 +65,7 @@ onMounted(() => {
             />
             <InputErrors :errors="validationErrors?.name" />
         </div>
-        <div class="space-y-2">
+        <div class="flex flex-col gap-2">
             <label for="email">Email</label>
             <InputText
                 id="email"
@@ -94,7 +94,7 @@ onMounted(() => {
             <Message
                 v-if="verificationLinkSent"
                 severity="success"
-                class="shadow mt-4"
+                class="shadow-sm mt-4"
                 :closable="false"
             >
                 A new verification link has been sent to your email address.
