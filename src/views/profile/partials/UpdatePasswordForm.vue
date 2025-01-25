@@ -54,7 +54,7 @@ const submit = () => {
         class="space-y-6"
         @submit.prevent="submit"
     >
-        <div class="space-y-2">
+        <div class="flex flex-col gap-2">
             <label for="current_password">Current Password</label>
             <InputText
                 id="current_password"
@@ -69,7 +69,7 @@ const submit = () => {
             <InputErrors :errors="validationErrors?.current_password" />
         </div>
 
-        <div class="space-y-2">
+        <div class="flex flex-col gap-2">
             <label for="password">New Password</label>
             <InputText
                 id="password"
@@ -84,7 +84,7 @@ const submit = () => {
             <InputErrors :errors="validationErrors?.password" />
         </div>
 
-        <div class="space-y-2">
+        <div class="flex flex-col gap-2">
             <label for="password_confirmation">Confirm Password</label>
             <InputText
                 id="password_confirmation"

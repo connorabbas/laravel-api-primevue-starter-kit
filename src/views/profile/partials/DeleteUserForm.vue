@@ -43,10 +43,11 @@ function focusPasswordInput() {
         <Dialog
             v-model:visible="modalOpen"
             :draggable="false"
+            :dismissableMask="true"
             position="center"
-            modal
             header="Are you sure you want to delete your account?"
             :style="{ width: '40rem' }"
+            modal
             @show="focusPasswordInput"
         >
             <div class="mb-6">
@@ -56,7 +57,7 @@ function focusPasswordInput() {
                 </p>
             </div>
 
-            <div class="space-y-2">
+            <div class="flex flex-col gap-2">
                 <InputText
                     id="password"
                     ref="password-input"

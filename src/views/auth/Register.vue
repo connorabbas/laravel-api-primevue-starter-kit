@@ -47,12 +47,8 @@ onMounted(() => {
             class="space-y-6"
             @submit.prevent="submit"
         >
-            <div class="space-y-2">
-                <label
-                    for="name"
-                    class="block mb-2"
-                    >Name</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="name">Name</label>
                 <InputText
                     id="name"
                     ref="name-input"
@@ -66,12 +62,8 @@ onMounted(() => {
                 <InputErrors :errors="validationErrors?.name" />
             </div>
 
-            <div class="space-y-2">
-                <label
-                    for="email"
-                    class="block mb-2"
-                    >Email</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="email">Email</label>
                 <InputText
                     id="email"
                     v-model="formData.email"
@@ -84,12 +76,8 @@ onMounted(() => {
                 <InputErrors :errors="validationErrors?.email" />
             </div>
 
-            <div class="space-y-2">
-                <label
-                    for="password"
-                    class="block mb-2"
-                    >Password</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="password">Password</label>
                 <InputText
                     id="password"
                     v-model="formData.password"
@@ -102,12 +90,8 @@ onMounted(() => {
                 <InputErrors :errors="validationErrors?.password" />
             </div>
 
-            <div class="space-y-2">
-                <label
-                    for="password_confirmation"
-                    class="block mb-2"
-                    >Confirm Password</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="password_confirmation">Confirm Password</label>
                 <InputText
                     id="password_confirmation"
                     v-model="formData.password_confirmation"

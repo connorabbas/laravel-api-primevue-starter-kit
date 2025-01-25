@@ -47,7 +47,7 @@ onMounted(() => {
             <Message
                 severity="success"
                 :closable="false"
-                class="shadow"
+                class="shadow-sm"
             >
                 {{ flashMessages.success }}
             </Message>
@@ -62,12 +62,8 @@ onMounted(() => {
             class="space-y-6"
             @submit.prevent="submit"
         >
-            <div class="space-y-2">
-                <label
-                    for="email"
-                    class="block mb-2"
-                    >Email</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="email">Email</label>
                 <InputText
                     id="email"
                     ref="email-input"

@@ -28,7 +28,7 @@ defineExpose({
                 custom
             >
                 <!-- add if using 'nora' preset theme -->
-                <!-- hover:text-primary-100 hover:dark:text-primary-950 -->
+                <!-- hover:text-primary-100 dark:hover:text-primary-950 -->
                 <a
                     :href="href"
                     v-bind="props.action"
