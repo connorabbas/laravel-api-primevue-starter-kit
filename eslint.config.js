@@ -30,7 +30,7 @@ export default typescriptEslint.config(
         extends: [
             eslint.configs.recommended,
             ...typescriptEslint.configs.recommended,
-            ...eslintPluginVue.configs['flat/recommended'],
+            ...eslintPluginVue.configs['flat/strongly-recommended'],
         ],
         languageOptions: {
             ecmaVersion: 'latest',
@@ -45,8 +45,16 @@ export default typescriptEslint.config(
         rules: {
             'vue/require-default-prop': 'off',
             'vue/attribute-hyphenation': 'off',
+            'vue/v-on-event-hyphenation': 'off',
             'vue/multi-word-component-names': 'off',
             'vue/block-lang': 'off',
+            'vue/first-attribute-linebreak': [
+                'error',
+                {
+                    singleline: 'ignore',
+                    multiline: 'ignore',
+                },
+            ],
             '@typescript-eslint/no-explicit-any': 'off',
         },
     },
