@@ -10,13 +10,11 @@ await authStore.fetchUser();
 <template>
     <main>
         <div class="h-screen flex items-center justify-center">
-            <Card
-                :pt="{
-                    body: {
-                        class: 'p-4 py-6 sm:p-12',
-                    },
-                }"
-            >
+            <Card :pt="{
+                body: {
+                    class: 'p-4 py-6 sm:p-12',
+                },
+            }">
                 <template #content>
                     <div class="text-center md:text-left">
                         <section>
@@ -27,8 +25,7 @@ await authStore.fetchUser();
                                 <a
                                     href="https://laravel.com/docs/master/starter-kits#laravel-breeze"
                                     class="underline text-primary hover:text-color"
-                                    >Laravel Breeze</a
-                                >
+                                >Laravel Breeze</a>
                                 authentication with the API stack,
                             </p>
                             <p class="mt-0 mb-6 text-muted-color leading-normal">
@@ -36,8 +33,7 @@ await authStore.fetchUser();
                                 <a
                                     href="https://primevue.org/"
                                     class="underline text-primary hover:text-color"
-                                    >PrimeVue</a
-                                >
+                                >PrimeVue</a>
                                 components in a basic SPA
                             </p>
                             <template v-if="authStore?.user">
