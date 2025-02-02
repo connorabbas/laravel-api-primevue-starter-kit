@@ -19,6 +19,12 @@ const webRoutes = [
         component: () => import('@/views/profile/Edit.vue'),
         meta: { middleware: [auth] },
     },
+    {
+        path: '/users',
+        name: 'users',
+        component: () => import('@/views/Users.vue'),
+        meta: { middleware: [auth] },
+    },
 ];
 
 export default webRoutes;
