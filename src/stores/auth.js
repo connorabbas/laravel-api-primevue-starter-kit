@@ -45,7 +45,8 @@ export const useAuthStore = defineStore('auth', () => {
     const { post: submitLogoutForm } = useAxiosForm();
     function logout() {
         return submitLogoutForm('/logout', {
-            onSuccess: (response) => {
+            showProgress: true,
+            onSuccess: () => {
                 user.value = null;
                 router.push({ name: 'welcome' });
             },

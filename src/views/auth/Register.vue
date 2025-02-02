@@ -33,7 +33,7 @@ const submit = () => {
 };
 
 const loading = computed(() => {
-    return registering.value || authStore.fetchingCsrfToken.value;
+    return registering.value || authStore.fetchingCsrfToken;
 });
 
 onMounted(() => {
@@ -44,78 +44,62 @@ onMounted(() => {
 <template>
     <GuestLayout>
         <form
-            @submit.prevent="submit"
             class="space-y-6"
+            @submit.prevent="submit"
         >
-            <div class="space-y-2">
-                <label
-                    for="name"
-                    class="block mb-2"
-                    >Name</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="name">Name</label>
                 <InputText
-                    ref="name-input"
                     id="name"
-                    type="text"
+                    ref="name-input"
                     v-model="formData.name"
+                    type="text"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.name)"
-                    required
                     autocomplete="name"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.name" />
             </div>
 
-            <div class="space-y-2">
-                <label
-                    for="email"
-                    class="block mb-2"
-                    >Email</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="email">Email</label>
                 <InputText
                     id="email"
-                    type="email"
                     v-model="formData.email"
+                    type="email"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.email)"
-                    required
                     autocomplete="username"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.email" />
             </div>
 
-            <div class="space-y-2">
-                <label
-                    for="password"
-                    class="block mb-2"
-                    >Password</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="password">Password</label>
                 <InputText
                     id="password"
-                    type="password"
                     v-model="formData.password"
+                    type="password"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.password)"
-                    required
                     autocomplete="new-password"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.password" />
             </div>
 
-            <div class="space-y-2">
-                <label
-                    for="password_confirmation"
-                    class="block mb-2"
-                    >Confirm Password</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="password_confirmation">Confirm Password</label>
                 <InputText
                     id="password_confirmation"
-                    type="password"
                     v-model="formData.password_confirmation"
+                    type="password"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.password_confirmation)"
-                    required
                     autocomplete="new-password"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.password_confirmation" />
             </div>
@@ -123,16 +107,16 @@ onMounted(() => {
             <div class="flex justify-end items-center pt-2">
                 <RouterLink
                     :to="{ name: 'login' }"
-                    class="mr-4 text-muted-color underline text-muted-color hover:text-color"
+                    class="mr-4 underline text-muted-color hover:text-color"
                 >
                     Already registered?
                 </RouterLink>
                 <Button
-                    raised
                     type="submit"
-                    :loading="loading"
                     label="Register"
                     severity="contrast"
+                    :loading="loading"
+                    raised
                 />
             </div>
         </form>

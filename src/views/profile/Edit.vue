@@ -14,17 +14,15 @@ import UpdateProfileInformationForm from './partials/UpdateProfileInformationFor
 
         <Container>
             <div class="py-4 md:py-8">
-                <div class="space-y-6">
-                    <Card
-                        :pt="{
-                            body: {
-                                class: 'max-w-2xl space-y-3',
-                            },
-                            caption: {
-                                class: 'space-y-1',
-                            },
-                        }"
-                    >
+                <div class="space-y-4 md:space-y-8">
+                    <Card :pt="{
+                        body: {
+                            class: 'max-w-2xl space-y-3',
+                        },
+                        caption: {
+                            class: 'space-y-1',
+                        },
+                    }">
                         <template #title>Profile Information</template>
                         <template #subtitle> Update your account's profile information and email address. </template>
                         <template #content>
@@ -32,16 +30,14 @@ import UpdateProfileInformationForm from './partials/UpdateProfileInformationFor
                         </template>
                     </Card>
 
-                    <Card
-                        :pt="{
-                            body: {
-                                class: 'max-w-2xl space-y-3',
-                            },
-                            caption: {
-                                class: 'space-y-1',
-                            },
-                        }"
-                    >
+                    <Card :pt="{
+                        body: {
+                            class: 'max-w-2xl space-y-3',
+                        },
+                        caption: {
+                            class: 'space-y-1',
+                        },
+                    }">
                         <template #title>Update Password</template>
                         <template #subtitle>
                             Ensure your account is using a long, random password to stay secure.
@@ -51,16 +47,14 @@ import UpdateProfileInformationForm from './partials/UpdateProfileInformationFor
                         </template>
                     </Card>
 
-                    <Card
-                        :pt="{
-                            body: {
-                                class: 'max-w-2xl space-y-3',
-                            },
-                            caption: {
-                                class: 'space-y-1',
-                            },
-                        }"
-                    >
+                    <Card :pt="{
+                        body: {
+                            class: 'max-w-2xl space-y-3',
+                        },
+                        caption: {
+                            class: 'space-y-1',
+                        },
+                    }">
                         <template #title>Delete Account</template>
                         <template #subtitle>
                             Once your account is deleted, all of its resources and data will be permanently deleted.

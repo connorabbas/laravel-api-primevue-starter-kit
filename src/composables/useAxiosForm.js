@@ -25,10 +25,16 @@ export function useAxiosForm(initialData = {}) {
     };
 
     const makeRequest = async (method, url, options = {}) => {
+        options = {
+            showProgress: false,
+            ...options,
+        };
         try {
             clearErrors();
             processing.value = true;
-            progress.start();
+            if (options.showProgress) {
+                progress.start();
+            }
 
             if (options.onBefore) options.onBefore();
 
@@ -48,9 +54,10 @@ export function useAxiosForm(initialData = {}) {
         } finally {
             if (onFinishCallback) onFinishCallback();
             if (options.onFinish) options.onFinish();
-
             processing.value = false;
-            progress.done();
+            if (progress.isStarted()) {
+                progress.done();
+            }
         }
     };
 

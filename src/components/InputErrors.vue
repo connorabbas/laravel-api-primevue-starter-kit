@@ -7,9 +7,13 @@ defineProps({
 </script>
 
 <template>
-    <div v-if="errors" class="space-y-1">
+    <div
+        v-if="errors"
+        class="space-y-1"
+    >
         <Message
-            v-for="errorMessage in errors"
+            v-for="(errorMessage, index) in errors"
+            :key="index"
             severity="error"
             variant="simple"
             size="small"

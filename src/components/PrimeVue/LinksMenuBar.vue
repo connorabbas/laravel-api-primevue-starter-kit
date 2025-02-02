@@ -1,7 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { useTemplateRef } from 'vue';
+import Menubar from 'primevue/menubar';
 
-const childRef = useTemplateRef('child-ref');
+type MenubarType = InstanceType<typeof Menubar>
+const childRef = useTemplateRef<MenubarType>('child-ref');
 defineExpose({
     childRef,
 });
@@ -26,15 +28,15 @@ defineExpose({
                 custom
             >
                 <!-- add if using 'nora' preset theme -->
-                <!-- hover:text-primary-100 hover:dark:text-primary-950 -->
+                <!-- hover:text-primary-100 dark:hover:text-primary-950 -->
                 <a
                     :href="href"
                     v-bind="props.action"
-                    @click="navigate"
                     :class="{
                         'font-bold text-primary': item.active,
                         'text-muted-color': root && !item.active,
                     }"
+                    @click="navigate"
                 >
                     <span
                         v-show="item.icon"

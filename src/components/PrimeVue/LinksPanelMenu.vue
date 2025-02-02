@@ -1,20 +1,18 @@
 <template>
-    <PanelMenu
-        :pt="{
-            root: {
-                class: 'p-0 m-0 gap-1',
-            },
-            panel: {
-                class: 'p-0 border-0',
-            },
-            header: {
-                class: 'p-0 border-0',
-            },
-            itemContent: {
-                class: 'gap-1',
-            },
-        }"
-    >
+    <PanelMenu :pt="{
+        root: {
+            class: 'p-0 m-0 gap-1',
+        },
+        panel: {
+            class: 'p-0 border-0',
+        },
+        header: {
+            class: 'p-0 border-0',
+        },
+        itemContent: {
+            class: 'gap-1',
+        },
+    }">
         <template #item="{ item, active }">
             <RouterLink
                 v-if="item.route"
@@ -23,7 +21,7 @@
                 custom
             >
                 <!-- add if using 'nora' preset theme -->
-                <!-- hover:text-primary-100 hover:dark:text-primary-950 -->
+                <!-- hover:text-primary-100 dark:hover:text-primary-950 -->
                 <a
                     class="flex items-center cursor-pointer no-underline px-4 py-2"
                     :class="item.active ? 'font-bold text-primary' : 'text-surface-700 dark:text-surface-0'"

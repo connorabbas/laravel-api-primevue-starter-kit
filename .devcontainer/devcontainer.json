@@ -2,27 +2,39 @@
 {
     "name": "PrimeVue Breeze SPA",
     "dockerComposeFile": [
-        "../docker-compose.yml"
+        "../docker-compose.local.yml"
     ],
-    "service": "primevue_breeze_spa",
-    "workspaceFolder": "/web",
+    "service": "web",
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "type=bind,source=/home/${localEnv:USER}/.ssh,target=/home/node/.ssh,readonly"
+    ],
     "customizations": {
         "vscode": {
             "extensions": [
+                "ms-azuretools.vscode-docker",
                 "eamodio.gitlens",
                 "esbenp.prettier-vscode",
                 "mikestead.dotenv",
                 "streetsidesoftware.code-spell-checker",
                 "hollowtree.vue-snippets",
                 "Vue.volar",
-                "yzhang.markdown-all-in-one"
+                "bradlc.vscode-tailwindcss",
+                "shd101wyy.markdown-preview-enhanced",
+                "formulahendry.auto-rename-tag",
+                "pmneo.tsimporter"
             ],
             "settings": {
-                "terminal.integrated.shell.linux": "/bin/sh"
+                "terminal.integrated.shell.linux": "/bin/sh",
+                "html.format.wrapAttributes": "force-expand-multiline",
+                "[vue]": {
+                    "editor.defaultFormatter": "Vue.volar",
+                    "editor.tabSize": 4
+                }
             }
         }
     },
-    "postCreateCommand": "chown -R 1000:1000 /web && npm install",
+    "postCreateCommand": "chown -R 1000:1000 /workspace && npm install",
     "remoteUser": "node"
     // "forwardPorts": [],
     // "runServices": [],

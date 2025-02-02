@@ -1,7 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import { useTemplateRef } from 'vue';
+import Menu from 'primevue/menu';
 
-const childRef = useTemplateRef('child-ref');
+type MenuType = InstanceType<typeof Menu>
+const childRef = useTemplateRef<MenuType>('child-ref');
 defineExpose({
     childRef,
 });
@@ -19,8 +21,8 @@ defineExpose({
                 <a
                     :href="href"
                     v-bind="props.action"
-                    @click="navigate"
                     class="p-menubar-item-link"
+                    @click="navigate"
                 >
                     <span
                         v-show="item.icon"

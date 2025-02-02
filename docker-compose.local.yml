@@ -1,0 +1,22 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    container_name: vue-spa
+    entrypoint: /bin/sh
+    working_dir: /workspace
+    volumes:
+      - '.:/workspace'
+    tty: true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vue-spa.rule=Host(`vue-spa.localhost`)"
+      - "traefik.http.services.vue-spa.loadbalancer.server.port=${VITE_PORT}"
+    networks:
+      - proxy
+
+networks:
+  proxy: # setup in separate container, example implementation: https://github.com/connorabbas/traefik-docker-compose/blob/master/docker-compose.yml
+    name: "traefik_network"
+    external: true

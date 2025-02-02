@@ -26,13 +26,13 @@ const {
 const submit = () => {
     submitForm('/profile', {
         onSuccess: async () => {
-            await authStore.fetchUser();
             toast.add({
                 severity: 'success',
                 summary: 'Saved',
                 detail: 'Profile information has been updated',
                 life: 3000,
             });
+            authStore.fetchUser();
         },
     });
 };
@@ -48,33 +48,33 @@ onMounted(() => {
 
 <template>
     <form
-        @submit.prevent="submit"
         class="space-y-6"
+        @submit.prevent="submit"
     >
-        <div class="space-y-2">
+        <div class="flex flex-col gap-2">
             <label for="name">Name</label>
             <InputText
-                required
-                ref="name-input"
                 id="name"
-                type="text"
+                ref="name-input"
                 v-model="formData.name"
+                type="text"
                 class="w-full"
                 :invalid="Boolean(validationErrors?.name)"
                 autocomplete="name"
+                required
             />
             <InputErrors :errors="validationErrors?.name" />
         </div>
-        <div class="space-y-2">
+        <div class="flex flex-col gap-2">
             <label for="email">Email</label>
             <InputText
-                required
                 id="email"
-                type="email"
                 v-model="formData.email"
+                type="email"
                 class="w-full"
                 :invalid="Boolean(validationErrors?.email)"
                 autocomplete="username"
+                required
             />
             <InputErrors :errors="validationErrors?.email" />
         </div>
@@ -84,8 +84,8 @@ onMounted(() => {
                 Your email address is unverified.
                 <a
                     href="#"
+                    class="text-sm underline text-muted-color hover:text-color"
                     @click="resendVerifyEmail"
-                    class="underline text-sm text-muted-color underline text-muted-color hover:text-color"
                 >
                     Click here to re-send the verification email.
                 </a>
@@ -94,19 +94,19 @@ onMounted(() => {
             <Message
                 v-if="verificationLinkSent"
                 severity="success"
+                class="shadow-sm mt-4"
                 :closable="false"
-                class="shadow mt-4"
             >
                 A new verification link has been sent to your email address.
             </Message>
         </div>
         <div>
             <Button
-                raised
                 type="submit"
-                :loading="updating"
                 label="Save"
                 severity="contrast"
+                :loading="updating"
+                raised
             />
         </div>
     </form>

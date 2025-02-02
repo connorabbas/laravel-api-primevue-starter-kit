@@ -45,7 +45,7 @@ const submit = () => {
 };
 
 const loading = computed(() => {
-    return resetting.value || authStore.fetchingCsrfToken.value;
+    return resetting.value || authStore.fetchingCsrfToken;
 });
 
 onMounted(() => {
@@ -56,71 +56,59 @@ onMounted(() => {
 <template>
     <GuestLayout>
         <form
-            @submit.prevent="submit"
             class="space-y-6"
+            @submit.prevent="submit"
         >
-            <div class="space-y-2">
-                <label
-                    for="email"
-                    class="block mb-2"
-                    >Email</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="email">Email</label>
                 <InputText
-                    required
-                    ref="email-input"
                     id="email"
-                    type="email"
+                    ref="email-input"
                     v-model="formData.email"
+                    type="email"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.email)"
                     autocomplete="username"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.email" />
             </div>
 
-            <div class="space-y-2">
-                <label
-                    for="password"
-                    class="block mb-2"
-                    >New Password</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="password">New Password</label>
                 <InputText
                     id="password"
-                    type="password"
                     v-model="formData.password"
+                    type="password"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.password)"
-                    required
                     autocomplete="new-password"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.password" />
             </div>
 
-            <div class="space-y-2">
-                <label
-                    for="password_confirmation"
-                    class="block mb-2"
-                    >Confirm New Password</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="password_confirmation">Confirm New Password</label>
                 <InputText
                     id="password_confirmation"
-                    type="password"
                     v-model="formData.password_confirmation"
+                    type="password"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.password_confirmation)"
-                    required
                     autocomplete="new-password"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.password_confirmation" />
             </div>
 
             <div class="flex justify-end items-center pt-2">
                 <Button
-                    raised
                     type="submit"
-                    :loading="loading"
                     label="Reset Password"
                     severity="contrast"
+                    :loading="loading"
+                    raised
                 />
             </div>
         </form>

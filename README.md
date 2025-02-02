@@ -1,7 +1,10 @@
-# Vue SPA w/ PrimeVue & Laravel Breeze API Stack
+# Vue SPA w/ PrimeVue & Laravel Breeze API Starter Kit
+
+![Static Badge](<https://img.shields.io/badge/Vue.js%20-%20v3.5%20-%20rgb(66%20184%20131)>) ![Static Badge](https://img.shields.io/badge/PrimeVue%20-%20v4%20-%20rgb(16%20185%20129)) ![Static Badge](https://img.shields.io/badge/Tailwind%20CSS%20-%20v4%20-%20%230284c7)
+
 A [PrimeVue](https://primevue.org/) SPA starter kit meant for use with a [Laravel Breeze](https://laravel.com/docs/master/starter-kits#laravel-breeze) API stack backend.
 
-An alternative to using my [Inertia](https://github.com/connorabbas/primevue-breeze-inertia) or [Nuxt](https://github.com/connorabbas/primevue-breeze-nuxt) starter kits.
+An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https://github.com/connorabbas/laravel-inertia-primevue).
 
 ## Setup 
 1. Clone the repo (or download the zip)
@@ -10,12 +13,12 @@ An alternative to using my [Inertia](https://github.com/connorabbas/primevue-bre
 4. Install [Laravel Breeze](https://laravel.com/docs/master/starter-kits#laravel-breeze-installation) using the [API Stack](https://laravel.com/docs/master/starter-kits#breeze-and-next) option
 5. Setup necessary `.env` configuration values in the Laravel API project
     ```
+    # Example implementation
     # Remember, your SPA and API must share the same top-level domain
-    # Example implementation, could also use localhost with different port numbers
-    APP_URL="http://breeze-api.localhost" # Match this value with VITE_API_BASE_URL in the Vue app
-    FRONTEND_URL="http://vue-spa.breeze-api.localhost" # Add app.frontend_url config entry as needed
-    SANCTUM_STATEFUL_DOMAINS="vue-spa.breeze-api.localhost"
-    SESSION_DOMAIN=".breeze-api.localhost"
+    APP_URL=http://api.vue-spa.localhost # Match this value with VITE_API_BASE_URL in the Vue app
+    FRONTEND_URL=http://vue-spa.localhost # Add app.frontend_url config entry as needed
+    SANCTUM_STATEFUL_DOMAINS="vue-spa.localhost"
+    SESSION_DOMAIN="vue-spa.localhost"
     ```
 6. Setup additional routes and controllers for profile page in the Laravel API project:
     ```
@@ -140,6 +143,9 @@ An alternative to using my [Inertia](https://github.com/connorabbas/primevue-bre
         ->middleware('auth')
         ->name('password.update');
     ```
+
+## TypeScript
+TypeScript is configured and ready for use if desired, but is not required.
 
 ## Theme
 This starter kit provides a light/dark mode and custom theme functionality provided by the powerful PrimeVue theming system, using styled mode and custom design token values.

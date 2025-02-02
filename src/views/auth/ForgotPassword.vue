@@ -30,7 +30,7 @@ const submit = () => {
 };
 
 const loading = computed(() => {
-    return submittingRequest.value || authStore.fetchingCsrfToken.value;
+    return submittingRequest.value || authStore.fetchingCsrfToken;
 });
 
 onMounted(() => {
@@ -41,13 +41,13 @@ onMounted(() => {
 <template>
     <GuestLayout>
         <template
-            #message
             v-if="flashMessages.success"
+            #message
         >
             <Message
                 severity="success"
                 :closable="false"
-                class="shadow"
+                class="shadow-sm"
             >
                 {{ flashMessages.success }}
             </Message>
@@ -59,35 +59,31 @@ onMounted(() => {
         </div>
 
         <form
-            @submit.prevent="submit"
             class="space-y-6"
+            @submit.prevent="submit"
         >
-            <div class="space-y-2">
-                <label
-                    for="email"
-                    class="block mb-2"
-                    >Email</label
-                >
+            <div class="flex flex-col gap-2">
+                <label for="email">Email</label>
                 <InputText
-                    required
-                    ref="email-input"
                     id="email"
-                    type="email"
+                    ref="email-input"
                     v-model="formData.email"
+                    type="email"
                     class="w-full"
                     :invalid="Boolean(validationErrors?.email)"
                     autocomplete="username"
+                    required
                 />
                 <InputErrors :errors="validationErrors?.email" />
             </div>
 
             <div class="flex justify-end items-center">
                 <Button
-                    raised
                     type="submit"
-                    :loading="loading"
                     label="Email Password Reset Link"
                     severity="contrast"
+                    :loading="loading"
+                    raised
                 />
             </div>
         </form>

@@ -6,7 +6,7 @@ import Container from '@/components/Container.vue';
 import LinksMenu from '@/components/PrimeVue/LinksMenu.vue';
 import LinksMenuBar from '@/components/PrimeVue/LinksMenuBar.vue';
 import LinksPanelMenu from '@/components/PrimeVue/LinksPanelMenu.vue';
-import ToggleThemeButton from '@/components/ToggleThemeButton.vue';
+import ToggleDarkModeButton from '@/components/ToggleDarkModeButton.vue';
 import { useAuthStore } from '@/stores/auth';
 
 const authStore = useAuthStore();
@@ -78,7 +78,7 @@ watchEffect(() => {
         <div class="min-h-screen">
             <nav
                 class="dynamic-bg border-b"
-                :class="$slots.header ? 'dynamic-border' : 'shadow'"
+                :class="$slots.header ? 'dynamic-border' : 'shadow-sm'"
             >
                 <!-- Primary Navigation Menu -->
                 <Container>
@@ -106,15 +106,10 @@ watchEffect(() => {
                         <template #end>
                             <div class="hidden lg:flex items-center ms-6 space-x-3">
                                 <div>
-                                    <ToggleThemeButton
+                                    <ToggleDarkModeButton
                                         text
                                         severity="secondary"
                                         rounded
-                                        :pt="{
-                                            icon: {
-                                                class: 'text-muted-color',
-                                            },
-                                        }"
                                     />
                                 </div>
                                 <!-- User Dropdown Menu -->
@@ -122,24 +117,24 @@ watchEffect(() => {
                                     <Button
                                         text
                                         severity="secondary"
+                                        :label="authStore?.user?.name"
+                                        icon="pi pi-angle-down"
+                                        iconPos="right"
                                         @click="toggleUserMenu($event)"
-                                    >
-                                        <span class="text-muted-color">{{ authStore?.user?.name }}</span>
-                                        <i class="pi pi-angle-down text-muted-color"></i>
-                                    </Button>
+                                    />
                                     <div
                                         id="user-menu-append"
                                         class="relative"
                                     ></div>
                                     <LinksMenu
+                                        ref="user-menu"
                                         appendTo="#user-menu-append"
                                         :model="userMenuItems"
                                         popup
-                                        ref="user-menu"
-                                        class="shadow"
+                                        class="shadow-sm"
                                         :pt="{
                                             root: {
-                                                class: '!left-auto !top-0 right-0',
+                                                class: 'left-auto! top-0! right-0',
                                             },
                                         }"
                                     />
@@ -153,12 +148,12 @@ watchEffect(() => {
                                         text
                                         severity="secondary"
                                         icon="pi pi-bars"
-                                        @click="mobileMenuOpen = true"
                                         :pt="{
                                             icon: {
                                                 class: 'text-xl',
                                             },
                                         }"
+                                        @click="mobileMenuOpen = true"
                                     />
                                 </div>
                             </div>
@@ -172,7 +167,7 @@ watchEffect(() => {
                     position="right"
                 >
                     <template #header>
-                        <ToggleThemeButton
+                        <ToggleDarkModeButton
                             text
                             severity="secondary"
                             rounded
@@ -205,12 +200,12 @@ watchEffect(() => {
                             </div>
                             <div class="grow">
                                 <Button
-                                    @click="authStore.logout()"
                                     label="Logout"
                                     icon="pi pi-sign-out"
                                     class="w-full"
                                     severity="danger"
                                     text
+                                    @click="authStore.logout()"
                                 ></Button>
                             </div>
                         </div>
@@ -220,8 +215,8 @@ watchEffect(() => {
 
             <!-- Page Heading -->
             <header
-                class="dynamic-bg shadow"
                 v-if="$slots.header"
+                class="dynamic-bg shadow-sm"
             >
                 <Container>
                     <div class="py-6">

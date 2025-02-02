@@ -26,7 +26,6 @@ const {
 const submit = () => {
     submitForm('/password', {
         onSuccess: async () => {
-            await authStore.fetchUser();
             toast.add({
                 severity: 'success',
                 summary: 'Saved',
@@ -34,6 +33,7 @@ const submit = () => {
                 life: 3000,
             });
             resetFormFields();
+            authStore.fetchUser();
         },
         onError: () => {
             if (validationErrors.value?.password) {
@@ -51,49 +51,49 @@ const submit = () => {
 
 <template>
     <form
-        @submit.prevent="submit"
         class="space-y-6"
+        @submit.prevent="submit"
     >
-        <div class="space-y-2">
+        <div class="flex flex-col gap-2">
             <label for="current_password">Current Password</label>
             <InputText
-                required
                 id="current_password"
                 ref="current-password-input"
-                type="password"
                 v-model="formData.current_password"
+                type="password"
                 class="w-full"
                 :invalid="Boolean(validationErrors?.current_password)"
                 autocomplete="current-password"
+                required
             />
             <InputErrors :errors="validationErrors?.current_password" />
         </div>
 
-        <div class="space-y-2">
+        <div class="flex flex-col gap-2">
             <label for="password">New Password</label>
             <InputText
-                required
                 id="password"
                 ref="new-password-input"
-                type="password"
                 v-model="formData.password"
+                type="password"
                 class="w-full"
                 :invalid="Boolean(validationErrors?.password)"
                 autocomplete="new-password"
+                required
             />
             <InputErrors :errors="validationErrors?.password" />
         </div>
 
-        <div class="space-y-2">
+        <div class="flex flex-col gap-2">
             <label for="password_confirmation">Confirm Password</label>
             <InputText
-                required
                 id="password_confirmation"
-                type="password"
                 v-model="formData.password_confirmation"
+                type="password"
                 class="w-full"
                 :invalid="Boolean(validationErrors?.password_confirmation)"
                 autocomplete="new-password"
+                required
             />
             <InputErrors :errors="validationErrors?.password_confirmation" />
         </div>
@@ -102,9 +102,9 @@ const submit = () => {
             <Button
                 raised
                 type="submit"
-                :loading="updating"
                 label="Save"
                 severity="contrast"
+                :loading="updating"
             />
         </div>
     </form>
