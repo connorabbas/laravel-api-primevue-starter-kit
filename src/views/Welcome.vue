@@ -19,7 +19,7 @@ await authStore.fetchUser();
                             <p class="mt-0 mb-2 text-muted-color leading-normal">
                                 A starter kit for using
                                 <a
-                                    href="https://laravel.com/docs/master/starter-kits#laravel-breeze"
+                                    href="https://github.com/laravel/breeze"
                                     class="underline text-primary hover:text-color"
                                 >Laravel Breeze</a> API stack authentication,
                             </p>

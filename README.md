@@ -2,7 +2,7 @@
 
 ![Static Badge](<https://img.shields.io/badge/Vue.js%20-%20v3.5%20-%20rgb(66%20184%20131)>) ![Static Badge](<https://img.shields.io/badge/PrimeVue%20-%20v4%20-%20rgb(16%20185%20129)>) ![Static Badge](https://img.shields.io/badge/Tailwind%20CSS%20-%20v4%20-%20%230284c7)
 
-A [PrimeVue](https://primevue.org/) SPA starter kit meant for use with a [Laravel Breeze](https://laravel.com/docs/master/starter-kits#laravel-breeze) API stack backend.
+A [PrimeVue](https://primevue.org/) SPA starter kit meant for use with a [Laravel Breeze](https://github.com/laravel/breeze) API stack backend.
 
 An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https://github.com/connorabbas/laravel-inertia-primevue).
 
@@ -11,7 +11,7 @@ An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https:
 1. Clone the repo (or download the zip)
 2. Create a new `.env` file in the root directory, reference the `.env.example` file for the vars/values
 3. Create a [new Laravel application](https://laravel.com/docs/master/installation)
-4. Install [Laravel Breeze](https://laravel.com/docs/master/starter-kits#laravel-breeze-installation) using the [API Stack](https://laravel.com/docs/master/starter-kits#breeze-and-next) option
+4. Install [Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze-installation) using the [API Stack](https://laravel.com/docs/11.x/starter-kits#breeze-and-next) option
 5. Setup necessary `.env` configuration values in the Laravel API project
     ```
     # Example implementation
@@ -169,7 +169,7 @@ The prebuilt theme presets are located in the `/resources/js/theme` directory. E
     Emulates the familiar look and feel of [Bootstrap](https://getbootstrap.com/).
 
 -   **breeze**  
-    Captures the aesthetic of [Laravel Breeze](https://laravel.com/docs/master/starter-kits#laravel-breeze).
+    Captures the aesthetic of [Laravel Breeze](https://github.com/laravel/breeze).
 
 -   **enterprise**  
     Provides a clean, no-nonsense corporate design.
