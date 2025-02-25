@@ -1,11 +1,7 @@
 <template>
     <main>
         <div class="h-screen flex items-center justify-center">
-            <Card :pt="{
-                body: {
-                    class: 'p-4 py-6 sm:p-12',
-                },
-            }">
+            <Card pt:body:class="p-4 py-6 sm:p-12">
                 <template #content>
                     <div class="text-center">
                         <section>
@@ -16,7 +12,6 @@
                                 <Button
                                     label="Back to homepage"
                                     icon="pi pi-arrow-left"
-                                    raised
                                 />
                             </RouterLink>
                         </section>

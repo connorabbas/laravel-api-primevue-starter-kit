@@ -42,11 +42,11 @@ function focusPasswordInput() {
     <section>
         <Dialog
             v-model:visible="modalOpen"
-            :draggable="false"
-            :dismissableMask="true"
             position="center"
             header="Are you sure you want to delete your account?"
             :style="{ width: '40rem' }"
+            :draggable="false"
+            dismissableMask
             modal
             @show="focusPasswordInput"
         >
@@ -86,7 +86,6 @@ function focusPasswordInput() {
                     label="Delete Account"
                     severity="danger"
                     :loading="deleting"
-                    raised
                     @click="deleteAccount"
                 />
             </template>
@@ -95,7 +94,6 @@ function focusPasswordInput() {
         <Button
             label="Delete Account"
             severity="danger"
-            raised
             @click="modalOpen = true"
         />
     </section>

@@ -114,9 +114,7 @@ onMounted(() => {
                 <Button
                     type="submit"
                     label="Register"
-                    severity="contrast"
                     :loading="loading"
-                    raised
                 />
             </div>
         </form>

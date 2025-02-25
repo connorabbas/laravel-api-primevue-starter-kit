@@ -100,10 +100,8 @@ const submit = () => {
 
         <div class="flex items-center gap-4">
             <Button
-                raised
                 type="submit"
                 label="Save"
-                severity="contrast"
                 :loading="updating"
             />
         </div>

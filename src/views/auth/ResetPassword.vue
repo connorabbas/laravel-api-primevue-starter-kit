@@ -106,9 +106,7 @@ onMounted(() => {
                 <Button
                     type="submit"
                     label="Reset Password"
-                    severity="contrast"
                     :loading="loading"
-                    raised
                 />
             </div>
         </form>

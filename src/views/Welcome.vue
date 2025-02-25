@@ -10,11 +10,7 @@ await authStore.fetchUser();
 <template>
     <main>
         <div class="h-screen flex items-center justify-center">
-            <Card :pt="{
-                body: {
-                    class: 'p-4 py-6 sm:p-12',
-                },
-            }">
+            <Card pt:body:class="p-4 py-6 sm:p-12">
                 <template #content>
                     <div class="text-center md:text-left">
                         <section>
@@ -25,11 +21,10 @@ await authStore.fetchUser();
                                 <a
                                     href="https://laravel.com/docs/master/starter-kits#laravel-breeze"
                                     class="underline text-primary hover:text-color"
-                                >Laravel Breeze</a>
-                                authentication with the API stack,
+                                >Laravel Breeze</a> API stack authentication,
                             </p>
                             <p class="mt-0 mb-6 text-muted-color leading-normal">
-                                Utilizing
+                                utilizing
                                 <a
                                     href="https://primevue.org/"
                                     class="underline text-primary hover:text-color"
@@ -42,7 +37,6 @@ await authStore.fetchUser();
                                         label="Dashboard"
                                         icon="pi pi-th-large"
                                         class="mr-4"
-                                        raised
                                     />
                                 </RouterLink>
                                 <RouterLink :to="{ name: 'profile' }">
@@ -60,7 +54,6 @@ await authStore.fetchUser();
                                         label="Login"
                                         icon="pi pi-sign-in"
                                         class="mr-4"
-                                        raised
                                     />
                                 </RouterLink>
                                 <RouterLink :to="{ name: 'register' }">

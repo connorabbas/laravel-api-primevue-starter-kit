@@ -21,11 +21,11 @@ defineExpose({
                 <a
                     :href="href"
                     v-bind="props.action"
-                    class="p-menubar-item-link"
+                    class="p-menu-item-link"
                     @click="navigate"
                 >
                     <span
-                        v-show="item.icon"
+                        v-if="item.icon"
                         :class="item.icon"
                         class="p-menu-item-icon"
                     />
@@ -39,7 +39,7 @@ defineExpose({
                 v-bind="props.action"
             >
                 <span
-                    v-show="item.icon"
+                    v-if="item.icon"
                     :class="item.icon"
                     class="p-menu-item-icon"
                 />

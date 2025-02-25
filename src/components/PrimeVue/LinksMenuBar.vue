@@ -27,21 +27,19 @@ defineExpose({
                 :to="item.route"
                 custom
             >
-                <!-- add if using 'nora' preset theme -->
-                <!-- hover:text-primary-100 dark:hover:text-primary-950 -->
                 <a
                     :href="href"
                     v-bind="props.action"
+                    class="p-menubar-item-link"
                     :class="{
-                        'font-bold text-primary': item.active,
-                        'text-muted-color': root && !item.active,
+                        'font-bold! text-muted-color': item.active,
                     }"
                     @click="navigate"
                 >
                     <span
-                        v-show="item.icon"
+                        v-if="item.icon"
                         :class="item.icon"
-                        class="p-menu-item-icon"
+                        class="p-menubar-item-icon"
                     />
                     <span class="p-menu-item-label">{{ item.label }}</span>
                 </a>
@@ -51,19 +49,20 @@ defineExpose({
                 :href="item.url"
                 :target="item.target"
                 v-bind="props.action"
-                :class="{
-                    'text-muted-color': root,
-                }"
+                class="p-menubar-item-link"
             >
                 <span
-                    v-show="item.icon"
+                    v-if="item.icon"
                     :class="item.icon"
-                    class="p-menu-item-icon"
+                    class="p-menubar-item-icon"
                 />
                 <span class="p-menu-item-label">{{ item.label }}</span>
                 <i
                     v-if="hasSubmenu"
-                    :class="['pi text-muted-color', root ? 'pi-angle-down text-xs' : 'pi-angle-right']"
+                    :class="[
+                        'pi',
+                        root ? 'pi-angle-down text-xs' : 'pi-angle-right',
+                    ]"
                 ></i>
             </a>
         </template>

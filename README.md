@@ -1,15 +1,16 @@
 # Vue SPA w/ PrimeVue & Laravel Breeze API Starter Kit
 
-![Static Badge](<https://img.shields.io/badge/Vue.js%20-%20v3.5%20-%20rgb(66%20184%20131)>) ![Static Badge](https://img.shields.io/badge/PrimeVue%20-%20v4%20-%20rgb(16%20185%20129)) ![Static Badge](https://img.shields.io/badge/Tailwind%20CSS%20-%20v4%20-%20%230284c7)
+![Static Badge](<https://img.shields.io/badge/Vue.js%20-%20v3.5%20-%20rgb(66%20184%20131)>) ![Static Badge](<https://img.shields.io/badge/PrimeVue%20-%20v4%20-%20rgb(16%20185%20129)>) ![Static Badge](https://img.shields.io/badge/Tailwind%20CSS%20-%20v4%20-%20%230284c7)
 
 A [PrimeVue](https://primevue.org/) SPA starter kit meant for use with a [Laravel Breeze](https://laravel.com/docs/master/starter-kits#laravel-breeze) API stack backend.
 
 An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https://github.com/connorabbas/laravel-inertia-primevue).
 
-## Setup 
+## Setup
+
 1. Clone the repo (or download the zip)
 2. Create a new `.env` file in the root directory, reference the `.env.example` file for the vars/values
-3. Create a [new Laravel application](https://laravel.com/docs/master/installation) 
+3. Create a [new Laravel application](https://laravel.com/docs/master/installation)
 4. Install [Laravel Breeze](https://laravel.com/docs/master/starter-kits#laravel-breeze-installation) using the [API Stack](https://laravel.com/docs/master/starter-kits#breeze-and-next) option
 5. Setup necessary `.env` configuration values in the Laravel API project
     ```
@@ -21,9 +22,11 @@ An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https:
     SESSION_DOMAIN="vue-spa.localhost"
     ```
 6. Setup additional routes and controllers for profile page in the Laravel API project:
+
     ```
     php artisan make:controller ProfileController
     ```
+
     ```php
     <?php
 
@@ -89,9 +92,11 @@ An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https:
     }
 
     ```
+
     ```
     php artisan make:controller Auth/PasswordController
     ```
+
     ```php
     <?php
 
@@ -131,6 +136,7 @@ An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https:
     }
 
     ```
+
     ```php
     Route::controller(App\Http\Controllers\ProfileController::class)
         ->middleware('auth')
@@ -145,11 +151,39 @@ An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https:
     ```
 
 ## TypeScript
+
 TypeScript is configured and ready for use if desired, but is not required.
 
 ## Theme
-This starter kit provides a light/dark mode and custom theme functionality provided by the powerful PrimeVue theming system, using styled mode and custom design token values.
 
-The starting point for customizing your theme will be the `theme-preset.js` file at the root of the project. To quickly change the look and feel of your theme, swap the [primary](https://primevue.org/theming/styled/#primary) values with a different set of [colors](https://primevue.org/theming/styled/#colors), change the [surface](https://primevue.org/theming/styled/#surface) `colorScheme` values (slate, gray, neutral, etc.), or completely change the [preset theme](https://primevue.org/theming/styled/#presets) (Aura used by default).
+This starter kit features a built-in light/dark mode toggle along with a collection of custom theme presets built using the powerful **PrimeVue V4** theming system. It leverages styled mode and custom design token values to create flexible and cohesive UI designs.
 
-Please reference the [PrimeVue Styled Mode Docs](https://primevue.org/theming/styled/) to fully understand how this system works, and how to further customize your theme to make it your own.
+### Prebuilt Theme Presets
+
+The prebuilt theme presets are located in the `/resources/js/theme` directory. Each preset offers a distinct visual style:
+
+-   **noir**  
+    A minimal, monochromatic theme that serves as the default style.
+
+-   **bootstrap**  
+    Emulates the familiar look and feel of [Bootstrap](https://getbootstrap.com/).
+
+-   **breeze**  
+    Captures the aesthetic of [Laravel Breeze](https://laravel.com/docs/master/starter-kits#laravel-breeze).
+
+-   **enterprise**  
+    Provides a clean, no-nonsense corporate design.
+
+### Customizing Your Own Theme
+
+Creating your own theme preset is simple. You can:
+
+-   Swap the [primary](https://primevue.org/theming/styled/#primary) values with a different set of [colors](https://primevue.org/theming/styled/#colors).
+-   Adjust the `colorScheme` [surface](https://primevue.org/theming/styled/#surface) values (e.g., slate, gray, neutral).
+-   Change the extended [preset theme](https://primevue.org/theming/styled/#presets).
+
+For detailed guidance on customization, please refer to the [PrimeVue Styled Mode Docs](https://primevue.org/theming/styled/).
+
+## PrimeVue v4 w/ Tailwind CSS
+
+To clarify, Tailwind is **not** used for any component styling in this starter kit; instead, we use PrimeVue's styled mode with a custom theme preset implementation for component styling. Tailwind is applied solely for layout purposes **around** PrimeVue components and for minimal styling when needed.
