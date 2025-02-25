@@ -2,7 +2,6 @@
 import { ref, useTemplateRef, computed, onMounted, onUnmounted, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import ApplicationLogo from '@/components/ApplicationLogo.vue';
-import Container from '@/components/Container.vue';
 import LinksMenu from '@/components/PrimeVue/LinksMenu.vue';
 import LinksMenuBar from '@/components/PrimeVue/LinksMenuBar.vue';
 import LinksPanelMenu from '@/components/PrimeVue/LinksPanelMenu.vue';
@@ -76,22 +75,13 @@ watchEffect(() => {
 <template>
     <div>
         <div class="min-h-screen">
-            <nav
-                class="dynamic-bg border-b"
-                :class="$slots.header ? 'dynamic-border' : 'shadow-sm'"
-            >
+            <nav class="dynamic-bg shadow-sm">
                 <!-- Primary Navigation Menu -->
                 <Container>
                     <LinksMenuBar
                         :model="mainMenuItems"
-                        :pt="{
-                            root: {
-                                class: 'px-0 py-3 border-0 rounded-none dynamic-bg',
-                            },
-                            button: {
-                                class: 'hidden',
-                            },
-                        }"
+                        pt:root:class="px-0 py-4 border-0 rounded-none dynamic-bg"
+                        pt:button:class="hidden"
                     >
                         <template #start>
                             <!-- Logo -->
@@ -130,29 +120,20 @@ watchEffect(() => {
                                         ref="user-menu"
                                         appendTo="#user-menu-append"
                                         :model="userMenuItems"
+                                        pt:root:class="left-auto! top-0! right-0"
                                         popup
-                                        class="shadow-sm"
-                                        :pt="{
-                                            root: {
-                                                class: 'left-auto! top-0! right-0',
-                                            },
-                                        }"
                                     />
                                 </div>
                             </div>
 
-                            <!-- Hamburger -->
+                            <!-- Mobile Hamburger -->
                             <div class="flex items-center lg:hidden">
                                 <div class="relative">
                                     <Button
-                                        text
                                         severity="secondary"
                                         icon="pi pi-bars"
-                                        :pt="{
-                                            icon: {
-                                                class: 'text-xl',
-                                            },
-                                        }"
+                                        pt:icon:class="text-xl"
+                                        text
                                         @click="mobileMenuOpen = true"
                                     />
                                 </div>
@@ -212,18 +193,6 @@ watchEffect(() => {
                     </template>
                 </Drawer>
             </nav>
-
-            <!-- Page Heading -->
-            <header
-                v-if="$slots.header"
-                class="dynamic-bg shadow-sm"
-            >
-                <Container>
-                    <div class="py-6">
-                        <slot name="header" />
-                    </div>
-                </Container>
-            </header>
 
             <!-- Page Content -->
             <main>

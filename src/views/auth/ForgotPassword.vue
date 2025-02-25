@@ -81,9 +81,7 @@ onMounted(() => {
                 <Button
                     type="submit"
                     label="Email Password Reset Link"
-                    severity="contrast"
                     :loading="loading"
-                    raised
                 />
             </div>
         </form>

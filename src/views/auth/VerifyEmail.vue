@@ -39,9 +39,7 @@ const submit = () => {
                 <Button
                     type="submit"
                     label="Resend Verification Email"
-                    severity="contrast"
                     :loading="authStore.sendingVerificationEmail"
-                    raised
                 />
                 <a
                     href="#"
