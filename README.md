@@ -160,7 +160,7 @@ This starter kit features a built-in light/dark mode toggle along with a collect
 
 ### Prebuilt Theme Presets
 
-The prebuilt theme presets are located in the `/resources/js/theme` directory. Each preset offers a distinct visual style:
+The prebuilt theme presets are located in the `/src/theme` directory. Each preset offers a distinct visual style:
 
 -   **noir**  
     A minimal, monochromatic theme that serves as the default style.
