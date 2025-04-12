@@ -1,8 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useToast } from 'primevue/usetoast';
-import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useAuthStore } from '@/stores/auth';
+import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/UserSettingsLayout.vue';

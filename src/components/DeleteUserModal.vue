@@ -1,6 +1,7 @@
 <script setup>
 import { ref, useTemplateRef } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
 import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
 import InputErrors from '@/components/InputErrors.vue';
@@ -9,6 +10,7 @@ const modalOpen = defineModel(false, {
     type: Boolean,
 });
 
+const authStore = useAuthStore();
 const router = useRouter();
 const { setFlashMessage } = useFlashMessage();
 
@@ -27,7 +29,8 @@ const deleteAccount = () => {
     submitForm('/profile', {
         onSuccess: () => {
             modalOpen.value = false;
-            router.push({ name: 'dashboard' }).then(() => {
+            authStore.user = null;
+            router.push({ name: 'login' }).then(() => {
                 setFlashMessage('success', 'Your account has been deleted.');
             });
         },
