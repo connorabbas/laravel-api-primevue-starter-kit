@@ -4,7 +4,7 @@
 
 A [PrimeVue](https://primevue.org/) SPA starter kit meant for use with a [Laravel Breeze](https://github.com/laravel/breeze) API stack backend.
 
-An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https://github.com/connorabbas/laravel-inertia-primevue).
+An alternative to using the [Laravel & PrimeVue (Inertia.js) Starter Kit](https://github.com/connorabbas/laravel-primevue-starter-kit).
 
 ## Setup
 
