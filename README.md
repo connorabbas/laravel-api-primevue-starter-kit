@@ -1,4 +1,4 @@
-# Vue SPA w/ PrimeVue & Laravel Breeze API Starter Kit
+# PrimeVue SPA & Laravel API Starter Kit
 
 ![Static Badge](<https://img.shields.io/badge/Vue.js%20-%20v3.5%20-%20rgb(66%20184%20131)>) ![Static Badge](<https://img.shields.io/badge/PrimeVue%20-%20v4%20-%20rgb(16%20185%20129)>) ![Static Badge](https://img.shields.io/badge/Tailwind%20CSS%20-%20v4%20-%20%230284c7)
 
