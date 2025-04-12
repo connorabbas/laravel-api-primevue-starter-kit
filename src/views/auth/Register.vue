@@ -53,11 +53,11 @@ onMounted(() => {
                     id="name"
                     ref="name-input"
                     v-model="formData.name"
-                    type="text"
-                    class="w-full"
                     :invalid="Boolean(validationErrors?.name)"
+                    type="text"
                     autocomplete="name"
                     required
+                    fluid
                 />
                 <InputErrors :errors="validationErrors?.name" />
             </div>
@@ -67,25 +67,25 @@ onMounted(() => {
                 <InputText
                     id="email"
                     v-model="formData.email"
-                    type="email"
-                    class="w-full"
                     :invalid="Boolean(validationErrors?.email)"
+                    type="email"
                     autocomplete="username"
                     required
+                    fluid
                 />
                 <InputErrors :errors="validationErrors?.email" />
             </div>
 
             <div class="flex flex-col gap-2">
                 <label for="password">Password</label>
-                <InputText
+                <Password
                     id="password"
                     v-model="formData.password"
-                    type="password"
-                    class="w-full"
                     :invalid="Boolean(validationErrors?.password)"
                     autocomplete="new-password"
+                    toggleMask
                     required
+                    fluid
                 />
                 <InputErrors :errors="validationErrors?.password" />
             </div>
@@ -95,11 +95,11 @@ onMounted(() => {
                 <InputText
                     id="password_confirmation"
                     v-model="formData.password_confirmation"
-                    type="password"
-                    class="w-full"
                     :invalid="Boolean(validationErrors?.password_confirmation)"
+                    type="password"
                     autocomplete="new-password"
                     required
+                    fluid
                 />
                 <InputErrors :errors="validationErrors?.password_confirmation" />
             </div>

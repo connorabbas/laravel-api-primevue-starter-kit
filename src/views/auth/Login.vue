@@ -75,27 +75,27 @@ onMounted(() => {
                     id="email"
                     ref="email-input"
                     v-model="formData.email"
+                    :invalid="Boolean(validationErrors?.email)"
                     type="email"
-                    class="w-full"
-                    :invalid="Boolean(validationErrors.email)"
                     autocomplete="username"
                     required
+                    fluid
                 />
-                <InputErrors :errors="validationErrors.email" />
+                <InputErrors :errors="validationErrors?.email" />
             </div>
 
             <div class="flex flex-col gap-2">
                 <label for="password">Password</label>
-                <InputText
+                <Password
                     id="password"
                     v-model="formData.password"
-                    type="password"
-                    class="w-full"
-                    :invalid="Boolean(validationErrors.password)"
+                    :invalid="Boolean(validationErrors?.password)"
                     autocomplete="current-password"
+                    toggleMask
                     required
+                    fluid
                 />
-                <InputErrors :errors="validationErrors.password" />
+                <InputErrors :errors="validationErrors?.password" />
             </div>
 
             <div>

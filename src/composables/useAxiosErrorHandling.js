@@ -20,12 +20,10 @@ export function useAxiosErrorHandling() {
     };
 
     const showErrorToast = (summary, detail) => {
-        //toast.removeGroup('error');
         toast.add({
             severity: 'error',
             summary,
             detail,
-            group: 'error',
             life: 3000,
         });
     };

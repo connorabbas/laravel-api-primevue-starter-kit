@@ -68,11 +68,11 @@ onMounted(() => {
                     id="email"
                     ref="email-input"
                     v-model="formData.email"
-                    type="email"
-                    class="w-full"
                     :invalid="Boolean(validationErrors?.email)"
+                    type="email"
                     autocomplete="username"
                     required
+                    fluid
                 />
                 <InputErrors :errors="validationErrors?.email" />
             </div>
