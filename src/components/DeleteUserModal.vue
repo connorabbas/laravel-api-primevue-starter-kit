@@ -1,5 +1,5 @@
 <script setup>
-import { ref, useTemplateRef } from 'vue';
+import { useTemplateRef } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 import { useAxiosForm } from '@/composables/useAxiosForm';
