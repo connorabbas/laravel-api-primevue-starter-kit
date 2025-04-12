@@ -21,7 +21,7 @@ An alternative to using the [Laravel, Inertia.js, & PrimeVue Starter Kit](https:
     SANCTUM_STATEFUL_DOMAINS="vue-spa.localhost"
     SESSION_DOMAIN="vue-spa.localhost"
     ```
-6. Setup additional routes and controllers for profile page in the Laravel API project:
+6. Setup additional routes and controllers for profile settings in the Laravel API project:
 
     ```
     php artisan make:controller ProfileController
