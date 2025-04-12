@@ -1,7 +1,6 @@
 <script setup>
-import ToggleDarkModeButton from '@/components/ToggleDarkModeButton.vue';
 import { useAuthStore } from '@/stores/auth';
-import { Card } from 'primevue';
+import { LayoutGrid, LogIn, Settings, UserPlus } from 'lucide-vue-next';
 
 const authStore = useAuthStore();
 await authStore.fetchUser();
@@ -35,37 +34,48 @@ await authStore.fetchUser();
                                 <RouterLink :to="{ name: 'dashboard' }">
                                     <Button
                                         label="Dashboard"
-                                        icon="pi pi-th-large"
                                         class="mr-4"
-                                    />
+                                    >
+                                        <template #icon>
+                                            <LayoutGrid />
+                                        </template>
+                                    </Button>
                                 </RouterLink>
-                                <RouterLink :to="{ name: 'profile' }">
+                                <RouterLink :to="{ name: 'settings.profile.edit' }">
                                     <Button
                                         outlined
-                                        label="Profile"
-                                        icon="pi pi-user"
+                                        label="Profile Settings"
                                         class="mr-4"
-                                    />
+                                    >
+                                        <template #icon>
+                                            <Settings />
+                                        </template>
+                                    </Button>
                                 </RouterLink>
                             </template>
                             <template v-else>
                                 <RouterLink :to="{ name: 'login' }">
                                     <Button
                                         label="Login"
-                                        icon="pi pi-sign-in"
                                         class="mr-4"
-                                    />
+                                    >
+                                        <template #icon>
+                                            <LogIn />
+                                        </template>
+                                    </Button>
                                 </RouterLink>
                                 <RouterLink :to="{ name: 'register' }">
                                     <Button
                                         outlined
                                         label="Register"
-                                        icon="pi pi-user-plus"
                                         class="mr-4"
-                                    />
+                                    >
+                                        <template #icon>
+                                            <UserPlus />
+                                        </template>
+                                    </Button>
                                 </RouterLink>
                             </template>
-                            <ToggleDarkModeButton outlined />
                         </section>
                     </div>
                 </template>

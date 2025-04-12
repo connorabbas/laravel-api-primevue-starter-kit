@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
-import GuestLayout from '@/layouts/GuestLayout.vue';
+import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
 
 const authStore = useAuthStore();
 const { flashMessages } = useFlashMessage();
@@ -15,7 +15,7 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
+    <GuestAuthLayout>
         <template
             v-if="verificationLinkSent"
             #message
@@ -50,5 +50,5 @@ const submit = () => {
                 </a>
             </div>
         </form>
-    </GuestLayout>
+    </GuestAuthLayout>
 </template>

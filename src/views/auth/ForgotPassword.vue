@@ -3,7 +3,7 @@ import { useTemplateRef, computed, onMounted } from 'vue';
 import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useAuthStore } from '@/stores/auth';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
-import GuestLayout from '@/layouts/GuestLayout.vue';
+import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
 import InputErrors from '@/components/InputErrors.vue';
 
 const authStore = useAuthStore();
@@ -39,7 +39,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <GuestLayout>
+    <GuestAuthLayout>
         <template
             v-if="flashMessages.success"
             #message
@@ -68,11 +68,11 @@ onMounted(() => {
                     id="email"
                     ref="email-input"
                     v-model="formData.email"
-                    type="email"
-                    class="w-full"
                     :invalid="Boolean(validationErrors?.email)"
+                    type="email"
                     autocomplete="username"
                     required
+                    fluid
                 />
                 <InputErrors :errors="validationErrors?.email" />
             </div>
@@ -85,5 +85,5 @@ onMounted(() => {
                 />
             </div>
         </form>
-    </GuestLayout>
+    </GuestAuthLayout>
 </template>

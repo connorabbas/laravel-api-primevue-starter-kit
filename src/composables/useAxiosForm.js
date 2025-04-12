@@ -5,12 +5,8 @@ import { useAxiosErrorHandling } from '@/composables/useAxiosErrorHandling';
 
 export function useAxiosForm(initialData = {}) {
     const { validationErrors, clearErrors, handleAxiosError } = useAxiosErrorHandling();
-
     const data = ref({ ...initialData });
     const processing = ref(false);
-
-    let onSuccessCallback = null;
-    let onFinishCallback = null;
 
     const reset = (...fields) => {
         if (fields.length > 0) {
@@ -25,53 +21,38 @@ export function useAxiosForm(initialData = {}) {
     };
 
     const makeRequest = async (method, url, options = {}) => {
-        options = {
-            showProgress: false,
-            ...options,
-        };
+        const {
+            showProgress = false,
+            onBefore = () => {},
+            onSuccess = () => {},
+            onFinish = () => {},
+            ...restOptions
+        } = options;
+
         try {
             clearErrors();
             processing.value = true;
-            if (options.showProgress) {
-                progress.start();
-            }
+            if (showProgress) progress.start();
+            onBefore();
 
-            if (options.onBefore) options.onBefore();
-
-            const response = await axios({
+            const config = {
                 url,
                 method,
-                data: data.value,
-                ...options,
-            });
+                ...(method === 'get' ? { params: data.value } : { data: data.value }),
+                ...restOptions,
+            };
 
-            if (onSuccessCallback) onSuccessCallback(response);
-            if (options.onSuccess) options.onSuccess(response);
+            const response = await axios(config);
+            onSuccess(response);
 
             return response;
         } catch (error) {
-            handleAxiosError(error, options);
+            handleAxiosError(error);
         } finally {
-            if (onFinishCallback) onFinishCallback();
-            if (options.onFinish) options.onFinish();
+            onFinish();
             processing.value = false;
-            if (progress.isStarted()) {
-                progress.done();
-            }
+            if (showProgress) progress.done();
         }
-    };
-
-    const get = (url, options = {}) => makeRequest('get', url, options);
-    const post = (url, options = {}) => makeRequest('post', url, options);
-    const put = (url, options = {}) => makeRequest('put', url, options);
-    const patch = (url, options = {}) => makeRequest('patch', url, options);
-    const del = (url, options = {}) => makeRequest('delete', url, options);
-
-    const onSuccess = (callback) => {
-        onSuccessCallback = callback;
-    };
-    const onFinish = (callback) => {
-        onFinishCallback = callback;
     };
 
     return {
@@ -79,13 +60,10 @@ export function useAxiosForm(initialData = {}) {
         validationErrors,
         processing,
         reset,
-        clearErrors,
-        get,
-        post,
-        put,
-        patch,
-        del,
-        onSuccess,
-        onFinish,
+        get: (url, options) => makeRequest('get', url, options),
+        post: (url, options) => makeRequest('post', url, options),
+        put: (url, options) => makeRequest('put', url, options),
+        patch: (url, options) => makeRequest('patch', url, options),
+        del: (url, options) => makeRequest('delete', url, options),
     };
 }

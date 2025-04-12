@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import { useTemplateRef } from 'vue';
 import Menubar from 'primevue/menubar';
+import { ChevronDown, ChevronRight } from 'lucide-vue-next';
+import type { ExtendedMenuItem } from '@/types';
 
-type MenubarType = InstanceType<typeof Menubar>
+const componentProps = defineProps<{
+    model: ExtendedMenuItem[]
+}>();
+
+type MenubarType = InstanceType<typeof Menubar>;
 const childRef = useTemplateRef<MenubarType>('child-ref');
+
 defineExpose({
     childRef,
 });
@@ -12,13 +19,18 @@ defineExpose({
 <template>
     <Menubar
         ref="child-ref"
+        :model="componentProps.model"
         breakpoint="1024px"
     >
         <template
-            v-if="$slots.start"
-            #start
+            v-for="(_, slotName) in $slots"
+            #[slotName]="slotProps"
         >
-            <slot name="start"></slot>
+            <slot
+                v-if="slotName != 'item'"
+                :name="slotName"
+                v-bind="slotProps ?? {}"
+            />
         </template>
         <template #item="{ item, props, hasSubmenu, root }">
             <RouterLink
@@ -36,12 +48,17 @@ defineExpose({
                     }"
                     @click="navigate"
                 >
-                    <span
+                    <i
                         v-if="item.icon"
                         :class="item.icon"
                         class="p-menubar-item-icon"
                     />
-                    <span class="p-menu-item-label">{{ item.label }}</span>
+                    <component
+                        :is="item.lucideIcon"
+                        v-else-if="item.lucideIcon"
+                        class="p-menubar-item-icon"
+                    />
+                    <span class="p-menubar-item-label">{{ item.label }}</span>
                 </a>
             </RouterLink>
             <a
@@ -51,26 +68,28 @@ defineExpose({
                 v-bind="props.action"
                 class="p-menubar-item-link"
             >
-                <span
+                <i
                     v-if="item.icon"
                     :class="item.icon"
                     class="p-menubar-item-icon"
                 />
-                <span class="p-menu-item-label">{{ item.label }}</span>
-                <i
-                    v-if="hasSubmenu"
-                    :class="[
-                        'pi',
-                        root ? 'pi-angle-down text-xs' : 'pi-angle-right',
-                    ]"
-                ></i>
+                <component
+                    :is="item.lucideIcon"
+                    v-else-if="item.lucideIcon"
+                    class="p-menubar-item-icon"
+                />
+                <span class="p-menubar-item-label">{{ item.label }}</span>
+                <template v-if="hasSubmenu">
+                    <ChevronDown
+                        v-if="root"
+                        class="p-menubar-submenu-icon"
+                    />
+                    <ChevronRight
+                        v-else
+                        class="p-menubar-submenu-icon"
+                    />
+                </template>
             </a>
-        </template>
-        <template
-            v-if="$slots.end"
-            #end
-        >
-            <slot name="end"></slot>
         </template>
     </Menubar>
 </template>

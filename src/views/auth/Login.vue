@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useAuthStore } from '@/stores/auth';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
-import GuestLayout from '@/layouts/GuestLayout.vue';
+import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
 import InputErrors from '@/components/InputErrors.vue';
 
 const router = useRouter();
@@ -52,7 +52,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <GuestLayout>
+    <GuestAuthLayout>
         <template
             v-if="flashMessages.success"
             #message
@@ -75,27 +75,27 @@ onMounted(() => {
                     id="email"
                     ref="email-input"
                     v-model="formData.email"
+                    :invalid="Boolean(validationErrors?.email)"
                     type="email"
-                    class="w-full"
-                    :invalid="Boolean(validationErrors.email)"
                     autocomplete="username"
                     required
+                    fluid
                 />
-                <InputErrors :errors="validationErrors.email" />
+                <InputErrors :errors="validationErrors?.email" />
             </div>
 
             <div class="flex flex-col gap-2">
                 <label for="password">Password</label>
-                <InputText
+                <Password
                     id="password"
                     v-model="formData.password"
-                    type="password"
-                    class="w-full"
-                    :invalid="Boolean(validationErrors.password)"
+                    :invalid="Boolean(validationErrors?.password)"
                     autocomplete="current-password"
+                    toggleMask
                     required
+                    fluid
                 />
-                <InputErrors :errors="validationErrors.password" />
+                <InputErrors :errors="validationErrors?.password" />
             </div>
 
             <div>
@@ -126,5 +126,5 @@ onMounted(() => {
                 />
             </div>
         </form>
-    </GuestLayout>
+    </GuestAuthLayout>
 </template>

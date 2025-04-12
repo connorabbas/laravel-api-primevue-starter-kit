@@ -19,38 +19,32 @@ export function useAxiosErrorHandling() {
         }
     };
 
-    const handleAxiosError = (error, options = {}) => {
-        clearErrors();
-        toast.removeAllGroups();
-        let toastSummary = 'Error';
-        let toastDetail = '';
+    const showErrorToast = (summary, detail) => {
+        toast.add({
+            severity: 'error',
+            summary,
+            detail,
+            life: 3000,
+        });
+    };
 
+    const handleAxiosError = (error, options = {}) => {
         if (error.response) {
             const status = error.response.status;
             const responseData = error.response.data;
 
             if (status === 419) {
                 router.push({ name: 'login' });
+                showErrorToast('Session Expired', 'Please log in again.');
             } else if (status === 422 && responseData?.errors) {
                 validationErrors.value = responseData.errors;
+                //showErrorToast('Validation Error', 'Validation failed.');
             } else if (status >= 500) {
-                toastSummary = 'Server Error';
-                toastDetail = 'A critical error occurred.';
+                showErrorToast('Server Error', 'A critical error occurred.');
             }
         } else if (error.request) {
-            toastSummary = 'Network Error';
-            toastDetail = 'We are experiencing technical difficulties, please try again later.';
-            // handle as needed
-            //console.error('Unexpected Error:', error.message);
-        }
-
-        if (toastSummary && toastDetail) {
-            toast.add({
-                severity: 'error',
-                summary: toastSummary,
-                detail: toastDetail,
-                life: 3000,
-            });
+            showErrorToast('Network Error', 'Technical difficulties, please try again later.');
+            //console.error('Network Error:', error.message);
         }
 
         if (options.onError) options.onError(error);
