@@ -39,7 +39,7 @@ await authStore.fetchUser();
                                         class="mr-4"
                                     />
                                 </RouterLink>
-                                <RouterLink :to="{ name: 'profile' }">
+                                <RouterLink :to="{ name: 'settings.profile.edit' }">
                                     <Button
                                         outlined
                                         label="Profile"

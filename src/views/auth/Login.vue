@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useAuthStore } from '@/stores/auth';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
-import GuestLayout from '@/layouts/GuestLayout.vue';
+import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
 import InputErrors from '@/components/InputErrors.vue';
 
 const router = useRouter();
@@ -52,7 +52,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <GuestLayout>
+    <GuestAuthLayout>
         <template
             v-if="flashMessages.success"
             #message
@@ -126,5 +126,5 @@ onMounted(() => {
                 />
             </div>
         </form>
-    </GuestLayout>
+    </GuestAuthLayout>
 </template>

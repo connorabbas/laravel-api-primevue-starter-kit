@@ -12,3 +12,8 @@ body {
     background: var(--p-primary-500) !important;
     z-index: 9999999 !important;
 }
+
+.lucide {
+    width: 16px;
+    height: 16px;
+}

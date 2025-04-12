@@ -4,7 +4,7 @@ import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useAuthStore } from '@/stores/auth';
 import { useRoute, useRouter } from 'vue-router';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
-import GuestLayout from '@/layouts/GuestLayout.vue';
+import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
 import InputErrors from '@/components/InputErrors.vue';
 
 const props = defineProps({
@@ -54,7 +54,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <GuestLayout>
+    <GuestAuthLayout>
         <form
             class="space-y-6"
             @submit.prevent="submit"
@@ -110,5 +110,5 @@ onMounted(() => {
                 />
             </div>
         </form>
-    </GuestLayout>
+    </GuestAuthLayout>
 </template>
