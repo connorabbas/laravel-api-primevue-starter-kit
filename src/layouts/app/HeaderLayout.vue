@@ -71,7 +71,6 @@ const toggleMobileUserMenu = (event) => {
                     </div>
                 </template>
             </Drawer>
-            <Toast position="bottom-right" />
         </Teleport>
         <div class="min-h-screen">
             <!-- Primary Navigation Menu -->

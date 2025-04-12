@@ -5,7 +5,7 @@ import { RouterView } from 'vue-router';
 <template>
     <!-- Use key to re-generate the page view component on each navigation :key="$route.path" -->
     <!-- Alteratively, use a watch() on each component to re-render dynamic data as needed -->
-    <Toast position="top-center" />
+    <Toast position="bottom-right" />
     <RouterView v-slot="{ Component }">
         <Suspense timeout="0">
             <template #default>
