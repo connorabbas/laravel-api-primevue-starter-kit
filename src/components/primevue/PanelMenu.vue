@@ -1,11 +1,30 @@
+<script setup lang="ts">
+import { useTemplateRef } from 'vue';
+import PanelMenu from 'primevue/panelmenu';
+import { ChevronDown, ChevronRight } from 'lucide-vue-next';
+import type { ExtendedMenuItem } from '@/types';
+
+const componentProps = defineProps<{
+    model: ExtendedMenuItem[]
+}>();
+
+type PanelMenuType = InstanceType<typeof PanelMenu>;
+const childRef = useTemplateRef<PanelMenuType>('child-ref');
+defineExpose({
+    childRef,
+});
+</script>
+
 <template>
     <PanelMenu
+        ref="child-ref"
+        :model="componentProps.model"
         pt:root:class="p-0 m-0 gap-1"
         pt:panel:class="p-0 border-0"
         pt:header:class="p-0 border-0"
         pt:itemContent:class="gap-1"
     >
-        <template #item="{ item, active }">
+        <template #item="{ item, root, active, hasSubmenu }">
             <RouterLink
                 v-if="item.route"
                 v-slot="{ href, navigate }"
@@ -20,11 +39,18 @@
                     ]"
                     @click="navigate"
                 >
-                    <span
+                    <i
                         v-if="item.icon"
                         :class="[
-                            'mr-2 p-panelmenu-item-icon',
+                            root ? 'p-panelmenu-header-icon' : 'p-panelmenu-item-icon',
                             item.icon,
+                        ]"
+                    />
+                    <component
+                        :is="item.lucideIcon"
+                        v-else-if="item.lucideIcon"
+                        :class="[
+                            root ? 'p-panelmenu-header-icon' : 'p-panelmenu-item-icon',
                         ]"
                     />
                     <span>{{ item.label }}</span>
@@ -36,24 +62,34 @@
                 :target="item.target"
                 :class="[
                     'flex items-center cursor-pointer no-underline px-4 py-2',
-                    item.items ? 'p-panelmenu-header-link' : 'p-panelmenu-item-link',
+                    hasSubmenu ? 'p-panelmenu-header-link' : 'p-panelmenu-item-link',
                 ]"
             >
                 <i
                     v-if="item.icon"
                     :class="[
-                        'mr-2 p-panelmenu-item-icon',
+                        root ? 'p-panelmenu-header-icon' : 'p-panelmenu-item-icon',
                         item.icon,
                     ]"
                 />
-                <span>{{ item.label }}</span>
-                <span
-                    v-if="item.items"
+                <component
+                    :is="item.lucideIcon"
+                    v-else-if="item.lucideIcon"
                     :class="[
-                        'pi p-panelmenu-submenu-icon ml-auto',
-                        active ? 'pi-angle-down' : 'pi-angle-right',
+                        root ? 'p-panelmenu-header-icon' : 'p-panelmenu-item-icon',
                     ]"
                 />
+                <span>{{ item.label }}</span>
+                <template v-if="hasSubmenu">
+                    <ChevronDown
+                        v-if="active"
+                        class="p-panelmenu-submenu-icon ml-auto"
+                    />
+                    <ChevronRight
+                        v-else
+                        class="p-panelmenu-submenu-icon ml-auto"
+                    />
+                </template>
             </a>
         </template>
     </PanelMenu>
