@@ -71,13 +71,12 @@ onMounted(() => {
                                 <label for="name">Name</label>
                                 <InputText
                                     id="name"
-                                    ref="name-input"
                                     v-model="formData.name"
-                                    type="text"
-                                    class="w-full"
                                     :invalid="Boolean(validationErrors?.name)"
+                                    type="text"
                                     autocomplete="name"
                                     required
+                                    fluid
                                 />
                                 <InputErrors :errors="validationErrors?.name" />
                             </div>
@@ -86,11 +85,11 @@ onMounted(() => {
                                 <InputText
                                     id="email"
                                     v-model="formData.email"
-                                    type="email"
-                                    class="w-full"
                                     :invalid="Boolean(validationErrors?.email)"
+                                    type="email"
                                     autocomplete="username"
                                     required
+                                    fluid
                                 />
                                 <InputErrors :errors="validationErrors?.email" />
                             </div>
