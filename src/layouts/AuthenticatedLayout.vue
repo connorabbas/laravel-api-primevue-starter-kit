@@ -2,9 +2,9 @@
 import { ref, useTemplateRef, computed, onMounted, onUnmounted, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import ApplicationLogo from '@/components/ApplicationLogo.vue';
-import LinksMenu from '@/components/PrimeVue/LinksMenu.vue';
-import LinksMenuBar from '@/components/PrimeVue/LinksMenuBar.vue';
-import LinksPanelMenu from '@/components/PrimeVue/LinksPanelMenu.vue';
+import Menu from '@/components/primevue/Menu.vue';
+import MenuBar from '@/components/primevue/MenuBar.vue';
+import PanelMenu from '@/components/primevue/PanelMenu.vue';
 import ToggleDarkModeButton from '@/components/ToggleDarkModeButton.vue';
 import { useAuthStore } from '@/stores/auth';
 
@@ -78,7 +78,7 @@ watchEffect(() => {
             <nav class="dynamic-bg shadow-sm">
                 <!-- Primary Navigation Menu -->
                 <Container>
-                    <LinksMenuBar
+                    <MenuBar
                         :model="mainMenuItems"
                         pt:root:class="px-0 py-4 border-0 rounded-none dynamic-bg"
                         pt:button:class="hidden"
@@ -116,7 +116,7 @@ watchEffect(() => {
                                         id="user-menu-append"
                                         class="relative"
                                     ></div>
-                                    <LinksMenu
+                                    <Menu
                                         ref="user-menu"
                                         appendTo="#user-menu-append"
                                         :model="userMenuItems"
@@ -139,7 +139,7 @@ watchEffect(() => {
                                 </div>
                             </div>
                         </template>
-                    </LinksMenuBar>
+                    </MenuBar>
                 </Container>
 
                 <!-- Mobile drawer menu -->
@@ -157,7 +157,7 @@ watchEffect(() => {
                     <div>
                         <div class="mb-5">
                             <p class="text-muted-color font-bold uppercase text-sm mb-2"> Home </p>
-                            <LinksPanelMenu
+                            <PanelMenu
                                 :model="homeMobileMenuItems"
                                 class="w-full"
                             />
