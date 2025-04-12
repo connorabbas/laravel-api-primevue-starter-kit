@@ -33,10 +33,7 @@ export function useAxiosErrorHandling() {
             const status = error.response.status;
             const responseData = error.response.data;
 
-            if (status === 401) {
-                //router.push({ name: 'login' });
-                showErrorToast('Unauthorized', 'Please log in to continue.');
-            } else if (status === 419) {
+            if (status === 419) {
                 router.push({ name: 'login' });
                 showErrorToast('Session Expired', 'Please log in again.');
             } else if (status === 422 && responseData?.errors) {

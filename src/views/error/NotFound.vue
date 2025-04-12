@@ -1,3 +1,7 @@
+<script setup>
+import { ArrowLeft } from 'lucide-vue-next';
+</script>
+
 <template>
     <main>
         <div class="h-screen flex items-center justify-center">
@@ -6,13 +10,15 @@
                     <div class="text-center">
                         <section>
                             <h2 class="mb-8 font-extrabold text-9xl"> <span class="sr-only">Error</span>404 </h2>
-                            <p class="mb-8 text-2xl font-semibold md:text-3xl text-muted-color">Sorry, we couldn't find
-                                this page.</p>
+                            <p class="mb-8 text-2xl font-semibold md:text-3xl text-muted-color">
+                                Sorry, we couldn't find this page.
+                            </p>
                             <RouterLink :to="{ name: 'welcome' }">
-                                <Button
-                                    label="Back to homepage"
-                                    icon="pi pi-arrow-left"
-                                />
+                                <Button label="Back to homepage">
+                                    <template #icon>
+                                        <ArrowLeft />
+                                    </template>
+                                </Button>
                             </RouterLink>
                         </section>
                     </div>
