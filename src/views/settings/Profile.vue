@@ -1,5 +1,5 @@
 <script setup>
-import { ref, useTemplateRef, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { useToast } from 'primevue/usetoast';
 import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useAuthStore } from '@/stores/auth';
@@ -12,8 +12,6 @@ import InputErrors from '@/components/InputErrors.vue';
 const toast = useToast();
 const authStore = useAuthStore();
 const { flashMessages } = useFlashMessage();
-
-const nameInput = useTemplateRef('name-input');
 
 const verificationLinkSent = computed(() => flashMessages.success === 'verification-link-sent');
 const deleteUserModalOpen = ref(false);
@@ -44,10 +42,6 @@ const submit = () => {
 const resendVerifyEmail = () => {
     authStore.sendVerificationEmail();
 };
-
-onMounted(() => {
-    nameInput.value.$el.focus();
-});
 </script>
 
 <template>

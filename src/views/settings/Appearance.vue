@@ -6,8 +6,6 @@ import SelectColorModeButton from '@/components/SelectColorModeButton.vue';
 
 <template>
     <AppLayout>
-        <InertiaHead title="Appearance Settings" />
-
         <SettingsLayout>
             <Card
                 pt:body:class="max-w-2xl space-y-3"

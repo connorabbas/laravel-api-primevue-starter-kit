@@ -54,8 +54,6 @@ const submit = () => {
 
 <template>
     <AppLayout>
-        <InertiaHead title="Password Settings" />
-
         <SettingsLayout>
             <Card
                 pt:body:class="max-w-2xl space-y-3"
