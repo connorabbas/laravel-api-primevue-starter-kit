@@ -6,7 +6,9 @@ import AppLayout from '@/layouts/AppLayout.vue';
     <AppLayout>
         <Card>
             <template #content>
-                <p class="m-0">You are logged in!</p>
+                <p class="m-0">
+                    You are logged in!
+                </p>
             </template>
         </Card>
     </AppLayout>

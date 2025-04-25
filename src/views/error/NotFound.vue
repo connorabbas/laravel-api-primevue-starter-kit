@@ -9,7 +9,9 @@ import { ArrowLeft } from 'lucide-vue-next';
                 <template #content>
                     <div class="text-center">
                         <section>
-                            <h2 class="mb-8 font-extrabold text-9xl"> <span class="sr-only">Error</span>404 </h2>
+                            <h2 class="mb-8 font-extrabold text-9xl">
+                                <span class="sr-only">Error</span>404
+                            </h2>
                             <p class="mb-8 text-2xl font-semibold md:text-3xl text-muted-color">
                                 Sorry, we couldn't find this page.
                             </p>
