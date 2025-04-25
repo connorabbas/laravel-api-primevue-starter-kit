@@ -52,7 +52,9 @@ const resendVerifyEmail = () => {
                     pt:body:class="max-w-2xl space-y-3"
                     pt:caption:class="space-y-1"
                 >
-                    <template #title>Profile Information</template>
+                    <template #title>
+                        Profile Information
+                    </template>
                     <template #subtitle>
                         Update your name and email address
                     </template>
@@ -123,7 +125,9 @@ const resendVerifyEmail = () => {
                     pt:body:class="max-w-2xl space-y-3"
                     pt:caption:class="space-y-1"
                 >
-                    <template #title>Delete Account</template>
+                    <template #title>
+                        Delete Account
+                    </template>
                     <template #subtitle>
                         Delete your account and all of its resources
                     </template>
@@ -135,8 +139,12 @@ const resendVerifyEmail = () => {
                         >
                             <div class="flex flex-col gap-4">
                                 <div>
-                                    <div class="text-lg">Warning</div>
-                                    <div class="">Please proceed with caution, this cannot be undone.</div>
+                                    <div class="text-lg">
+                                        Warning
+                                    </div>
+                                    <div class="">
+                                        Please proceed with caution, this cannot be undone.
+                                    </div>
                                 </div>
                                 <div>
                                     <Button

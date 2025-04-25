@@ -1,15 +1,21 @@
-// https://eslint.org/docs/latest/use/configure/
-// https://eslint.vuejs.org/user-guide/
-// https://typescript-eslint.io/rules/?=recommended
-
+import vue from 'eslint-plugin-vue';
+import {
+    defineConfigWithVueTs,
+    vueTsConfigs,
+} from '@vue/eslint-config-typescript';
 import eslint from '@eslint/js';
-import eslintConfigPrettier from 'eslint-config-prettier';
-import eslintPluginVue from 'eslint-plugin-vue';
 import globals from 'globals';
-import typescriptEslint from 'typescript-eslint';
 
-export default typescriptEslint.config(
-    { ignores: ['*.d.ts', '**/coverage', '**/dist'] },
+export default [
+    // Global ignores
+    {
+        ignores: [
+            'node_modules',
+            'dist',
+            'public',
+        ],
+    },
+    // JavaScript files
     {
         files: ['**/*.js'],
         ...eslint.configs.recommended,
@@ -18,6 +24,7 @@ export default typescriptEslint.config(
             sourceType: 'module',
             globals: {
                 ...globals.browser,
+                ...globals.node,
                 process: 'readonly',
                 module: 'readonly',
                 require: 'readonly',
@@ -25,38 +32,24 @@ export default typescriptEslint.config(
             },
         },
     },
-    {
-        files: ['**/*.{ts,vue}'],
-        extends: [
-            eslint.configs.recommended,
-            ...typescriptEslint.configs.recommended,
-            ...eslintPluginVue.configs['flat/strongly-recommended'],
-        ],
-        languageOptions: {
-            ecmaVersion: 'latest',
-            globals: {
-                ...globals.browser,
+    // Vue and TypeScript files
+    ...defineConfigWithVueTs(
+        vue.configs['flat/recommended'],
+        vueTsConfigs.recommended,
+        {
+            rules: {
+                'vue/require-default-prop': 'off',
+                'vue/attribute-hyphenation': 'off',
+                'vue/v-on-event-hyphenation': 'off',
+                'vue/multi-word-component-names': 'off',
+                'vue/block-lang': 'off',
+                'vue/no-v-html': 'off',
+                'vue/html-indent': ['error', 4],
+                '@typescript-eslint/no-explicit-any': 'off',
+                indent: ['error', 4],
+                semi: ['error', 'always'],
+                'linebreak-style': ['error', 'unix'],
             },
-            sourceType: 'module',
-            parserOptions: {
-                parser: typescriptEslint.parser,
-            },
-        },
-        rules: {
-            'vue/require-default-prop': 'off',
-            'vue/attribute-hyphenation': 'off',
-            'vue/v-on-event-hyphenation': 'off',
-            'vue/multi-word-component-names': 'off',
-            'vue/block-lang': 'off',
-            'vue/first-attribute-linebreak': [
-                'error',
-                {
-                    singleline: 'ignore',
-                    multiline: 'ignore',
-                },
-            ],
-            '@typescript-eslint/no-explicit-any': 'off',
-        },
-    },
-    eslintConfigPrettier
-);
+        }
+    ),
+];

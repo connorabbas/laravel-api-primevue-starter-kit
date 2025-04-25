@@ -59,7 +59,9 @@ const submit = () => {
                 pt:body:class="max-w-2xl space-y-3"
                 pt:caption:class="space-y-1"
             >
-                <template #title>Update Password</template>
+                <template #title>
+                    Update Password
+                </template>
                 <template #subtitle>
                     Ensure your account is using a long, random password to stay secure
                 </template>

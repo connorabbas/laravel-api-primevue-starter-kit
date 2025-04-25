@@ -106,7 +106,7 @@ onMounted(() => {
                             v-model="formData.remember"
                             :binary="true"
                             class="mr-2"
-                        ></Checkbox>
+                        />
                         <label for="remember">Remember me</label>
                     </div>
                 </div>
