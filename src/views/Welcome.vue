@@ -15,7 +15,7 @@ await authStore.fetchUser();
                         <section>
                             <span class="block text-6xl font-bold mb-1">Laravel API</span>
                             <div class="text-6xl text-primary font-bold mb-4">
-                                & PrimeVue
+                                + PrimeVue
                             </div>
                             <p class="mt-0 mb-2 text-muted-color leading-normal">
                                 A starter kit for using
