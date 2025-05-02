@@ -1,6 +1,6 @@
 import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
-import { LayoutGrid, House, Info, Github, Code, Settings, LogOut } from 'lucide-vue-next';
+import { LayoutGrid, House, Info, Github, Code, Settings, LogOut, BookOpen } from 'lucide-vue-next';
 import { useAuthStore } from '@/stores/auth';
 
 export function useAppLayout() {
@@ -32,6 +32,11 @@ export function useAppLayout() {
                     label: 'PrimeVue Docs',
                     url: 'https://primevue.org/',
                     lucideIcon: Code,
+                },
+                {
+                    label: 'Starter Kit Docs',
+                    url: 'https://connorabbas.github.io/laravel-primevue-starter-kit-docs/',
+                    lucideIcon: BookOpen,
                 },
                 {
                     label: 'Starter Kit Repo',
