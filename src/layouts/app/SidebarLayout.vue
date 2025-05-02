@@ -24,12 +24,12 @@ const {
 
 const userMenu = useTemplateRef('user-menu');
 const toggleUserMenu = (event) => {
-    userMenu.value.childRef.toggle(event);
+    userMenu.value.el.toggle(event);
 };
 
 const mobileUserMenu = useTemplateRef('mobile-user-menu');
 const toggleMobileUserMenu = (event) => {
-    mobileUserMenu.value.childRef.toggle(event);
+    mobileUserMenu.value.el.toggle(event);
 };
 </script>
 
@@ -39,7 +39,7 @@ const toggleMobileUserMenu = (event) => {
             <!-- Mobile drawer menu -->
             <Drawer
                 v-model:visible="mobileMenuOpen"
-                position="right"
+                position="left"
             >
                 <div>
                     <PanelMenu
@@ -64,6 +64,7 @@ const toggleMobileUserMenu = (event) => {
                         <Menu
                             ref="mobile-user-menu"
                             :model="userMenuItems"
+                            pt:root:class="z-[1200]"
                             popup
                         />
                     </div>
@@ -136,6 +137,7 @@ const toggleMobileUserMenu = (event) => {
                         <Menu
                             ref="user-menu"
                             :model="userMenuItems"
+                            pt:root:class="z-[1200]"
                             popup
                         />
                     </div>
