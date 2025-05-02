@@ -26,12 +26,12 @@ const {
 
 const userMenu = useTemplateRef('user-menu');
 const toggleUserMenu = (event) => {
-    userMenu.value.childRef.toggle(event);
+    userMenu.value.el.toggle(event);
 };
 
 const mobileUserMenu = useTemplateRef('mobile-user-menu');
 const toggleMobileUserMenu = (event) => {
-    mobileUserMenu.value.childRef.toggle(event);
+    mobileUserMenu.value.el.toggle(event);
 };
 </script>
 
@@ -66,6 +66,7 @@ const toggleMobileUserMenu = (event) => {
                         <Menu
                             ref="mobile-user-menu"
                             :model="userMenuItems"
+                            pt:root:class="z-[1200]"
                             popup
                         />
                     </div>
@@ -115,7 +116,7 @@ const toggleMobileUserMenu = (event) => {
                                         ref="user-menu"
                                         appendTo="#user-menu-append"
                                         :model="userMenuItems"
-                                        pt:root:class="left-auto! top-0! right-0"
+                                        pt:root:class="left-auto! top-0! right-0 z-[1200]"
                                         popup
                                     />
                                 </div>
