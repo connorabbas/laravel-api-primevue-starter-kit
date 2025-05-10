@@ -35,7 +35,7 @@ const deleteAccount = () => {
             });
         },
         onError: () => {
-            console.error('error')
+            console.error('error');
             const passwordInputElement = passwordInput.value.$el.querySelector('input');
             if (passwordInputElement) {
                 passwordInputElement.focus();
