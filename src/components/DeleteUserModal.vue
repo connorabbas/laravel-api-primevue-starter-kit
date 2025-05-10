@@ -34,14 +34,16 @@ const deleteAccount = () => {
                 setFlashMessage('success', 'Your account has been deleted.');
             });
         },
-        onError: () => passwordInput.value.$el.focus(),
+        onError: () => {
+            console.error('error');
+            const passwordInputElement = passwordInput.value.$el.querySelector('input');
+            if (passwordInputElement) {
+                passwordInputElement.focus();
+            }
+        },
         onFinish: () => resetFormFields(),
     });
 };
-
-function focusPasswordInput() {
-    passwordInput.value.$el.focus();
-}
 </script>
 
 <template>
@@ -53,7 +55,6 @@ function focusPasswordInput() {
         :draggable="false"
         dismissableMask
         modal
-        @show="focusPasswordInput"
     >
         <div class="mb-6">
             <p class="m-0 text-muted-color">
@@ -64,14 +65,15 @@ function focusPasswordInput() {
         </div>
 
         <div class="flex flex-col gap-2">
-            <InputText
+            <Password
                 id="password"
                 ref="password-input"
                 v-model="formData.password"
                 :invalid="Boolean(validationErrors?.password)"
-                type="password"
                 placeholder="Password"
                 autocomplete="current-password"
+                :feedback="false"
+                toggleMask
                 autofocus
                 required
                 fluid

@@ -1,5 +1,5 @@
 <script setup>
-import { useTemplateRef } from 'vue';
+import { useTemplateRef, nextTick } from 'vue';
 import { useToast } from 'primevue/usetoast';
 import { useAuthStore } from '@/stores/auth';
 import { useAxiosForm } from '@/composables/useAxiosForm';
@@ -38,14 +38,22 @@ const submit = () => {
             resetFormFields();
             authStore.fetchUser();
         },
-        onError: () => {
+        onError: async () => {
+            await nextTick();
             if (validationErrors.value?.password) {
                 resetFormFields('password', 'password_confirmation');
-                newPasswordInput.value.$el.focus();
+                const newPasswordInputElement = newPasswordInput.value.$el.querySelector('input');
+                if (newPasswordInputElement) {
+                    newPasswordInputElement.focus();
+                }
             }
             if (validationErrors.value?.current_password) {
                 resetFormFields('current_password');
-                currentPasswordInput.value.$el.focus();
+                const currentPasswordInputElement = currentPasswordInput.value.$el.querySelector('input');
+                console.log(currentPasswordInput.value.$el);
+                if (currentPasswordInputElement) {
+                    currentPasswordInputElement.focus();
+                }
             }
         },
     });
@@ -72,13 +80,14 @@ const submit = () => {
                     >
                         <div class="flex flex-col gap-2">
                             <label for="current_password">Current Password</label>
-                            <InputText
+                            <Password
                                 id="current_password"
                                 ref="current-password-input"
                                 v-model="formData.current_password"
                                 :invalid="Boolean(validationErrors?.current_password)"
-                                type="password"
+                                :feedback="false"
                                 autocomplete="current-password"
+                                toggleMask
                                 required
                                 fluid
                             />
@@ -102,12 +111,13 @@ const submit = () => {
 
                         <div class="flex flex-col gap-2">
                             <label for="password_confirmation">Confirm Password</label>
-                            <InputText
+                            <Password
                                 id="password_confirmation"
                                 v-model="formData.password_confirmation"
                                 :invalid="Boolean(validationErrors?.password_confirmation)"
-                                type="password"
+                                :feedback="false"
                                 autocomplete="confirm-password"
+                                toggleMask
                                 required
                                 fluid
                             />

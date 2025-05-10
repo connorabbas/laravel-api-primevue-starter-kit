@@ -90,6 +90,7 @@ onMounted(() => {
                     id="password"
                     v-model="formData.password"
                     :invalid="Boolean(validationErrors?.password)"
+                    :feedback="false"
                     autocomplete="current-password"
                     toggleMask
                     required

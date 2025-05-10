@@ -25,6 +25,7 @@ export function useAxiosForm(initialData = {}) {
             showProgress = false,
             onBefore = () => {},
             onSuccess = () => {},
+            onError = () => {},
             onFinish = () => {},
             ...restOptions
         } = options;
@@ -47,6 +48,7 @@ export function useAxiosForm(initialData = {}) {
 
             return response;
         } catch (error) {
+            onError(error);
             handleAxiosError(error);
         } finally {
             onFinish();
