@@ -2,9 +2,6 @@ import './assets/css/app.css';
 import './assets/css/tailwind.css';
 import 'nprogress/nprogress.css';
 
-import { useColorMode } from '@vueuse/core';
-import { useThemePreset } from '@/composables/useThemePreset';
-
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
@@ -17,8 +14,8 @@ import ToastService from 'primevue/toastservice';
 import Container from '@/components/Container.vue';
 import PageTitleSection from '@/components/PageTitleSection.vue';
 
-const app = createApp(App);
-const pinia = createPinia();
+import { useColorMode } from '@vueuse/core';
+import { useThemePreset } from '@/composables/useThemePreset';
 
 // Site light/dark mode
 const colorMode = useColorMode({ emitAuto: true });
@@ -26,6 +23,9 @@ const colorMode = useColorMode({ emitAuto: true });
 // Site theme preset
 const { getCurrentPreset } = useThemePreset();
 const themePreset = getCurrentPreset();
+
+const app = createApp(App);
+const pinia = createPinia();
 
 app.provide('colorMode', colorMode)
     .use(pinia)

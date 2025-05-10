@@ -2,9 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/UserSettingsLayout.vue';
 import SelectColorModeButton from '@/components/SelectColorModeButton.vue';
-import { useThemePreset } from '@/composables/useThemePreset';
-
-const { presets, selectedPreset, setPreset } = useThemePreset();
+import ThemePresetSelector from '@/components/ThemePresetSelector.vue';
 </script>
 
 <template>
@@ -28,13 +26,7 @@ const { presets, selectedPreset, setPreset } = useThemePreset();
                         </div>
                         <div class="flex flex-col gap-2">
                             <label for="theme-preset-selector">Theme</label>
-                            <Select
-                                v-model="selectedPreset"
-                                :options="presets"
-                                optionLabel="label"
-                                optionValue="value"
-                                @change="setPreset(selectedPreset)"
-                            />
+                            <ThemePresetSelector id="theme-preset-selector" />
                         </div>
                     </div>
                 </template>
