@@ -3,7 +3,7 @@ import './assets/css/tailwind.css';
 import 'nprogress/nprogress.css';
 
 import { useColorMode } from '@vueuse/core';
-import customThemePreset from './theme/noir-preset';
+import { useThemePreset } from '@/composables/useThemePreset';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
@@ -19,14 +19,20 @@ import PageTitleSection from '@/components/PageTitleSection.vue';
 
 const app = createApp(App);
 const pinia = createPinia();
+
+// Site light/dark mode
 const colorMode = useColorMode({ emitAuto: true });
+
+// Site theme preset
+const { getCurrentPreset } = useThemePreset();
+const themePreset = getCurrentPreset();
 
 app.provide('colorMode', colorMode)
     .use(pinia)
     .use(router)
     .use(PrimeVue, {
         theme: {
-            preset: customThemePreset,
+            preset: themePreset,
             options: {
                 darkModeSelector: '.dark',
                 cssLayer: {

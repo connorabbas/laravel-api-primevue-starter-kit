@@ -2,6 +2,9 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/UserSettingsLayout.vue';
 import SelectColorModeButton from '@/components/SelectColorModeButton.vue';
+import { useThemePreset } from '@/composables/useThemePreset';
+
+const { presets, selectedPreset, setPreset } = useThemePreset();
 </script>
 
 <template>
@@ -18,7 +21,22 @@ import SelectColorModeButton from '@/components/SelectColorModeButton.vue';
                     Update your account's appearance settings
                 </template>
                 <template #content>
-                    <SelectColorModeButton />
+                    <div class="space-y-6">
+                        <div class="flex flex-col gap-2">
+                            <label for="color-mode-selector">Color Mode</label>
+                            <SelectColorModeButton id="color-mode-selector" />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="theme-preset-selector">Theme</label>
+                            <Select
+                                v-model="selectedPreset"
+                                :options="presets"
+                                optionLabel="label"
+                                optionValue="value"
+                                @change="setPreset(selectedPreset)"
+                            />
+                        </div>
+                    </div>
                 </template>
             </Card>
         </SettingsLayout>
