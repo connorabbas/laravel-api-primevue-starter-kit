@@ -44,7 +44,7 @@ const toggleMobileUserMenu = (event) => {
                 <div>
                     <PanelMenu
                         :model="menuItems"
-                        class="w-full"
+                        class="mt-1 w-full"
                     />
                 </div>
                 <template #footer>
@@ -117,7 +117,7 @@ const toggleMobileUserMenu = (event) => {
                         <div>
                             <PanelMenu
                                 :model="menuItems"
-                                class="w-full"
+                                class="mt-1 w-full"
                             />
                         </div>
                     </div>
