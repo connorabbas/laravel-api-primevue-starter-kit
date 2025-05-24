@@ -77,10 +77,10 @@ onMounted(() => {
             <div class="flex flex-col gap-2">
                 <label for="password">New Password</label>
                 <Password
-                    id="password"
                     v-model="formData.password"
                     :invalid="Boolean(validationErrors?.password)"
                     autocomplete="new-password"
+                    inputId="password"
                     toggleMask
                     required
                     fluid
@@ -89,13 +89,13 @@ onMounted(() => {
             </div>
 
             <div class="flex flex-col gap-2">
-                <label for="password_confirmation">Confirm New Password</label>
+                <label for="password-confirmation">Confirm New Password</label>
                 <Password
-                    id="password_confirmation"
                     v-model="formData.password_confirmation"
                     :invalid="Boolean(validationErrors?.password_confirmation)"
                     :feedback="false"
                     autocomplete="new-password"
+                    inputId="password-confirmation"
                     toggleMask
                     required
                     fluid
