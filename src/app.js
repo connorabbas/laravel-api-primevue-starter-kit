@@ -15,14 +15,10 @@ import Container from '@/components/Container.vue';
 import PageTitleSection from '@/components/PageTitleSection.vue';
 
 import { useColorMode } from '@vueuse/core';
-import { useThemePreset } from '@/composables/useThemePreset';
+import themePreset from '@/theme/noir-preset';
 
 // Site light/dark mode
 const colorMode = useColorMode({ emitAuto: true });
-
-// Site theme preset
-const { getCurrentPreset } = useThemePreset();
-const themePreset = getCurrentPreset();
 
 const app = createApp(App);
 const pinia = createPinia();

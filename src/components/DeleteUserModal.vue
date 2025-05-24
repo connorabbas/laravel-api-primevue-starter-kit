@@ -66,12 +66,12 @@ const deleteAccount = () => {
 
         <div class="flex flex-col gap-2">
             <Password
-                id="password"
                 ref="password-input"
                 v-model="formData.password"
                 :invalid="Boolean(validationErrors?.password)"
                 placeholder="Password"
                 autocomplete="current-password"
+                inputId="password"
                 :feedback="false"
                 toggleMask
                 autofocus
