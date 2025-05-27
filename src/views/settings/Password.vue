@@ -110,7 +110,7 @@ const submit = () => {
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <label for="password-confirmation">Confirm Password</label>
+                            <label for="password-confirmation">Confirm New Password</label>
                             <Password
                                 v-model="formData.password_confirmation"
                                 :invalid="Boolean(validationErrors?.password_confirmation)"
@@ -127,7 +127,7 @@ const submit = () => {
                         <div class="flex items-center gap-4">
                             <Button
                                 type="submit"
-                                label="Save"
+                                label="Save password"
                                 :loading="updating"
                             />
                         </div>

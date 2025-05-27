@@ -1,4 +1,5 @@
 <script setup>
+import Container from '@/components/Container.vue';
 import { useAuthStore } from '@/stores/auth';
 import { LayoutGrid, LogIn, Settings, UserPlus } from 'lucide-vue-next';
 
@@ -7,14 +8,14 @@ await authStore.fetchUser();
 </script>
 
 <template>
-    <main>
-        <div class="h-screen flex items-center justify-center">
+    <Container fluid>
+        <div class="min-h-svh flex items-center justify-center">
             <Card pt:body:class="p-4 py-6 sm:p-12">
                 <template #content>
                     <div class="text-center md:text-left">
                         <section>
-                            <span class="block text-6xl font-bold mb-1">Laravel API</span>
-                            <div class="text-6xl text-primary font-bold mb-4">
+                            <span class="block text-6xl font-bold text-red-500 dark:text-red-400 mb-1">Laravel API</span>
+                            <div class="text-6xl text-primary font-bold text-green-500 dark:text-green-400 mb-4">
                                 + PrimeVue
                             </div>
                             <p class="mt-0 mb-2 text-muted-color leading-normal">
@@ -83,5 +84,5 @@ await authStore.fetchUser();
                 </template>
             </Card>
         </div>
-    </main>
+    </COntainer>
 </template>

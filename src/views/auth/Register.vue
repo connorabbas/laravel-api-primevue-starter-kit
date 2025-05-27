@@ -43,8 +43,20 @@ onMounted(() => {
 
 <template>
     <GuestAuthLayout>
+        <template #title>
+            <div class="text-center">
+                Create an account
+            </div>
+        </template>
+
+        <template #subtitle>
+            <div class="text-center">
+                Enter your details below to create your account
+            </div>
+        </template>
+
         <form
-            class="space-y-6"
+            class="space-y-6 sm:space-y-8"
             @submit.prevent="submit"
         >
             <div class="flex flex-col gap-2">
@@ -63,7 +75,7 @@ onMounted(() => {
             </div>
 
             <div class="flex flex-col gap-2">
-                <label for="email">Email</label>
+                <label for="email">Email address</label>
                 <InputText
                     id="email"
                     v-model="formData.email"
@@ -105,18 +117,24 @@ onMounted(() => {
                 <InputErrors :errors="validationErrors?.password_confirmation" />
             </div>
 
-            <div class="flex justify-end items-center pt-2">
-                <RouterLink
-                    :to="{ name: 'login' }"
-                    class="mr-4 underline text-muted-color hover:text-color"
-                >
-                    Already registered?
-                </RouterLink>
+            <div>
                 <Button
                     type="submit"
-                    label="Register"
+                    label="Create Account"
                     :loading="loading"
+                    fluid
                 />
+            </div>
+
+            <div class="text-center">
+                <span class="text-muted-color mr-1">Already have an account?</span>
+                <RouterLink :to="{ name: 'login' }">
+                    <Button
+                        class="p-0"
+                        variant="link"
+                        label="Log in"
+                    />
+                </RouterLink>
             </div>
         </form>
     </GuestAuthLayout>

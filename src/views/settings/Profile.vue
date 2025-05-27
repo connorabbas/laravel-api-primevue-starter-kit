@@ -77,7 +77,7 @@ const resendVerifyEmail = () => {
                                 <InputErrors :errors="validationErrors?.name" />
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label for="email">Email</label>
+                                <label for="email">Email address</label>
                                 <InputText
                                     id="email"
                                     v-model="formData.email"
@@ -148,7 +148,7 @@ const resendVerifyEmail = () => {
                                 </div>
                                 <div>
                                     <Button
-                                        label="Delete Account"
+                                        label="Delete account"
                                         severity="danger"
                                         @click="deleteUserModalOpen = true"
                                     />

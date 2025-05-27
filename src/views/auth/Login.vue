@@ -65,12 +65,25 @@ onMounted(() => {
                 {{ flashMessages.success }}
             </Message>
         </template>
+
+        <template #title>
+            <div class="text-center">
+                Log in to your account
+            </div>
+        </template>
+
+        <template #subtitle>
+            <div class="text-center">
+                Enter your email and password below to log in
+            </div>
+        </template>
+
         <form
-            class="space-y-6"
+            class="space-y-6 sm:space-y-8"
             @submit.prevent="submit"
         >
             <div class="flex flex-col gap-2">
-                <label for="email">Email</label>
+                <label for="email">Email address</label>
                 <InputText
                     id="email"
                     ref="email-input"
@@ -85,7 +98,16 @@ onMounted(() => {
             </div>
 
             <div class="flex flex-col gap-2">
-                <label for="password">Password</label>
+                <div class="flex items-center justify-between">
+                    <label for="password">Password</label>
+                    <RouterLink :to="{ name: 'forgotPassword' }">
+                        <Button
+                            class="p-0"
+                            variant="link"
+                            label="Forgot your password?"
+                        />
+                    </RouterLink>
+                </div>
                 <Password
                     v-model="formData.password"
                     :invalid="Boolean(validationErrors?.password)"
@@ -113,18 +135,24 @@ onMounted(() => {
                 </div>
             </div>
 
-            <div class="flex justify-end items-center pt-2">
-                <RouterLink
-                    :to="{ name: 'forgotPassword' }"
-                    class="mr-4 underline text-muted-color hover:text-color"
-                >
-                    Forgot your password?
-                </RouterLink>
+            <div>
                 <Button
-                    type="submit"
-                    label="Log In"
                     :loading="loading"
+                    type="submit"
+                    label="Log in"
+                    fluid
                 />
+            </div>
+
+            <div class="text-center">
+                <span class="text-muted-color mr-1">Don't have an account?</span>
+                <RouterLink :to="{ name: 'register' }">
+                    <Button
+                        class="p-0"
+                        variant="link"
+                        label="Sign up"
+                    />
+                </RouterLink>
             </div>
         </form>
     </GuestAuthLayout>
