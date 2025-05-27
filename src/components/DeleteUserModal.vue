@@ -92,7 +92,7 @@ const deleteAccount = () => {
             />
             <Button
                 :loading="deleting"
-                label="Delete Account"
+                label="Delete account"
                 severity="danger"
                 @click="deleteAccount"
             />
