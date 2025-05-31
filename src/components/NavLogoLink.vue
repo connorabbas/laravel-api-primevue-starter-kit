@@ -4,8 +4,8 @@ import ApplicationLogo from '@/components/ApplicationLogo.vue';
 
 <template>
     <Button
-        asChild
         v-slot="slotProps"
+        asChild
         variant="link"
     >
         <RouterLink
