@@ -2,10 +2,15 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/UserSettingsLayout.vue';
 import SelectColorModeButton from '@/components/SelectColorModeButton.vue';
+
+const breadcrumbs = [
+    { label: 'Dashboard', route: { name: 'dashboard' } },
+    { label: 'Appearance Settings' },
+];
 </script>
 
 <template>
-    <AppLayout>
+    <AppLayout :breadcrumbs>
         <SettingsLayout>
             <Card
                 pt:body:class="max-w-2xl space-y-3"

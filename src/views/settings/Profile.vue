@@ -9,6 +9,11 @@ import SettingsLayout from '@/layouts/UserSettingsLayout.vue';
 import DeleteUserModal from '@/components/DeleteUserModal.vue';
 import InputErrors from '@/components/InputErrors.vue';
 
+const breadcrumbs = [
+    { label: 'Dashboard', route: { name: 'dashboard' } },
+    { label: 'Profile Settings' },
+];
+
 const toast = useToast();
 const authStore = useAuthStore();
 const { flashMessages } = useFlashMessage();
@@ -45,7 +50,7 @@ const resendVerifyEmail = () => {
 </script>
 
 <template>
-    <AppLayout>
+    <AppLayout :breadcrumbs>
         <SettingsLayout>
             <div class="space-y-4 md:space-y-8">
                 <Card

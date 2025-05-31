@@ -2,7 +2,7 @@
 import { useTemplateRef } from 'vue';
 import { useAppLayout } from '@/composables/useAppLayout';
 import { ChevronsUpDown, ChevronDown, Menu as MenuIcon } from 'lucide-vue-next';
-import ApplicationLogo from '@/components/ApplicationLogo.vue';
+import NavLogoLink from '@/components/NavLogoLink.vue';
 import Menu from '@/components/primevue/menu/Menu.vue';
 import MenuBar from '@/components/primevue/menu/MenuBar.vue';
 import PanelMenu from '@/components/primevue/menu/PanelMenu.vue';
@@ -85,11 +85,7 @@ const toggleMobileUserMenu = (event) => {
                     >
                         <template #start>
                             <div class="shrink-0 flex items-center mr-5">
-                                <RouterLink to="/">
-                                    <ApplicationLogo
-                                        class="block h-8 lg:h-10 w-auto fill-current text-surface-900 dark:text-surface-0"
-                                    />
-                                </RouterLink>
+                                <NavLogoLink />
                             </div>
                         </template>
                         <template #end>
