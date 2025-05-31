@@ -2,7 +2,7 @@
 import { useTemplateRef } from 'vue';
 import { ChevronsUpDown, Menu as MenuIcon } from 'lucide-vue-next';
 import { useAppLayout } from '@/composables/useAppLayout';
-import ApplicationLogo from '@/components/ApplicationLogo.vue';
+import NavLogoLink from '@/components/NavLogoLink.vue';
 import Menu from '@/components/primevue/menu/Menu.vue';
 import PanelMenu from '@/components/primevue/menu/PanelMenu.vue';
 import Breadcrumb from '@/components/primevue/menu/Breadcrumb.vue';
@@ -39,7 +39,7 @@ const toggleMobileUserMenu = (event) => {
             <!-- Mobile drawer menu -->
             <Drawer
                 v-model:visible="mobileMenuOpen"
-                position="left"
+                position="right"
             >
                 <div>
                     <PanelMenu
@@ -78,11 +78,7 @@ const toggleMobileUserMenu = (event) => {
                 <Container class="grow">
                     <div class="flex justify-between items-center py-4">
                         <div>
-                            <RouterLink to="/">
-                                <ApplicationLogo
-                                    class="block h-8 w-auto fill-current text-surface-900 dark:text-surface-0"
-                                />
-                            </RouterLink>
+                            <NavLogoLink />
                         </div>
                         <div>
                             <Button
@@ -108,11 +104,7 @@ const toggleMobileUserMenu = (event) => {
                 <div class="w-full h-full flex flex-col justify-between p-4">
                     <div class="space-y-6">
                         <div class="p-2">
-                            <RouterLink to="/">
-                                <ApplicationLogo
-                                    class="block h-10 w-auto fill-current text-surface-900 dark:text-surface-0"
-                                />
-                            </RouterLink>
+                            <NavLogoLink />
                         </div>
                         <div>
                             <PanelMenu

@@ -8,6 +8,11 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/UserSettingsLayout.vue';
 import InputErrors from '@/components/InputErrors.vue';
 
+const breadcrumbs = [
+    { label: 'Dashboard', route: { name: 'dashboard' } },
+    { label: 'Password Settings' },
+];
+
 const toast = useToast();
 const authStore = useAuthStore();
 
@@ -61,7 +66,7 @@ const submit = () => {
 </script>
 
 <template>
-    <AppLayout>
+    <AppLayout :breadcrumbs>
         <SettingsLayout>
             <Card
                 pt:body:class="max-w-2xl space-y-3"

@@ -1,6 +1,6 @@
 import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
-import { LayoutGrid, House, Info, Github, Code, Settings, LogOut, BookOpen } from 'lucide-vue-next';
+import { LayoutGrid, House, Info, Settings, LogOut, ExternalLink, FileSearch, FolderGit2 } from 'lucide-vue-next';
 import { useAuthStore } from '@/stores/auth';
 
 export function useAppLayout() {
@@ -25,23 +25,32 @@ export function useAppLayout() {
             active: currentRoute.value == 'dashboard',
         },
         {
-            label: 'Info',
+            label: 'Resources',
             lucideIcon: Info,
             items: [
                 {
+                    label: 'Laravel Docs',
+                    url: 'https://laravel.com/docs/master',
+                    target: '_blank',
+                    lucideIcon: ExternalLink,
+                },
+                {
                     label: 'PrimeVue Docs',
                     url: 'https://primevue.org/',
-                    lucideIcon: Code,
+                    target: '_blank',
+                    lucideIcon: ExternalLink,
                 },
                 {
                     label: 'Starter Kit Docs',
                     url: 'https://connorabbas.github.io/laravel-primevue-starter-kit-docs/',
-                    lucideIcon: BookOpen,
+                    target: '_blank',
+                    lucideIcon: FileSearch,
                 },
                 {
                     label: 'Starter Kit Repo',
                     url: 'https://github.com/connorabbas/laravel-primevue-starter-kit',
-                    lucideIcon: Github,
+                    target: '_blank',
+                    lucideIcon: FolderGit2,
                 },
             ],
         },
