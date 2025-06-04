@@ -11,7 +11,7 @@ import InputErrors from '@/components/InputErrors.vue';
 
 const breadcrumbs = [
     { label: 'Dashboard', route: { name: 'dashboard' } },
-    { label: 'Profile Settings' },
+    { label: 'Profile settings' },
 ];
 
 const toast = useToast();
@@ -58,7 +58,7 @@ const resendVerifyEmail = () => {
                     pt:caption:class="space-y-1"
                 >
                     <template #title>
-                        Profile Information
+                        Profile information
                     </template>
                     <template #subtitle>
                         Update your name and email address
@@ -131,7 +131,7 @@ const resendVerifyEmail = () => {
                     pt:caption:class="space-y-1"
                 >
                     <template #title>
-                        Delete Account
+                        Delete account
                     </template>
                     <template #subtitle>
                         Delete your account and all of its resources

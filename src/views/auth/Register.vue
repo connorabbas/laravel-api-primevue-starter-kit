@@ -103,7 +103,7 @@ onMounted(() => {
             </div>
 
             <div class="flex flex-col gap-2">
-                <label for="password-confirmation">Confirm Password</label>
+                <label for="password-confirmation">Confirm password</label>
                 <Password
                     v-model="formData.password_confirmation"
                     :invalid="Boolean(validationErrors?.password_confirmation)"
