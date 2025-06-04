@@ -5,7 +5,7 @@ import SelectColorModeButton from '@/components/SelectColorModeButton.vue';
 
 const breadcrumbs = [
     { label: 'Dashboard', route: { name: 'dashboard' } },
-    { label: 'Appearance Settings' },
+    { label: 'Appearance settings' },
 ];
 </script>
 

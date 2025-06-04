@@ -35,15 +35,18 @@ defineExpose({
         </template>
         <template #item="{ item, props }">
             <RouterLink
-                v-if="item.route"
+                v-if="item.visible !== false && item.route"
                 v-slot="{ href, navigate }"
                 :to="item.route"
                 custom
             >
                 <a
                     :href="href"
-                    v-bind="props.action"
-                    class="p-menu-item-link"
+                    :target="item.target"
+                    :class="['p-menu-item-link', item.class]"
+                    :style="item.style"
+                    :aria-disabled="item.disabled === true"
+                    custom
                     @click="navigate"
                 >
                     <i
@@ -60,10 +63,13 @@ defineExpose({
                 </a>
             </RouterLink>
             <a
-                v-else
+                v-else-if="item.visible !== false"
+                v-bind="props.action"
                 :href="item.url"
                 :target="item.target"
-                v-bind="props.action"
+                :class="item.class"
+                :style="item.style"
+                :aria-disabled="item.disabled === true"
             >
                 <i
                     v-if="item.icon"

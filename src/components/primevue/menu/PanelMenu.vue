@@ -27,19 +27,27 @@ defineExpose({ el: childRef });
         ref="child-ref"
         v-bind="{ ...componentProps, pt: defaultPt, ptOptions: { mergeProps: ptViewMerge } }"
     >
-        <template #item="{ item, root, active, hasSubmenu }">
+        <template #item="{ item, root, active, props, hasSubmenu }">
+            <Divider
+                v-if="item.separator"
+                pt:root:class="my-0"
+            />
             <RouterLink
-                v-if="item.route"
+                v-else-if="item.visible !== false && item.route"
                 v-slot="{ href, navigate }"
                 :to="item.route"
                 custom
             >
                 <a
                     :href="href"
+                    :target="item.target"
                     :class="[
-                        'p-panelmenu-item-link flex items-center cursor-pointer no-underline p-2',
-                        { 'font-bold! text-muted-color': item.active }
+                        'p-panelmenu-item-link flex items-center cursor-pointer no-underline px-3 py-2',
+                        { 'font-bold! text-muted-color': item.active },
                     ]"
+                    :style="item.style"
+                    :aria-disabled="item.disabled === true"
+                    custom
                     @click="navigate"
                 >
                     <i
@@ -60,13 +68,16 @@ defineExpose({ el: childRef });
                 </a>
             </RouterLink>
             <a
-                v-else
+                v-else-if="item.visible !== false"
+                v-bind="props.action"
                 :href="item.url"
                 :target="item.target"
                 :class="[
-                    'flex items-center cursor-pointer no-underline p-2',
+                    'flex items-center cursor-pointer no-underline px-3 py-2',
                     hasSubmenu ? 'p-panelmenu-header-link' : 'p-panelmenu-item-link',
                 ]"
+                :style="item.style"
+                :aria-disabled="item.disabled === true"
             >
                 <i
                     v-if="item.icon"

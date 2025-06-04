@@ -10,7 +10,7 @@ import InputErrors from '@/components/InputErrors.vue';
 
 const breadcrumbs = [
     { label: 'Dashboard', route: { name: 'dashboard' } },
-    { label: 'Password Settings' },
+    { label: 'Password settings' },
 ];
 
 const toast = useToast();
@@ -73,7 +73,7 @@ const submit = () => {
                 pt:caption:class="space-y-1"
             >
                 <template #title>
-                    Update Password
+                    Update password
                 </template>
                 <template #subtitle>
                     Ensure your account is using a long, random password to stay secure
@@ -84,7 +84,7 @@ const submit = () => {
                         @submit.prevent="submit"
                     >
                         <div class="flex flex-col gap-2">
-                            <label for="current-password">Current Password</label>
+                            <label for="current-password">Current password</label>
                             <Password
                                 ref="current-password-input"
                                 v-model="formData.current_password"
@@ -100,7 +100,7 @@ const submit = () => {
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <label for="password">New Password</label>
+                            <label for="password">New password</label>
                             <Password
                                 ref="new-password-input"
                                 v-model="formData.password"
@@ -115,7 +115,7 @@ const submit = () => {
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <label for="password-confirmation">Confirm New Password</label>
+                            <label for="password-confirmation">Confirm new password</label>
                             <Password
                                 v-model="formData.password_confirmation"
                                 :invalid="Boolean(validationErrors?.password_confirmation)"
