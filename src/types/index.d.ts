@@ -16,4 +16,6 @@ export type PrimeVueDataFilters = {
 export interface MenuItem extends PrimeVueMenuItem {
     route?: string;
     lucideIcon?: LucideIcon;
+    lucideIconClass?: string;
+    active?: boolean;
 }

@@ -62,6 +62,7 @@ defineExpose({ el: childRef });
                         v-else-if="item.lucideIcon"
                         :class="[
                             root ? 'p-panelmenu-header-icon' : 'p-panelmenu-item-icon',
+                            item.lucideIconClass,
                         ]"
                     />
                     <span>{{ item.label }}</span>
@@ -91,6 +92,7 @@ defineExpose({ el: childRef });
                     v-else-if="item.lucideIcon"
                     :class="[
                         root ? 'p-panelmenu-header-icon' : 'p-panelmenu-item-icon',
+                        item.lucideIconClass,
                     ]"
                 />
                 <span>{{ item.label }}</span>
