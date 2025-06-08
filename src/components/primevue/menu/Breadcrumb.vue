@@ -42,13 +42,12 @@ defineExpose({ el: childRef });
                 >
                     <i
                         v-if="item.icon"
-                        :class="item.icon"
-                        class="p-breadcrumb-item-icon"
+                        :class="['p-breadcrumb-item-icon', item.icon]"
                     />
                     <component
                         :is="item.lucideIcon"
                         v-else-if="item.lucideIcon"
-                        class="p-breadcrumb-item-icon"
+                        :class="['p-breadcrumb-item-icon', item.lucideIconClass]"
                     />
                     <span class="p-breadcrumb-item-label">{{ item.label }}</span>
                 </a>
@@ -64,13 +63,12 @@ defineExpose({ el: childRef });
             >
                 <i
                     v-if="item.icon"
-                    :class="item.icon"
-                    class="p-breadcrumb-item-icon"
+                    :class="['p-breadcrumb-item-icon', item.icon]"
                 />
                 <component
                     :is="item.lucideIcon"
                     v-else-if="item.lucideIcon"
-                    class="p-breadcrumb-item-icon"
+                    :class="['p-breadcrumb-item-icon', item.lucideIconClass]"
                 />
                 <span class="p-breadcrumb-item-label">{{ item.label }}</span>
             </a>

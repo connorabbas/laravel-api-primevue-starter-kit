@@ -51,13 +51,12 @@ defineExpose({
                 >
                     <i
                         v-if="item.icon"
-                        :class="item.icon"
-                        class="p-menu-item-icon"
+                        :class="['p-menu-item-icon', item.icon]"
                     />
                     <component
                         :is="item.lucideIcon"
                         v-else-if="item.lucideIcon"
-                        class="p-menu-item-icon"
+                        :class="['p-menu-item-icon', item.lucideIconClass]"
                     />
                     <span class="p-menu-item-label">{{ item.label }}</span>
                 </a>
@@ -73,13 +72,12 @@ defineExpose({
             >
                 <i
                     v-if="item.icon"
-                    :class="item.icon"
-                    class="p-menu-item-icon"
+                    :class="['p-menu-item-icon', item.icon]"
                 />
                 <component
                     :is="item.lucideIcon"
                     v-else-if="item.lucideIcon"
-                    class="p-menu-item-icon"
+                    :class="['p-menu-item-icon', item.lucideIconClass]"
                 />
                 <span class="p-menu-item-label">{{ item.label }}</span>
             </a>
