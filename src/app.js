@@ -16,6 +16,7 @@ import PageTitleSection from '@/components/PageTitleSection.vue';
 
 import { useColorMode } from '@vueuse/core';
 import themePreset from '@/theme/noir-preset';
+import globalPt from './theme/global-pt';
 
 // Site light/dark mode
 const colorMode = useColorMode({ emitAuto: true });
@@ -37,6 +38,7 @@ app.provide('colorMode', colorMode)
                 },
             },
         },
+        pt: globalPt,
     })
     .use(ToastService)
     .component('Container', Container)
