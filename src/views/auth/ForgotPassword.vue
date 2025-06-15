@@ -30,7 +30,7 @@ const submit = () => {
 };
 
 const loading = computed(() => {
-    return submittingRequest.value || authStore.fetchingCsrfToken;
+    return submittingRequest.value || authStore.fetchingCsrfToken || authStore.fetchingUser;
 });
 
 onMounted(() => {
