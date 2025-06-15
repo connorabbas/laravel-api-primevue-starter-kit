@@ -43,7 +43,7 @@ const submit = () => {
 };
 
 const loading = computed(() => {
-    return loggingIn.value || authStore.fetchingCsrfToken;
+    return loggingIn.value || authStore.fetchingCsrfToken || authStore.fetchingUser;
 });
 
 onMounted(() => {

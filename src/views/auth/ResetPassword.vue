@@ -45,7 +45,7 @@ const submit = () => {
 };
 
 const loading = computed(() => {
-    return resetting.value || authStore.fetchingCsrfToken;
+    return resetting.value || authStore.fetchingCsrfToken || authStore.fetchingUser;
 });
 
 onMounted(() => {
