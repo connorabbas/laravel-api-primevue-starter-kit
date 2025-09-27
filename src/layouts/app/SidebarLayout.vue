@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { useTemplateRef } from 'vue';
 import { ChevronsUpDown, Menu as MenuIcon } from 'lucide-vue-next';
 import { useAppLayout } from '@/composables/useAppLayout';
 import Container from '@/components/Container.vue';
+import PopupMenuButton from '@/components/PopupMenuButton.vue';
 import NavLogoLink from '@/components/NavLogoLink.vue';
-import Menu from '@/components/primevue/menu/Menu.vue';
 import PanelMenu from '@/components/primevue/menu/PanelMenu.vue';
 import Breadcrumb from '@/components/primevue/menu/Breadcrumb.vue';
+import { MenuItem } from 'primevue/menuitem';
 
-const props = defineProps({
-    breadcrumbs: {
-        type: Array,
-        required: false,
-        default: () => [],
-    },
+const props = withDefaults(defineProps<{
+    breadcrumbs?: MenuItem[],
+}>(), {
+    breadcrumbs: () => [],
 });
 
 const {
@@ -22,16 +20,6 @@ const {
     menuItems,
     userMenuItems,
 } = useAppLayout();
-
-const userMenu = useTemplateRef('user-menu');
-const toggleUserMenu = (event) => {
-    userMenu.value.$el.toggle(event);
-};
-
-const mobileUserMenu = useTemplateRef('mobile-user-menu');
-const toggleMobileUserMenu = (event) => {
-    mobileUserMenu.value.$el.toggle(event);
-};
 </script>
 
 <template>
@@ -49,26 +37,15 @@ const toggleMobileUserMenu = (event) => {
                     />
                 </div>
                 <template #footer>
-                    <div class="flex flex-col">
-                        <Button
-                            id="mobile-user-menu-btn"
-                            :label="userName"
-                            pt:root:class="flex flex-row-reverse justify-between"
-                            severity="secondary"
-                            size="large"
-                            @click="toggleMobileUserMenu($event)"
-                        >
-                            <template #icon>
-                                <ChevronsUpDown />
-                            </template>
-                        </Button>
-                        <Menu
-                            ref="mobile-user-menu"
-                            :model="userMenuItems"
-                            pt:root:class="z-[1200]"
-                            popup
-                        />
-                    </div>
+                    <PopupMenuButton
+                        name="mobile-user-menu-dd"
+                        :menu-items="userMenuItems"
+                        :button-label="userName"
+                    >
+                        <template #toggleIcon>
+                            <ChevronsUpDown />
+                        </template>
+                    </PopupMenuButton>
                 </template>
             </Drawer>
             <ScrollTop
@@ -118,24 +95,15 @@ const toggleMobileUserMenu = (event) => {
                         </div>
                     </div>
                     <div>
-                        <Button
-                            id="user-menu-btn"
-                            :label="userName"
-                            pt:root:class="flex flex-row-reverse justify-between"
-                            severity="secondary"
-                            fluid
-                            @click="toggleUserMenu($event)"
+                        <PopupMenuButton
+                            name="desktop-user-menu-dd"
+                            :menu-items="userMenuItems"
+                            :button-label="userName"
                         >
-                            <template #icon>
+                            <template #toggleIcon>
                                 <ChevronsUpDown />
                             </template>
-                        </Button>
-                        <Menu
-                            ref="user-menu"
-                            :model="userMenuItems"
-                            pt:root:class="z-[1200]"
-                            popup
-                        />
+                        </PopupMenuButton>
                     </div>
                 </div>
             </aside>

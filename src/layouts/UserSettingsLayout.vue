@@ -43,7 +43,7 @@ const sidebarNavItems = computed(() => [
                 <nav class="flex flex-col space-x-0 space-y-1">
                     <RouterLink
                         v-for="item in sidebarNavItems"
-                        :key="item.route"
+                        :key="JSON.stringify(item.route)"
                         :to="item.route"
                         class="no-underline!"
                     >
