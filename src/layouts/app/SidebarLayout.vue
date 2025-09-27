@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { ChevronsUpDown, Menu as MenuIcon } from 'lucide-vue-next';
-import { useAppLayout } from '@/composables/useAppLayout';
-import Container from '@/components/Container.vue';
-import PopupMenuButton from '@/components/PopupMenuButton.vue';
-import NavLogoLink from '@/components/NavLogoLink.vue';
-import PanelMenu from '@/components/primevue/menu/PanelMenu.vue';
-import Breadcrumb from '@/components/primevue/menu/Breadcrumb.vue';
-import { MenuItem } from 'primevue/menuitem';
+import { ChevronsUpDown, Menu as MenuIcon } from 'lucide-vue-next'
+import { useAppLayout } from '@/composables/useAppLayout'
+import Container from '@/components/Container.vue'
+import PopupMenuButton from '@/components/PopupMenuButton.vue'
+import NavLogoLink from '@/components/NavLogoLink.vue'
+import PanelMenu from '@/components/primevue/menu/PanelMenu.vue'
+import Breadcrumb from '@/components/primevue/menu/Breadcrumb.vue'
+import { MenuItem } from 'primevue/menuitem'
 
 const props = withDefaults(defineProps<{
     breadcrumbs?: MenuItem[],
 }>(), {
     breadcrumbs: () => [],
-});
+})
 
 const {
     userName,
     mobileMenuOpen,
     menuItems,
     userMenuItems,
-} = useAppLayout();
+} = useAppLayout()
 </script>
 
 <template>

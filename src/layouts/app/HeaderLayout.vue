@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { useAppLayout } from '@/composables/useAppLayout';
-import { ChevronsUpDown, Menu as MenuIcon } from 'lucide-vue-next';
-import Container from '@/components/Container.vue';
-import PopupMenuButton from '@/components/PopupMenuButton.vue';
-import NavLogoLink from '@/components/NavLogoLink.vue';
-import MenuBar from '@/components/primevue/menu/MenuBar.vue';
-import PanelMenu from '@/components/primevue/menu/PanelMenu.vue';
-import Breadcrumb from '@/components/primevue/menu/Breadcrumb.vue';
-import { MenuItem } from '@/types';
+import { useAppLayout } from '@/composables/useAppLayout'
+import { ChevronsUpDown, Menu as MenuIcon } from 'lucide-vue-next'
+import Container from '@/components/Container.vue'
+import PopupMenuButton from '@/components/PopupMenuButton.vue'
+import NavLogoLink from '@/components/NavLogoLink.vue'
+import MenuBar from '@/components/primevue/menu/MenuBar.vue'
+import PanelMenu from '@/components/primevue/menu/PanelMenu.vue'
+import Breadcrumb from '@/components/primevue/menu/Breadcrumb.vue'
+import { MenuItem } from '@/types'
 
 const props = withDefaults(defineProps<{
     breadcrumbs?: MenuItem[],
 }>(), {
     breadcrumbs: () => [],
-});
+})
 
 const {
     userName,
@@ -21,7 +21,7 @@ const {
     mobileMenuOpen,
     menuItems,
     userMenuItems,
-} = useAppLayout();
+} = useAppLayout()
 </script>
 
 <template>

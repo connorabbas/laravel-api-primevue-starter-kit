@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-import PageTitleSection from '@/components/PageTitleSection.vue';
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import PageTitleSection from '@/components/PageTitleSection.vue'
 
-const route = useRoute();
-const currentRoute = computed(() => route.name);
+const route = useRoute()
+const currentRoute = computed(() => route.name)
 
 const sidebarNavItems = computed(() => [
     {
@@ -22,7 +22,7 @@ const sidebarNavItems = computed(() => [
         route: { name: 'settings.appearance' },
         active: currentRoute.value == 'settings.appearance',
     },
-]);
+])
 </script>
 
 <template>

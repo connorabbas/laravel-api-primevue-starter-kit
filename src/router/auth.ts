@@ -1,6 +1,6 @@
-import type { RouteRecordRaw } from 'vue-router';
-import auth from '@/middleware/auth';
-import guest from '@/middleware/guest';
+import type { RouteRecordRaw } from 'vue-router'
+import auth from '@/middleware/auth'
+import guest from '@/middleware/guest'
 
 const authRoutes: RouteRecordRaw[] = [
     {
@@ -34,6 +34,6 @@ const authRoutes: RouteRecordRaw[] = [
         component: () => import('@/views/auth/VerifyEmail.vue'),
         meta: { middleware: [auth] },
     },
-];
+]
 
-export default authRoutes;
+export default authRoutes

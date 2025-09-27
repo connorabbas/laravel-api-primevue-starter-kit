@@ -7,7 +7,7 @@ const props = withDefaults(defineProps<{
     fluid: false,
     vertical: false,
     flushMobile: false,
-});
+})
 </script>
 
 <template>

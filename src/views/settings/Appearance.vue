@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import AppLayout from '@/layouts/AppLayout.vue';
-import SettingsLayout from '@/layouts/UserSettingsLayout.vue';
-import SelectColorModeButton from '@/components/SelectColorModeButton.vue';
+import AppLayout from '@/layouts/AppLayout.vue'
+import SettingsLayout from '@/layouts/UserSettingsLayout.vue'
+import SelectColorModeButton from '@/components/SelectColorModeButton.vue'
 
 const breadcrumbs = [
     { label: 'Dashboard', route: { name: 'dashboard' } },
     { label: 'Appearance settings' },
-];
+]
 </script>
 
 <template>

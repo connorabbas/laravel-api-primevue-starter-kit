@@ -1,7 +1,7 @@
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useToast } from 'primevue/usetoast';
-import type { AxiosError } from 'axios';
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useToast } from 'primevue/usetoast'
+import type { AxiosError } from 'axios'
 
 type ValidationErrors = Record<string, string[]>;
 
@@ -14,19 +14,19 @@ interface ErrorHandlingOptions {
 }
 
 export function useAxiosErrorHandling() {
-    const router = useRouter();
-    const toast = useToast();
-    const validationErrors = ref<ValidationErrors>({});
+    const router = useRouter()
+    const toast = useToast()
+    const validationErrors = ref<ValidationErrors>({})
 
     function clearErrors(...fields: string[]): void {
         if (fields.length > 0) {
             fields.forEach(field => {
                 if (field in validationErrors.value) {
-                    delete validationErrors.value[field];
+                    delete validationErrors.value[field]
                 }
-            });
+            })
         } else {
-            validationErrors.value = {};
+            validationErrors.value = {}
         }
     }
 
@@ -36,7 +36,7 @@ export function useAxiosErrorHandling() {
             summary,
             detail,
             life: 5000,
-        });
+        })
     }
 
     function handleAxiosError(
@@ -44,44 +44,44 @@ export function useAxiosErrorHandling() {
         options: ErrorHandlingOptions = {}
     ): void {
         if (error.response) {
-            const { status, data: responseData } = error.response;
+            const { status, data: responseData } = error.response
 
             if (status === 401) {
-                console.log('User is unauthorized');
+                console.log('User is unauthorized')
                 //showErrorToast('401 - Unauthorized', 'Please reload the page and login in.', 'warn');
             } else if (status === 403) {
-                showErrorToast('403 - Forbidden', 'Sorry, you are unauthorized to access this resource/action.', 'warn');
+                showErrorToast('403 - Forbidden', 'Sorry, you are unauthorized to access this resource/action.', 'warn')
             } else if (status === 404) {
-                showErrorToast('404 - Not Found', 'Sorry, the resource you are looking for could not be found.', 'warn');
+                showErrorToast('404 - Not Found', 'Sorry, the resource you are looking for could not be found.', 'warn')
             } else if (status === 419) {
                 router.push({ name: 'login' }).then(() => {
-                    showErrorToast('419 - Session Expired ', 'Please reload the page.', 'warn');
-                });
+                    showErrorToast('419 - Session Expired ', 'Please reload the page.', 'warn')
+                })
             } else if (status === 422) {
-                const errorData = responseData as ValidationErrorResponse;
+                const errorData = responseData as ValidationErrorResponse
                 if (errorData.errors) {
-                    validationErrors.value = errorData.errors;
+                    validationErrors.value = errorData.errors
                 }
             } else if (status === 500) {
-                showErrorToast('500 - Server Error', 'Whoops, something went wrong on our end. Please try again.');
+                showErrorToast('500 - Server Error', 'Whoops, something went wrong on our end. Please try again.')
             } else if (status === 503) {
                 showErrorToast(
                     '503 - Service Unavailable',
                     'Sorry, we are doing some maintenance. Please check back soon.'
-                );
+                )
             } else {
-                showErrorToast('Error', 'Something went wrong...');
+                showErrorToast('Error', 'Something went wrong...')
             }
         } else if (error.request) {
-            showErrorToast('Error', 'Technical difficulties, please contact I.T. support.');
+            showErrorToast('Error', 'Technical difficulties, please contact I.T. support.')
         }
 
-        options.onError?.(error);
+        options.onError?.(error)
     }
 
     return {
         validationErrors,
         clearErrors,
         handleAxiosError,
-    };
+    }
 }

@@ -1,18 +1,18 @@
-import { fileURLToPath, URL } from 'node:url';
+import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig, loadEnv } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig, loadEnv } from 'vite'
+import vue from '@vitejs/plugin-vue'
 //import vueDevTools from 'vite-plugin-vue-devtools'
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from "@tailwindcss/vite"
 
-import Components from 'unplugin-vue-components/vite';
-import { PrimeVueResolver } from '@primevue/auto-import-resolver';
+import Components from 'unplugin-vue-components/vite'
+import { PrimeVueResolver } from '@primevue/auto-import-resolver'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
     // https://vite.dev/config/#using-environment-variables-in-config
-    const env = loadEnv(mode, process.cwd(), '');
-    const devPort = env.VITE_APP_PORT ? Number(env.VITE_APP_PORT) : 5173;
+    const env = loadEnv(mode, process.cwd(), '')
+    const devPort = env.VITE_APP_PORT ? Number(env.VITE_APP_PORT) : 5173
 
     return {
         plugins: [
@@ -45,5 +45,5 @@ export default defineConfig(({ mode }) => {
         preview: {
             port: devPort,
         },
-    };
-});
+    }
+})

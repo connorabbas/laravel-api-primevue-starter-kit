@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { useTemplateRef, computed, onMounted } from 'vue';
-import { useAxiosForm } from '@/composables/useAxiosForm';
-import { useAuthStore } from '@/stores/auth';
-import { useFlashMessage } from '@/composables/useFlashMessage.js';
-import InputText from 'primevue/inputtext';
-import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
-import InputErrors from '@/components/InputErrors.vue';
+import { useTemplateRef, computed, onMounted } from 'vue'
+import { useAxiosForm } from '@/composables/useAxiosForm'
+import { useAuthStore } from '@/stores/auth'
+import { useFlashMessage } from '@/composables/useFlashMessage.js'
+import InputText from 'primevue/inputtext'
+import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue'
+import InputErrors from '@/components/InputErrors.vue'
 
-const authStore = useAuthStore();
-const { flashMessages, setFlashMessage } = useFlashMessage();
+const authStore = useAuthStore()
+const { flashMessages, setFlashMessage } = useFlashMessage()
 
 type InputTextType = InstanceType<typeof InputText> & { $el: HTMLElement };
-const emailInput = useTemplateRef<InputTextType>('email-input');
+const emailInput = useTemplateRef<InputTextType>('email-input')
 
 const {
     data: formData,
@@ -20,26 +20,26 @@ const {
     post: submitForm,
 } = useAxiosForm({
     email: '',
-});
+})
 const submit = () => {
     authStore.fetchCsrfCookie().then(() => {
         submitForm('/forgot-password', {
             onSuccess: (response) => {
-                setFlashMessage('success', response.data.status);
+                setFlashMessage('success', response.data.status)
             },
-        });
-    });
-};
+        })
+    })
+}
 
 const loading = computed(() => {
-    return submittingRequest.value || authStore.fetchingCsrfToken || authStore.fetchingUser;
-});
+    return submittingRequest.value || authStore.fetchingCsrfToken || authStore.fetchingUser
+})
 
 onMounted(() => {
     if (emailInput.value) {
-        emailInput.value.$el.focus();
+        emailInput.value.$el.focus()
     }
-});
+})
 </script>
 
 <template>

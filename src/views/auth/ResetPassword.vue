@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { useTemplateRef, computed, onMounted } from 'vue';
-import { useAxiosForm } from '@/composables/useAxiosForm';
-import { useAuthStore } from '@/stores/auth';
-import { useRoute, useRouter } from 'vue-router';
-import { useFlashMessage } from '@/composables/useFlashMessage.js';
-import InputText from 'primevue/inputtext';
-import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
-import InputErrors from '@/components/InputErrors.vue';
+import { useTemplateRef, computed, onMounted } from 'vue'
+import { useAxiosForm } from '@/composables/useAxiosForm'
+import { useAuthStore } from '@/stores/auth'
+import { useRoute, useRouter } from 'vue-router'
+import { useFlashMessage } from '@/composables/useFlashMessage.js'
+import InputText from 'primevue/inputtext'
+import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue'
+import InputErrors from '@/components/InputErrors.vue'
 
 const props = defineProps({
     token: {
         type: String,
         required: true,
     },
-});
+})
 
-const router = useRouter();
-const route = useRoute();
-const authStore = useAuthStore();
-const { setFlashMessage } = useFlashMessage();
+const router = useRouter()
+const route = useRoute()
+const authStore = useAuthStore()
+const { setFlashMessage } = useFlashMessage()
 
 type InputTextType = InstanceType<typeof InputText> & { $el: HTMLElement };
-const emailInput = useTemplateRef<InputTextType>('email-input');
+const emailInput = useTemplateRef<InputTextType>('email-input')
 
 const {
     data: formData,
@@ -33,28 +33,28 @@ const {
     email: route.query?.email as string ?? '',
     password: '',
     password_confirmation: '',
-});
+})
 const submit = () => {
     authStore.fetchCsrfCookie().then(() => {
         submitForm('/reset-password', {
             onSuccess: (response) => {
                 router.push({ name: 'login' }).then(() => {
-                    setFlashMessage('success', response.data.status);
-                });
+                    setFlashMessage('success', response.data.status)
+                })
             },
-        });
-    });
-};
+        })
+    })
+}
 
 const loading = computed(() => {
-    return resetting.value || authStore.fetchingCsrfToken || authStore.fetchingUser;
-});
+    return resetting.value || authStore.fetchingCsrfToken || authStore.fetchingUser
+})
 
 onMounted(() => {
     if (emailInput.value) {
-        emailInput.value.$el.focus();
+        emailInput.value.$el.focus()
     }
-});
+})
 </script>
 
 <template>

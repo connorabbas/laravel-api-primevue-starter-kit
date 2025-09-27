@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useThemePreset } from '@/composables/useThemePreset';
+import { useThemePreset } from '@/composables/useThemePreset'
 
-const { presets, selectedPreset, setPreset } = useThemePreset();
+const { presets, selectedPreset, setPreset } = useThemePreset()
 </script>
 
 <template>
