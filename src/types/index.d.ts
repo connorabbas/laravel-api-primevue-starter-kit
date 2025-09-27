@@ -33,5 +33,5 @@ export type Middleware = (
     | void
     | false
     | string
-    | { name: string; query?: Record<string, any> }
+    | RouteLocationRaw
 >;
