@@ -12,13 +12,14 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-azuretools.vscode-docker",
                 "eamodio.gitlens",
                 "esbenp.prettier-vscode",
                 "mikestead.dotenv",
                 "streetsidesoftware.code-spell-checker",
                 "hollowtree.vue-snippets",
                 "Vue.volar",
+                "dbaeumer.vscode-eslint",
+                "EditorConfig.EditorConfig",
                 "bradlc.vscode-tailwindcss",
                 "shd101wyy.markdown-preview-enhanced",
                 "formulahendry.auto-rename-tag",
