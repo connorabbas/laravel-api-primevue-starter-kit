@@ -27,7 +27,7 @@ const selectedPreset: Ref<string> = useStorage('theme-preset', 'noir');
 function getCurrentPreset(): Preset {
     return (
         presets.value.find((p) => p.value === selectedPreset.value)?.preset ||
-        presets.value[3].preset
+        noir
     );
 }
 

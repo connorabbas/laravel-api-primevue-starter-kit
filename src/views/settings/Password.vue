@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useTemplateRef, nextTick } from 'vue';
 import { useToast } from 'primevue/usetoast';
 import { useAuthStore } from '@/stores/auth';

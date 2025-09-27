@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 defineProps({
     errors: {
         type: Array,

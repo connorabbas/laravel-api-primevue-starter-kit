@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import Container from '@/components/Container.vue';
 import { useAuthStore } from '@/stores/auth';
 import { LayoutGrid, LogIn, Settings, UserPlus } from 'lucide-vue-next';

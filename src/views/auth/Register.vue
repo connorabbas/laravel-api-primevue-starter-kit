@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useTemplateRef, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAxiosForm } from '@/composables/useAxiosForm';

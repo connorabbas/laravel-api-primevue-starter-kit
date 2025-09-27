@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useTemplateRef } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
@@ -6,9 +6,7 @@ import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
 import InputErrors from '@/components/InputErrors.vue';
 
-const modalOpen = defineModel(false, {
-    type: Boolean,
-});
+const modalOpen = defineModel<boolean>({ default: false });
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -36,8 +34,8 @@ const deleteAccount = () => {
         },
         onError: () => {
             console.error('error');
-            const passwordInputElement = passwordInput.value.$el.querySelector('input');
-            if (passwordInputElement) {
+            if (passwordInput.value && passwordInput.value?.$el) {
+                const passwordInputElement = passwordInput.value.$el.querySelector('input');
                 passwordInputElement.focus();
             }
         },

@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { useTemplateRef } from 'vue';
 import { useAppLayout } from '@/composables/useAppLayout';
 import { ChevronsUpDown, ChevronDown, Menu as MenuIcon } from 'lucide-vue-next';
+import Container from '@/components/Container.vue';
 import NavLogoLink from '@/components/NavLogoLink.vue';
 import Menu from '@/components/primevue/menu/Menu.vue';
 import MenuBar from '@/components/primevue/menu/MenuBar.vue';
