@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useTemplateRef } from 'vue';
 import { useRouter } from 'vue-router';
+import Password from 'primevue/password';
 import { useAuthStore } from '@/stores/auth';
 import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
@@ -12,7 +13,8 @@ const authStore = useAuthStore();
 const router = useRouter();
 const { setFlashMessage } = useFlashMessage();
 
-const passwordInput = useTemplateRef('password-input');
+type PasswordInputType = InstanceType<typeof Password>;
+const passwordInput = useTemplateRef<PasswordInputType>('password-input');
 
 const {
     data: formData,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppLayout from '@/layouts/app/SidebarLayout.vue';
+import AppLayout from '@/layouts/app/HeaderLayout.vue';
 import { type MenuItem } from '@/types';
 
 const props = withDefaults(defineProps<{

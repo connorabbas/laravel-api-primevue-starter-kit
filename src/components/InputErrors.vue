@@ -1,9 +1,7 @@
 <script setup lang="ts">
-defineProps({
-    errors: {
-        type: Array,
-    },
-});
+defineProps<{
+    errors?: string[]
+}>();
 </script>
 
 <template>
