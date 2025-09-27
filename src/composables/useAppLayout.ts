@@ -2,16 +2,17 @@ import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { LayoutGrid, House, Info, Settings, LogOut, ExternalLink, FileSearch, FolderGit2 } from 'lucide-vue-next';
 import { useAuthStore } from '@/stores/auth';
+import { MenuItem } from '@/types';
 
 export function useAppLayout() {
     const authStore = useAuthStore();
     const route = useRoute();
-    const currentRoute = computed(() => route.name);
 
+    const currentRoute = computed(() => route.name);
     const userName = computed(() => authStore?.user?.name ?? 'User');
 
     // Menu items
-    const menuItems = computed(() => [
+    const menuItems = computed<MenuItem[]>(() => [
         {
             label: 'Home',
             lucideIcon: House,
@@ -57,7 +58,7 @@ export function useAppLayout() {
     ]);
 
     // User menu and logout functionality.
-    const userMenuItems = [
+    const userMenuItems: MenuItem[] = [
         {
             label: 'Settings',
             route: { name: 'settings.profile.edit' },

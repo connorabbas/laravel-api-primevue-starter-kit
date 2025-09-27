@@ -1,18 +1,30 @@
 import { ref } from 'vue';
 import axios from '@/utils/axios';
 import progress from '@/utils/progress';
-import { useAxiosErrorHandling } from '@/composables/useAxiosErrorHandling';
+import { useAxiosErrorHandling } from './useAxiosErrorHandling';
+import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
-export function useAxiosForm(initialData = {}) {
+type FormData = Record<string, any>;
+
+interface RequestOptions {
+    showProgress?: boolean;
+    onBefore?: () => void;
+    onSuccess?: (response: AxiosResponse) => void;
+    onError?: (error: AxiosError) => void;
+    onFinish?: () => void;
+    [key: string]: any; // For additional Axios config options
+}
+
+export function useAxiosForm<T extends FormData>(initialData: T = {} as T) {
     const { validationErrors, clearErrors, handleAxiosError } = useAxiosErrorHandling();
-    const data = ref({ ...initialData });
-    const processing = ref(false);
+    const data = ref<T>({ ...initialData });
+    const processing = ref<boolean>(false);
 
-    const reset = (...fields) => {
+    const reset = (...fields: string[]): void => {
         if (fields.length > 0) {
             fields.forEach((field) => {
                 if (field in initialData) {
-                    data.value[field] = initialData[field];
+                    data.value[field as keyof T] = initialData[field];
                 }
             });
         } else {
@@ -20,13 +32,18 @@ export function useAxiosForm(initialData = {}) {
         }
     };
 
-    const makeRequest = async (method, url, options = {}) => {
+    const makeRequest = async (
+        method: 'get' | 'post' | 'put' | 'patch' | 'delete',
+        url: string,
+        options: RequestOptions = {}
+    ): Promise<AxiosResponse | undefined> => {
         const {
             showProgress = false,
-            onBefore = () => {},
-            onSuccess = () => {},
-            onError = () => {},
-            onFinish = () => {},
+            onBefore = () => { },
+            onSuccess = () => { },
+            onError = () => { },
+            onFinish = () => { },
+            headers: customHeaders,
             ...restOptions
         } = options;
 
@@ -36,20 +53,27 @@ export function useAxiosForm(initialData = {}) {
             if (showProgress) progress.start();
             onBefore();
 
-            const config = {
+            const finalHeaders = {
+                'X-Requested-With': 'XMLHttpRequest',
+                ...(customHeaders || {}),
+            };
+
+            const config: AxiosRequestConfig = {
                 url,
                 method,
                 ...(method === 'get' ? { params: data.value } : { data: data.value }),
+                headers: finalHeaders,
                 ...restOptions,
             };
 
-            const response = await axios(config);
+            const response: AxiosResponse = await axios(config);
             onSuccess(response);
 
             return response;
         } catch (error) {
-            onError(error);
-            handleAxiosError(error);
+            const axiosError = error as AxiosError;
+            onError(axiosError);
+            handleAxiosError(axiosError);
         } finally {
             onFinish();
             processing.value = false;
@@ -62,10 +86,10 @@ export function useAxiosForm(initialData = {}) {
         validationErrors,
         processing,
         reset,
-        get: (url, options) => makeRequest('get', url, options),
-        post: (url, options) => makeRequest('post', url, options),
-        put: (url, options) => makeRequest('put', url, options),
-        patch: (url, options) => makeRequest('patch', url, options),
-        del: (url, options) => makeRequest('delete', url, options),
+        get: (url: string, options?: RequestOptions) => makeRequest('get', url, options),
+        post: (url: string, options?: RequestOptions) => makeRequest('post', url, options),
+        put: (url: string, options?: RequestOptions) => makeRequest('put', url, options),
+        patch: (url: string, options?: RequestOptions) => makeRequest('patch', url, options),
+        del: (url: string, options?: RequestOptions) => makeRequest('delete', url, options),
     };
 }

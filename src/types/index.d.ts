@@ -1,6 +1,7 @@
 import { DataTableFilterMetaData } from 'primevue';
 import { MenuItem as PrimeVueMenuItem } from 'primevue/menuitem';
 import type { LucideIcon } from 'lucide-vue-next';
+import { RouteLocationNormalizedGeneric, RouteLocationRaw } from 'vue-router';
 
 export interface User {
     id: number;
@@ -14,8 +15,23 @@ export type PrimeVueDataFilters = {
 };
 
 export interface MenuItem extends PrimeVueMenuItem {
-    route?: string;
+    route?: RouteLocationRaw | string;
     lucideIcon?: LucideIcon;
     lucideIconClass?: string;
     active?: boolean;
 }
+
+export interface MiddlewareContext {
+    to: RouteLocationNormalizedGeneric;
+    from: RouteLocationNormalizedGeneric;
+    authStore: ReturnType<typeof useAuthStore>;
+}
+
+export type Middleware = (
+    context: MiddlewareContext
+) => Promise<
+    | void
+    | false
+    | string
+    | { name: string; query?: Record<string, any> }
+>;

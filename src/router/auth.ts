@@ -1,7 +1,8 @@
+import type { RouteRecordRaw } from 'vue-router';
 import auth from '@/middleware/auth';
 import guest from '@/middleware/guest';
 
-const authRoutes = [
+const authRoutes: RouteRecordRaw[] = [
     {
         path: '/login',
         name: 'login',

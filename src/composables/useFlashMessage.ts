@@ -1,23 +1,26 @@
 import { reactive, readonly, onMounted } from 'vue';
 
-const flashMessages = reactive({
+type FlashMessageType = 'success' | 'info' | 'warning' | 'danger';
+
+const flashMessages = reactive<{
+    success: string;
+    info: string;
+    warning: string;
+    danger: string;
+}>({
     success: '',
     info: '',
     warning: '',
     danger: '',
 });
 
-function setFlashMessage(type, message) {
-    if (type in flashMessages) {
-        flashMessages[type] = message;
-    } else {
-        console.warn(`Unknown flash message type: ${type}`);
-    }
+function setFlashMessage(type: FlashMessageType, message: string): void {
+    flashMessages[type] = message;
 }
 
-function clearFlashMessages() {
+function clearFlashMessages(): void {
     Object.keys(flashMessages).forEach((key) => {
-        flashMessages[key] = '';
+        flashMessages[key as FlashMessageType] = '';
     });
 }
 

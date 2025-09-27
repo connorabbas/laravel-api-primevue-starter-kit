@@ -1,7 +1,8 @@
+import type { RouteRecordRaw } from 'vue-router';
 import auth from '@/middleware/auth';
 import verified from '@/middleware/verified';
 
-const webRoutes = [
+const webRoutes: RouteRecordRaw[] = [
     {
         path: '/',
         name: 'welcome',

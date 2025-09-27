@@ -1,4 +1,6 @@
-export default async function guest({ authStore }) {
+import { Middleware, MiddlewareContext } from "@/types";
+
+export default async function guest({ authStore }: MiddlewareContext): ReturnType<Middleware> {
     if (!authStore.user) {
         await authStore.fetchUser();
     }
@@ -6,3 +8,4 @@ export default async function guest({ authStore }) {
         return { name: 'dashboard' };
     }
 }
+
