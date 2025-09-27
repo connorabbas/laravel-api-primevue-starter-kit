@@ -1,7 +1,8 @@
-import auth from '@/middleware/auth';
-import verified from '@/middleware/verified';
+import type { RouteRecordRaw } from 'vue-router'
+import auth from '@/middleware/auth'
+import verified from '@/middleware/verified'
 
-const webRoutes = [
+const webRoutes: RouteRecordRaw[] = [
     {
         path: '/',
         name: 'welcome',
@@ -31,6 +32,6 @@ const webRoutes = [
         component: () => import('@/views/settings/Appearance.vue'),
         meta: { middleware: [auth] },
     },
-];
+]
 
-export default webRoutes;
+export default webRoutes

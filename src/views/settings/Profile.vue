@@ -1,25 +1,25 @@
-<script setup>
-import { ref, computed } from 'vue';
-import { useToast } from 'primevue/usetoast';
-import { useAuthStore } from '@/stores/auth';
-import { useAxiosForm } from '@/composables/useAxiosForm';
-import { useFlashMessage } from '@/composables/useFlashMessage.js';
-import AppLayout from '@/layouts/AppLayout.vue';
-import SettingsLayout from '@/layouts/UserSettingsLayout.vue';
-import DeleteUserModal from '@/components/DeleteUserModal.vue';
-import InputErrors from '@/components/InputErrors.vue';
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+import { useToast } from 'primevue/usetoast'
+import { useAuthStore } from '@/stores/auth'
+import { useAxiosForm } from '@/composables/useAxiosForm'
+import { useFlashMessage } from '@/composables/useFlashMessage.js'
+import AppLayout from '@/layouts/AppLayout.vue'
+import SettingsLayout from '@/layouts/UserSettingsLayout.vue'
+import DeleteUserModal from '@/components/DeleteUserModal.vue'
+import InputErrors from '@/components/InputErrors.vue'
 
 const breadcrumbs = [
     { label: 'Dashboard', route: { name: 'dashboard' } },
     { label: 'Profile settings' },
-];
+]
 
-const toast = useToast();
-const authStore = useAuthStore();
-const { flashMessages } = useFlashMessage();
+const toast = useToast()
+const authStore = useAuthStore()
+const { flashMessages } = useFlashMessage()
 
-const verificationLinkSent = computed(() => flashMessages.success === 'verification-link-sent');
-const deleteUserModalOpen = ref(false);
+const verificationLinkSent = computed(() => flashMessages.success === 'verification-link-sent')
+const deleteUserModalOpen = ref(false)
 
 const {
     data: formData,
@@ -27,9 +27,9 @@ const {
     processing: updating,
     patch: submitForm,
 } = useAxiosForm({
-    name: authStore.user.name || '',
-    email: authStore.user.email || '',
-});
+    name: authStore.user?.name || '',
+    email: authStore.user?.email || '',
+})
 const submit = () => {
     submitForm('/profile', {
         onSuccess: async () => {
@@ -38,15 +38,15 @@ const submit = () => {
                 summary: 'Saved',
                 detail: 'Profile information has been updated',
                 life: 3000,
-            });
-            authStore.fetchUser();
+            })
+            authStore.fetchUser()
         },
-    });
-};
+    })
+}
 
 const resendVerifyEmail = () => {
-    authStore.sendVerificationEmail();
-};
+    authStore.sendVerificationEmail()
+}
 </script>
 
 <template>
@@ -95,7 +95,7 @@ const resendVerifyEmail = () => {
                                 <InputErrors :errors="validationErrors?.email" />
                             </div>
 
-                            <div v-if="authStore.mustVerifyEmail && authStore.user.email_verified_at === null">
+                            <div v-if="authStore.mustVerifyEmail && authStore.user?.email_verified_at === null">
                                 <p class="text-sm mt-2">
                                     Your email address is unverified.
                                     <a

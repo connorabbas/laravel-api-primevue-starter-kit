@@ -1,23 +1,25 @@
-<script setup>
-import { useTemplateRef, nextTick } from 'vue';
-import { useToast } from 'primevue/usetoast';
-import { useAuthStore } from '@/stores/auth';
-import { useAxiosForm } from '@/composables/useAxiosForm';
-import Password from 'primevue/password';
-import AppLayout from '@/layouts/AppLayout.vue';
-import SettingsLayout from '@/layouts/UserSettingsLayout.vue';
-import InputErrors from '@/components/InputErrors.vue';
+<script setup lang="ts">
+import { useTemplateRef, nextTick } from 'vue'
+import { useToast } from 'primevue/usetoast'
+import { useAuthStore } from '@/stores/auth'
+import { useAxiosForm } from '@/composables/useAxiosForm'
+import Password from 'primevue/password'
+import AppLayout from '@/layouts/AppLayout.vue'
+import SettingsLayout from '@/layouts/UserSettingsLayout.vue'
+import InputErrors from '@/components/InputErrors.vue'
+
 
 const breadcrumbs = [
     { label: 'Dashboard', route: { name: 'dashboard' } },
     { label: 'Password settings' },
-];
+]
 
-const toast = useToast();
-const authStore = useAuthStore();
+const toast = useToast()
+const authStore = useAuthStore()
 
-const currentPasswordInput = useTemplateRef('current-password-input');
-const newPasswordInput = useTemplateRef('new-password-input');
+type PasswordInputType = InstanceType<typeof Password> & { $el: HTMLElement };
+const currentPasswordInput = useTemplateRef<PasswordInputType>('current-password-input')
+const newPasswordInput = useTemplateRef<PasswordInputType>('new-password-input')
 
 const {
     data: formData,
@@ -29,7 +31,7 @@ const {
     current_password: '',
     password: '',
     password_confirmation: '',
-});
+})
 
 const submit = () => {
     submitForm('/password', {
@@ -39,30 +41,29 @@ const submit = () => {
                 summary: 'Saved',
                 detail: 'Your password has been updated',
                 life: 3000,
-            });
-            resetFormFields();
-            authStore.fetchUser();
+            })
+            resetFormFields()
+            authStore.fetchUser()
         },
         onError: async () => {
-            await nextTick();
+            await nextTick()
             if (validationErrors.value?.password) {
-                resetFormFields('password', 'password_confirmation');
-                const newPasswordInputElement = newPasswordInput.value.$el.querySelector('input');
-                if (newPasswordInputElement) {
-                    newPasswordInputElement.focus();
+                resetFormFields('password', 'password_confirmation')
+                if (newPasswordInput.value && newPasswordInput.value?.$el) {
+                    const newPasswordInputElement = newPasswordInput.value.$el.querySelector('input')
+                    newPasswordInputElement?.focus()
                 }
             }
             if (validationErrors.value?.current_password) {
-                resetFormFields('current_password');
-                const currentPasswordInputElement = currentPasswordInput.value.$el.querySelector('input');
-                console.log(currentPasswordInput.value.$el);
-                if (currentPasswordInputElement) {
-                    currentPasswordInputElement.focus();
+                resetFormFields('current_password')
+                if (currentPasswordInput.value && currentPasswordInput.value?.$el) {
+                    const currentPasswordInputElement = currentPasswordInput.value.$el.querySelector('input')
+                    currentPasswordInputElement?.focus()
                 }
             }
         },
-    });
-};
+    })
+}
 </script>
 
 <template>

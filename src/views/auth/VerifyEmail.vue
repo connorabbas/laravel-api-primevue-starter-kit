@@ -1,17 +1,17 @@
-<script setup>
-import { computed } from 'vue';
-import { useAuthStore } from '@/stores/auth';
-import { useFlashMessage } from '@/composables/useFlashMessage.js';
-import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useAuthStore } from '@/stores/auth'
+import { useFlashMessage } from '@/composables/useFlashMessage.js'
+import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue'
 
-const authStore = useAuthStore();
-const { flashMessages } = useFlashMessage();
+const authStore = useAuthStore()
+const { flashMessages } = useFlashMessage()
 
-const verificationLinkSent = computed(() => flashMessages.success === 'verification-link-sent');
+const verificationLinkSent = computed(() => flashMessages.success === 'verification-link-sent')
 
 const submit = () => {
-    authStore.sendVerificationEmail();
-};
+    authStore.sendVerificationEmail()
+}
 </script>
 
 <template>

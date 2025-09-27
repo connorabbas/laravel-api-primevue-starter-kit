@@ -1,5 +1,5 @@
-<script setup>
-import { ArrowLeft } from 'lucide-vue-next';
+<script setup lang="ts">
+import { ArrowLeft } from 'lucide-vue-next'
 </script>
 
 <template>

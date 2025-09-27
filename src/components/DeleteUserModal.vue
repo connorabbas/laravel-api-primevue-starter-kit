@@ -1,20 +1,20 @@
-<script setup>
-import { useTemplateRef } from 'vue';
-import { useRouter } from 'vue-router';
-import { useAuthStore } from '@/stores/auth';
-import { useAxiosForm } from '@/composables/useAxiosForm';
-import { useFlashMessage } from '@/composables/useFlashMessage.js';
-import InputErrors from '@/components/InputErrors.vue';
+<script setup lang="ts">
+import { useTemplateRef } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
+import { useAxiosForm } from '@/composables/useAxiosForm'
+import { useFlashMessage } from '@/composables/useFlashMessage.js'
+import Password from 'primevue/password'
+import InputErrors from '@/components/InputErrors.vue'
 
-const modalOpen = defineModel(false, {
-    type: Boolean,
-});
+const modalOpen = defineModel<boolean>({ default: false })
 
-const authStore = useAuthStore();
-const router = useRouter();
-const { setFlashMessage } = useFlashMessage();
+const authStore = useAuthStore()
+const router = useRouter()
+const { setFlashMessage } = useFlashMessage()
 
-const passwordInput = useTemplateRef('password-input');
+type PasswordInputType = InstanceType<typeof Password> & { $el: HTMLElement };
+const passwordInput = useTemplateRef<PasswordInputType>('password-input')
 
 const {
     data: formData,
@@ -24,26 +24,26 @@ const {
     reset: resetFormFields,
 } = useAxiosForm({
     password: '',
-});
+})
 const deleteAccount = () => {
     submitForm('/profile', {
         onSuccess: () => {
-            modalOpen.value = false;
-            authStore.user = null;
+            modalOpen.value = false
+            authStore.user = null
             router.push({ name: 'login' }).then(() => {
-                setFlashMessage('success', 'Your account has been deleted.');
-            });
+                setFlashMessage('success', 'Your account has been deleted.')
+            })
         },
         onError: () => {
-            console.error('error');
-            const passwordInputElement = passwordInput.value.$el.querySelector('input');
-            if (passwordInputElement) {
-                passwordInputElement.focus();
+            console.error('error')
+            if (passwordInput.value && passwordInput.value?.$el) {
+                const passwordInputElement = passwordInput.value.$el.querySelector('input')
+                passwordInputElement?.focus()
             }
         },
         onFinish: () => resetFormFields(),
-    });
-};
+    })
+}
 </script>
 
 <template>

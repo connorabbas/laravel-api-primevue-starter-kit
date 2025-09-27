@@ -1,10 +1,10 @@
-<script setup>
-import Container from '@/components/Container.vue';
-import { useAuthStore } from '@/stores/auth';
-import { LayoutGrid, LogIn, Settings, UserPlus } from 'lucide-vue-next';
+<script setup lang="ts">
+import Container from '@/components/Container.vue'
+import { useAuthStore } from '@/stores/auth'
+import { LayoutGrid, LogIn, Settings, UserPlus } from 'lucide-vue-next'
 
-const authStore = useAuthStore();
-await authStore.fetchUser();
+const authStore = useAuthStore()
+await authStore.fetchUser()
 </script>
 
 <template>

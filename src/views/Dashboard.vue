@@ -1,7 +1,7 @@
-<script setup>
-import AppLayout from '@/layouts/AppLayout.vue';
+<script setup lang="ts">
+import AppLayout from '@/layouts/AppLayout.vue'
 
-const breadcrumbs = [{ label: 'Dashboard' }];
+const breadcrumbs = [{ label: 'Dashboard' }]
 </script>
 
 <template>

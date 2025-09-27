@@ -12,7 +12,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.vue-spa.rule=Host(`vue-spa.localhost`)"
-      - "traefik.http.services.vue-spa.loadbalancer.server.port=${VITE_PORT}"
+      - "traefik.http.services.vue-spa.loadbalancer.server.port=${VITE_APP_PORT}"
     networks:
       - proxy
 

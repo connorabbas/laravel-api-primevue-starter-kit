@@ -1,15 +1,17 @@
-<script setup>
-import { useTemplateRef, computed, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { useAxiosForm } from '@/composables/useAxiosForm';
-import { useAuthStore } from '@/stores/auth';
-import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
-import InputErrors from '@/components/InputErrors.vue';
+<script setup lang="ts">
+import { useTemplateRef, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAxiosForm } from '@/composables/useAxiosForm'
+import { useAuthStore } from '@/stores/auth'
+import InputText from 'primevue/inputtext'
+import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue'
+import InputErrors from '@/components/InputErrors.vue'
 
-const router = useRouter();
-const authStore = useAuthStore();
+const router = useRouter()
+const authStore = useAuthStore()
 
-const nameInput = useTemplateRef('name-input');
+type InputTextType = InstanceType<typeof InputText> & { $el: HTMLElement };
+const nameInput = useTemplateRef<InputTextType>('name-input')
 
 const {
     data: formData,
@@ -21,24 +23,26 @@ const {
     email: '',
     password: '',
     password_confirmation: '',
-});
+})
 const submit = () => {
     authStore.fetchCsrfCookie().then(() => {
         submitForm('/register', {
             onSuccess: () => {
-                router.push({ name: 'dashboard' });
+                router.push({ name: 'dashboard' })
             },
-        });
-    });
-};
+        })
+    })
+}
 
 const loading = computed(() => {
-    return registering.value || authStore.fetchingCsrfToken || authStore.fetchingUser;
-});
+    return registering.value || authStore.fetchingCsrfToken || authStore.fetchingUser
+})
 
 onMounted(() => {
-    nameInput.value.$el.focus();
-});
+    if (nameInput.value) {
+        nameInput.value.$el.focus()
+    }
+})
 </script>
 
 <template>
