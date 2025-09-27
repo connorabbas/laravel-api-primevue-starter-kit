@@ -73,7 +73,7 @@ export function useAxiosErrorHandling() {
                 showErrorToast('Error', 'Something went wrong...')
             }
         } else if (error.request) {
-            showErrorToast('Error', 'Technical difficulties, please contact I.T. support.')
+            showErrorToast('Error', 'We are experiencing technical difficulties, please try again later.')
         }
 
         options.onError?.(error)
