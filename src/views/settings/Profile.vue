@@ -27,8 +27,8 @@ const {
     processing: updating,
     patch: submitForm,
 } = useAxiosForm({
-    name: authStore.user.name || '',
-    email: authStore.user.email || '',
+    name: authStore.user?.name || '',
+    email: authStore.user?.email || '',
 });
 const submit = () => {
     submitForm('/profile', {
@@ -95,7 +95,7 @@ const resendVerifyEmail = () => {
                                 <InputErrors :errors="validationErrors?.email" />
                             </div>
 
-                            <div v-if="authStore.mustVerifyEmail && authStore.user.email_verified_at === null">
+                            <div v-if="authStore.mustVerifyEmail && authStore.user?.email_verified_at === null">
                                 <p class="text-sm mt-2">
                                     Your email address is unverified.
                                     <a

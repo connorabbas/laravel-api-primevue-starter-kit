@@ -4,6 +4,7 @@ import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useAuthStore } from '@/stores/auth';
 import { useRoute, useRouter } from 'vue-router';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
+import InputText from 'primevue/inputtext';
 import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
 import InputErrors from '@/components/InputErrors.vue';
 
@@ -19,7 +20,8 @@ const route = useRoute();
 const authStore = useAuthStore();
 const { setFlashMessage } = useFlashMessage();
 
-const emailInput = useTemplateRef('email-input');
+type InputTextType = InstanceType<typeof InputText> & { $el: HTMLElement };
+const emailInput = useTemplateRef<InputTextType>('email-input');
 
 const {
     data: formData,
@@ -28,7 +30,7 @@ const {
     post: submitForm,
 } = useAxiosForm({
     token: props.token,
-    email: route.query?.email ?? '',
+    email: route.query?.email as string ?? '',
     password: '',
     password_confirmation: '',
 });
@@ -49,7 +51,9 @@ const loading = computed(() => {
 });
 
 onMounted(() => {
-    emailInput.value.$el.focus();
+    if (emailInput.value) {
+        emailInput.value.$el.focus();
+    }
 });
 </script>
 

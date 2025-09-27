@@ -8,6 +8,7 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/UserSettingsLayout.vue';
 import InputErrors from '@/components/InputErrors.vue';
 
+
 const breadcrumbs = [
     { label: 'Dashboard', route: { name: 'dashboard' } },
     { label: 'Password settings' },
@@ -16,8 +17,9 @@ const breadcrumbs = [
 const toast = useToast();
 const authStore = useAuthStore();
 
-const currentPasswordInput = useTemplateRef('current-password-input');
-const newPasswordInput = useTemplateRef('new-password-input');
+type PasswordInputType = InstanceType<typeof Password> & { $el: HTMLElement };
+const currentPasswordInput = useTemplateRef<PasswordInputType>('current-password-input');
+const newPasswordInput = useTemplateRef<PasswordInputType>('new-password-input');
 
 const {
     data: formData,
@@ -47,17 +49,16 @@ const submit = () => {
             await nextTick();
             if (validationErrors.value?.password) {
                 resetFormFields('password', 'password_confirmation');
-                const newPasswordInputElement = newPasswordInput.value.$el.querySelector('input');
-                if (newPasswordInputElement) {
-                    newPasswordInputElement.focus();
+                if (newPasswordInput.value && newPasswordInput.value?.$el) {
+                    const newPasswordInputElement = newPasswordInput.value.$el.querySelector('input');
+                    newPasswordInputElement?.focus();
                 }
             }
             if (validationErrors.value?.current_password) {
                 resetFormFields('current_password');
-                const currentPasswordInputElement = currentPasswordInput.value.$el.querySelector('input');
-                console.log(currentPasswordInput.value.$el);
-                if (currentPasswordInputElement) {
-                    currentPasswordInputElement.focus();
+                if (currentPasswordInput.value && currentPasswordInput.value?.$el) {
+                    const currentPasswordInputElement = currentPasswordInput.value.$el.querySelector('input');
+                    currentPasswordInputElement?.focus();
                 }
             }
         },

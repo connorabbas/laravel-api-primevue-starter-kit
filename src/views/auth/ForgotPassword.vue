@@ -3,13 +3,15 @@ import { useTemplateRef, computed, onMounted } from 'vue';
 import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useAuthStore } from '@/stores/auth';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
+import InputText from 'primevue/inputtext';
 import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
 import InputErrors from '@/components/InputErrors.vue';
 
 const authStore = useAuthStore();
 const { flashMessages, setFlashMessage } = useFlashMessage();
 
-const emailInput = useTemplateRef('email-input');
+type InputTextType = InstanceType<typeof InputText> & { $el: HTMLElement };
+const emailInput = useTemplateRef<InputTextType>('email-input');
 
 const {
     data: formData,
@@ -34,7 +36,9 @@ const loading = computed(() => {
 });
 
 onMounted(() => {
-    emailInput.value.$el.focus();
+    if (emailInput.value) {
+        emailInput.value.$el.focus();
+    }
 });
 </script>
 

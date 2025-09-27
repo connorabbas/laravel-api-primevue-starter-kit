@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useTemplateRef } from 'vue';
 import { useRouter } from 'vue-router';
-import Password from 'primevue/password';
 import { useAuthStore } from '@/stores/auth';
 import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
+import Password from 'primevue/password';
 import InputErrors from '@/components/InputErrors.vue';
 
 const modalOpen = defineModel<boolean>({ default: false });
@@ -13,7 +13,7 @@ const authStore = useAuthStore();
 const router = useRouter();
 const { setFlashMessage } = useFlashMessage();
 
-type PasswordInputType = InstanceType<typeof Password>;
+type PasswordInputType = InstanceType<typeof Password> & { $el: HTMLElement };
 const passwordInput = useTemplateRef<PasswordInputType>('password-input');
 
 const {
@@ -38,7 +38,7 @@ const deleteAccount = () => {
             console.error('error');
             if (passwordInput.value && passwordInput.value?.$el) {
                 const passwordInputElement = passwordInput.value.$el.querySelector('input');
-                passwordInputElement.focus();
+                passwordInputElement?.focus();
             }
         },
         onFinish: () => resetFormFields(),

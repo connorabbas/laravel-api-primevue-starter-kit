@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import { useAxiosForm } from '@/composables/useAxiosForm';
 import { useAuthStore } from '@/stores/auth';
 import { useFlashMessage } from '@/composables/useFlashMessage.js';
+import InputText from 'primevue/inputtext';
 import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue';
 import InputErrors from '@/components/InputErrors.vue';
 
@@ -11,7 +12,8 @@ const router = useRouter();
 const authStore = useAuthStore();
 const { flashMessages } = useFlashMessage();
 
-const emailInput = useTemplateRef('email-input');
+type InputTextType = InstanceType<typeof InputText> & { $el: HTMLElement };
+const emailInput = useTemplateRef<InputTextType>('email-input');
 
 const {
     data: formData,
@@ -28,7 +30,7 @@ const submit = () => {
     authStore.fetchCsrfCookie().then(() => {
         submitForm('/login', {
             onSuccess: () => {
-                const redirectPath = router.currentRoute.value.query?.redirect;
+                const redirectPath = router.currentRoute.value.query?.redirect as string;
                 if (redirectPath) {
                     router.push({ path: redirectPath });
                 } else {
@@ -47,7 +49,9 @@ const loading = computed(() => {
 });
 
 onMounted(() => {
-    emailInput.value.$el.focus();
+    if (emailInput.value) {
+        emailInput.value.$el.focus();
+    }
 });
 </script>
 
