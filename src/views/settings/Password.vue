@@ -8,7 +8,6 @@ import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/UserSettingsLayout.vue'
 import InputErrors from '@/components/InputErrors.vue'
 
-
 const breadcrumbs = [
     { label: 'Dashboard', route: { name: 'dashboard' } },
     { label: 'Password settings' },

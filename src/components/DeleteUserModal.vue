@@ -35,7 +35,6 @@ const deleteAccount = () => {
             })
         },
         onError: () => {
-            console.error('error')
             if (passwordInput.value && passwordInput.value?.$el) {
                 const passwordInputElement = passwordInput.value.$el.querySelector('input')
                 passwordInputElement?.focus()

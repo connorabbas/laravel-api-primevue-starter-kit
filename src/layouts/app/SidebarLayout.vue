@@ -57,7 +57,7 @@ const {
         <header class="block lg:fixed top-0 left-0 right-0 z-50">
             <nav class="dynamic-bg shadow-sm flex justify-between items-center lg:hidden">
                 <Container class="grow">
-                    <div class="flex justify-between items-center py-4">
+                    <div class="flex justify-between items-center gap-4 py-4">
                         <div>
                             <NavLogoLink />
                         </div>

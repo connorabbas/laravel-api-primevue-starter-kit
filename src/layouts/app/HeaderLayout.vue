@@ -71,32 +71,28 @@ const {
                         </template>
                         <template #end>
                             <!-- User Dropdown Menu -->
-                            <div class="hidden lg:flex items-center ms-6 space-x-3">
-                                <div class="flex flex-col">
-                                    <PopupMenuButton
-                                        name="desktop-user-menu-dd"
-                                        button-variant="text"
-                                        fixed-position="right"
-                                        :menu-items="userMenuItems"
-                                        :button-label="userName"
-                                    />
-                                </div>
+                            <div class="hidden lg:flex">
+                                <PopupMenuButton
+                                    name="desktop-user-menu-dd"
+                                    button-variant="text"
+                                    fixed-position="right"
+                                    :menu-items="userMenuItems"
+                                    :button-label="userName"
+                                />
                             </div>
 
                             <!-- Mobile Menu Toggle -->
-                            <div class="flex items-center lg:hidden">
-                                <div class="relative">
-                                    <Button
-                                        severity="secondary"
-                                        class="p-1!"
-                                        text
-                                        @click="mobileMenuOpen = true"
-                                    >
-                                        <template #icon>
-                                            <MenuIcon class="size-6!" />
-                                        </template>
-                                    </Button>
-                                </div>
+                            <div class="flex lg:hidden">
+                                <Button
+                                    severity="secondary"
+                                    class="p-1!"
+                                    text
+                                    @click="mobileMenuOpen = true"
+                                >
+                                    <template #icon>
+                                        <MenuIcon class="size-6!" />
+                                    </template>
+                                </Button>
                             </div>
                         </template>
                     </MenuBar>
