@@ -8,12 +8,9 @@ import InputText from 'primevue/inputtext'
 import GuestAuthLayout from '@/layouts/GuestAuthLayout.vue'
 import InputErrors from '@/components/InputErrors.vue'
 
-const props = defineProps({
-    token: {
-        type: String,
-        required: true,
-    },
-})
+const props = defineProps<{
+    token: string,
+}>()
 
 const router = useRouter()
 const route = useRoute()
