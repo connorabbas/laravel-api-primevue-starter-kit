@@ -39,6 +39,7 @@ const {
                 <template #footer>
                     <PopupMenuButton
                         name="mobile-user-menu-dd"
+                        button-size="large"
                         :menu-items="userMenuItems"
                         :button-label="userName"
                     >

@@ -10,6 +10,7 @@ const props = withDefaults(defineProps<{
     buttonLabel?: string,
     buttonSeverity?: 'secondary' | 'success' | 'info' | 'warn' | 'help' | 'danger' | 'contrast' | undefined,
     buttonVariant?: 'default' | 'outlined' | 'text' | 'link' | undefined,
+    buttonSize?: 'small' | 'large' | undefined,
     fixedPosition?: 'left' | 'right',
 }>(), {
     buttonSeverity: 'secondary',
@@ -32,14 +33,14 @@ const menuPositionClasses = computed(() => {
     let classes = ''
     if (props?.fixedPosition) {
         switch (props?.fixedPosition) {
-        case 'left':
-            classes = 'left-auto! top-0! left-0'
-            break
-        case 'right':
-            classes = 'left-auto! top-0! right-0'
-            break
-        default:
-            break
+            case 'left':
+                classes = 'left-auto! top-0! left-0'
+                break
+            case 'right':
+                classes = 'left-auto! top-0! right-0'
+                break
+            default:
+                break
         }
     }
 
@@ -55,9 +56,19 @@ const menuPositionClasses = computed(() => {
             :pt:root:class="{ 'flex flex-row-reverse justify-between': props?.buttonLabel }"
             :severity="props.buttonSeverity"
             :variant="props.buttonVariant === 'default' ? undefined : props.buttonVariant"
+            :size="props?.buttonSize"
             @click="toggleDropdownMenu($event)"
         >
-            <template #icon>
+            <template
+                v-if="$slots.content && !props?.buttonLabel"
+                #default
+            >
+                <slot name="content" />
+            </template>
+            <template
+                v-else
+                #icon
+            >
                 <slot
                     v-if="$slots.toggleIcon"
                     name="toggleIcon"
