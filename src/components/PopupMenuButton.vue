@@ -33,14 +33,14 @@ const menuPositionClasses = computed(() => {
     let classes = ''
     if (props?.fixedPosition) {
         switch (props?.fixedPosition) {
-            case 'left':
-                classes = 'left-auto! top-0! left-0'
-                break
-            case 'right':
-                classes = 'left-auto! top-0! right-0'
-                break
-            default:
-                break
+        case 'left':
+            classes = 'left-auto! top-0! left-0'
+            break
+        case 'right':
+            classes = 'left-auto! top-0! right-0'
+            break
+        default:
+            break
         }
     }
 
