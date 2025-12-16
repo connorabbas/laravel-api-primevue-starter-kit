@@ -15,7 +15,7 @@
         "lint": "eslint . --fix"
     },
     "dependencies": {
-        "@primeuix/themes": "^1.0.0",
+        "@primeuix/themes": "^2.0.0",
         "@tailwindcss/vite": "^4.1.13",
         "@vueuse/core": "^12.8.2",
         "@vueuse/integrations": "^13.9.0",
@@ -32,7 +32,7 @@
         "vue-router": "^4.4.0"
     },
     "devDependencies": {
-        "@primevue/auto-import-resolver": "^4.2.5",
+        "@primevue/auto-import-resolver": "^4.5.0",
         "@tsconfig/node22": "^22.0.2",
         "@types/node": "^24.5.2",
         "@types/nprogress": "^0.2.3",
