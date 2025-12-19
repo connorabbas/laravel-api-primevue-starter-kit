@@ -14,40 +14,47 @@ export function useAppLayout() {
     // Menu items
     const menuItems = computed<MenuItem[]>(() => [
         {
+            key: 'home',
             label: 'Home',
             lucideIcon: House,
             route: { name: 'welcome' },
             active: currentRoute.value == 'welcome',
         },
         {
+            key: 'dashboard',
             label: 'Dashboard',
             lucideIcon: LayoutGrid,
             route: { name: 'dashboard' },
             active: currentRoute.value == 'dashboard',
         },
         {
+            key: 'resources',
             label: 'Resources',
             lucideIcon: Info,
             items: [
                 {
+                    key: 'resources-laravel',
                     label: 'Laravel Docs',
                     url: 'https://laravel.com/docs/master',
                     target: '_blank',
                     lucideIcon: ExternalLink,
                 },
                 {
+                    key: 'resources-primevue',
                     label: 'PrimeVue Docs',
                     url: 'https://primevue.org/',
                     target: '_blank',
                     lucideIcon: ExternalLink,
                 },
                 {
+                    key: 'resources-starter-docs',
                     label: 'Starter Kit Docs',
                     url: 'https://connorabbas.github.io/laravel-primevue-starter-kit-docs/',
                     target: '_blank',
                     lucideIcon: FileSearch,
                 },
                 {
+                    key: 'resources-starter-repo',
                     label: 'Starter Kit Repo',
                     url: 'https://github.com/connorabbas/laravel-primevue-starter-kit',
                     target: '_blank',
@@ -56,6 +63,25 @@ export function useAppLayout() {
             ],
         },
     ])
+
+    // Check/set expanded PanelMenu items based on active status, for non-persistent layouts & page refreshes
+    const expandedKeys = ref<Record<string, boolean>>({})
+    const updateExpandedKeys = () => {
+        const keys: Record<string, boolean> = {}
+        const hasActiveChild = (item: MenuItem): boolean => {
+            if (item.items) {
+                for (const child of item.items) {
+                    if (hasActiveChild(child)) {
+                        if (item.key) keys[item.key] = true
+                        return true
+                    }
+                }
+            }
+            return !!item.active
+        }
+        menuItems.value.forEach(hasActiveChild)
+        expandedKeys.value = keys
+    }
 
     // User menu and logout functionality.
     const userMenuItems: MenuItem[] = [
@@ -81,6 +107,7 @@ export function useAppLayout() {
         windowWidth.value = window.innerWidth
     }
     onMounted(() => {
+        updateExpandedKeys()
         window.addEventListener('resize', updateWidth)
     })
     onUnmounted(() => {
@@ -96,6 +123,7 @@ export function useAppLayout() {
         userName,
         currentRoute,
         menuItems,
+        expandedKeys,
         userMenuItems,
         mobileMenuOpen,
     }

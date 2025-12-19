@@ -20,6 +20,7 @@ const {
     currentRoute,
     mobileMenuOpen,
     menuItems,
+    expandedKeys,
     userMenuItems,
 } = useAppLayout()
 </script>
@@ -34,6 +35,7 @@ const {
             >
                 <div>
                     <PanelMenu
+                        v-model:expandedKeys="expandedKeys"
                         :model="menuItems"
                         class="mt-1 w-full"
                     />
