@@ -144,14 +144,8 @@ const toggleSidebar = () => {
                             @click="toggleSidebar()"
                         >
                             <template #icon>
-                                <PanelLeftClose
-                                    v-if="sidebarOpen"
-                                    class="size-5!"
-                                />
-                                <PanelLeftOpen
-                                    v-else
-                                    class="size-5!"
-                                />
+                                <PanelLeftClose v-if="sidebarOpen" />
+                                <PanelLeftOpen v-else />
                             </template>
                         </Button>
                         <Breadcrumb
