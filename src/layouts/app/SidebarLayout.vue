@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { ChevronsUpDown, Menu as MenuIcon } from 'lucide-vue-next'
+import { useStorage } from '@vueuse/core'
+import {
+    ChevronsUpDown,
+    Menu as MenuIcon,
+    PanelLeftClose,
+    PanelLeftOpen
+} from 'lucide-vue-next'
 import { useAppLayout } from '@/composables/useAppLayout'
 import Container from '@/components/Container.vue'
 import PopupMenuButton from '@/components/PopupMenuButton.vue'
@@ -21,6 +27,11 @@ const {
     expandedKeys,
     userMenuItems,
 } = useAppLayout()
+
+const sidebarOpen = useStorage('desktop-sidebar-open', true)
+const toggleSidebar = () => {
+    sidebarOpen.value = !sidebarOpen.value
+}
 </script>
 
 <template>
@@ -84,7 +95,8 @@ const {
         <div class="flex-1">
             <!-- Desktop Sidebar -->
             <aside
-                class="w-[18rem] inset-0 hidden lg:block fixed overflow-y-auto overflow-x-hidden dynamic-bg border-r dynamic-border"
+                class="w-[18rem] inset-0 hidden lg:block fixed overflow-y-auto overflow-x-hidden dynamic-bg border-r dynamic-border transition-transform duration-300 ease-in-out"
+                :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
             >
                 <div class="w-full h-full flex flex-col justify-between p-4">
                     <div class="space-y-6">
@@ -115,16 +127,32 @@ const {
             </aside>
 
             <!-- Scrollable Content -->
-            <main class="flex flex-col h-full lg:pl-[18rem]">
+            <main
+                class="flex flex-col h-full transition-[padding] duration-300 ease-in-out"
+                :class="sidebarOpen ? 'lg:pl-[18rem]' : 'lg:pl-0'"
+            >
                 <Container
                     vertical
                     fluid
                 >
-                    <!-- Breadcrumbs -->
-                    <Breadcrumb
-                        v-if="props.breadcrumbs.length"
-                        :model="props.breadcrumbs"
-                    />
+                    <div class="flex gap-4 items-center">
+                        <Button
+                            v-tooltip.right="`${sidebarOpen ? 'Collapse' : 'Expand'} Sidebar`"
+                            class="hidden lg:flex"
+                            severity="secondary"
+                            outlined
+                            @click="toggleSidebar()"
+                        >
+                            <template #icon>
+                                <PanelLeftClose v-if="sidebarOpen" />
+                                <PanelLeftOpen v-else />
+                            </template>
+                        </Button>
+                        <Breadcrumb
+                            v-if="props.breadcrumbs.length"
+                            :model="props.breadcrumbs"
+                        />
+                    </div>
 
                     <!-- Page Content -->
                     <slot />
