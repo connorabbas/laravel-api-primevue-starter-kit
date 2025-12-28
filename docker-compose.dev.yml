@@ -2,9 +2,10 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.local
+      dockerfile: Dockerfile.dev
     container_name: vue-spa
-    entrypoint: /bin/sh
+    hostname: alpine-node-22
+    entrypoint: /bin/bash
     working_dir: /workspace
     volumes:
       - '.:/workspace'

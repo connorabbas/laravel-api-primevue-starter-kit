@@ -1,0 +1,20 @@
+# Intended for local/development use
+FROM node:22-alpine
+
+USER root
+
+RUN apk add --no-cache git openssh libc6-compat bash shadow
+
+RUN chsh -s /bin/bash node
+
+USER node
+
+COPY --chown=node:node .devcontainer/.bashrc /home/node/.bashrc
+
+RUN git config --global --add safe.directory /workspace
+
+WORKDIR /workspace
+
+EXPOSE 80
+
+CMD ["bash"]
