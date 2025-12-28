@@ -2,7 +2,7 @@
 {
     "name": "PrimeVue Breeze SPA",
     "dockerComposeFile": [
-        "../docker-compose.local.yml"
+        "../docker-compose.dev.yml"
     ],
     "service": "web",
     "workspaceFolder": "/workspace",
@@ -26,7 +26,7 @@
                 "pmneo.tsimporter"
             ],
             "settings": {
-                "terminal.integrated.shell.linux": "/bin/sh",
+                "terminal.integrated.shell.linux": "/bin/bash",
                 "html.format.wrapAttributes": "force-expand-multiline",
                 "[vue]": {
                     "editor.defaultFormatter": "Vue.volar",
