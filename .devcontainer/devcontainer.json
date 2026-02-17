@@ -23,7 +23,7 @@
                 "bradlc.vscode-tailwindcss",
                 "shd101wyy.markdown-preview-enhanced",
                 "formulahendry.auto-rename-tag",
-                "pmneo.tsimporter",
+                "pmneo.tsimporter"
             ],
             "settings": {
                 "terminal.integrated.shell.linux": "/bin/bash",
