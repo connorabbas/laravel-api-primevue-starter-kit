@@ -90,8 +90,9 @@ const submit = () => {
                                 v-model="formData.current_password"
                                 :invalid="Boolean(validationErrors?.current_password)"
                                 :feedback="false"
-                                autocomplete="current-password"
+                                :inputProps="{ autocomplete: 'current-password' }"
                                 inputId="current-password"
+                                placeholder="Password"
                                 toggleMask
                                 required
                                 fluid
@@ -105,7 +106,7 @@ const submit = () => {
                                 ref="new-password-input"
                                 v-model="formData.password"
                                 :invalid="Boolean(validationErrors?.password)"
-                                autocomplete="new-password"
+                                :inputProps="{ autocomplete: 'new-password' }"
                                 inputId="password"
                                 toggleMask
                                 required
@@ -120,7 +121,6 @@ const submit = () => {
                                 v-model="formData.password_confirmation"
                                 :invalid="Boolean(validationErrors?.password_confirmation)"
                                 :feedback="false"
-                                autocomplete="confirm-password"
                                 inputId="password-confirmation"
                                 toggleMask
                                 required
