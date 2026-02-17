@@ -23,11 +23,12 @@
                 "bradlc.vscode-tailwindcss",
                 "shd101wyy.markdown-preview-enhanced",
                 "formulahendry.auto-rename-tag",
-                "pmneo.tsimporter"
+                "pmneo.tsimporter",
             ],
             "settings": {
                 "terminal.integrated.shell.linux": "/bin/bash",
                 "html.format.wrapAttributes": "force-expand-multiline",
+                "typescript.preferences.quoteStyle": "single",
                 "[vue]": {
                     "editor.defaultFormatter": "Vue.volar",
                     "editor.tabSize": 4
