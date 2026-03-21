@@ -19,5 +19,5 @@ services:
 
 networks:
   proxy: # setup in separate container, example implementation: https://github.com/connorabbas/traefik-docker-compose/blob/master/docker-compose.yml
-    name: "traefik_network"
+    name: "traefik_proxy"
     external: true

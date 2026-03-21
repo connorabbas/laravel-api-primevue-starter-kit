@@ -69,11 +69,10 @@ const deleteAccount = () => {
                 v-model="formData.password"
                 :invalid="Boolean(validationErrors?.password)"
                 :feedback="false"
-                :inputProps="{ autocomplete: 'current-password' }"
+                :inputProps="{ autocomplete: 'current-password', autofocus: true }"
                 inputId="password"
                 placeholder="Password"
                 toggleMask
-                autofocus
                 required
                 fluid
                 @keyup.enter="deleteAccount"

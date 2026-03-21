@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import PageTitleSection from '@/components/PageTitleSection.vue'
+import { KeyRound, Palette, UserRound } from 'lucide-vue-next'
 
 const route = useRoute()
 const currentRoute = computed(() => route.name)
@@ -9,16 +10,19 @@ const currentRoute = computed(() => route.name)
 const sidebarNavItems = computed(() => [
     {
         title: 'Profile',
+        icon: UserRound,
         route: { name: 'settings.profile.edit' },
         active: currentRoute.value == 'settings.profile.edit',
     },
     {
         title: 'Password',
+        icon: KeyRound,
         route: { name: 'settings.password.edit' },
         active: currentRoute.value == 'settings.password.edit',
     },
     {
         title: 'Appearance',
+        icon: Palette,
         route: { name: 'settings.appearance' },
         active: currentRoute.value == 'settings.appearance',
     },
@@ -49,12 +53,18 @@ const sidebarNavItems = computed(() => [
                     >
                         <Button
                             pt:root:class="flex items-center justify-start"
+                            :label="item.title"
                             :severity="item.active ? 'secondary' : ''"
                             :variant="item.active ? 'outlined' : 'text'"
                             :href="item.route"
                             fluid
                         >
-                            {{ item.title }}
+                            <template #icon>
+                                <component
+                                    :is="item.icon"
+                                    class="size-4"
+                                />
+                            </template>
                         </Button>
                     </RouterLink>
                 </nav>
