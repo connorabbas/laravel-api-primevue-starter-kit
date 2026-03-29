@@ -44,7 +44,7 @@ defineExpose({ $el: childRef })
                 <a
                     :href="href"
                     :target="item.target"
-                    :class="['p-menubar-item-link', { 'font-bold! text-muted-color': item.active }, item.class]"
+                    :class="['p-menubar-item-link', { 'font-bold! text-primary-emphasis hover:text-[var(--p-menubar-mobile-button-hover-color)]': item.active }, item.class]"
                     :style="item.style"
                     :aria-disabled="item.disabled === true"
                     custom
