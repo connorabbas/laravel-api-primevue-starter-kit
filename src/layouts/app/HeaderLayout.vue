@@ -4,7 +4,7 @@ import { ChevronsUpDown, Menu as MenuIcon } from 'lucide-vue-next'
 import Container from '@/components/Container.vue'
 import PopupMenuButton from '@/components/PopupMenuButton.vue'
 import NavLogoLink from '@/components/NavLogoLink.vue'
-import MenuBar from '@/components/router-link-menus/MenuBar.vue'
+import Menubar from '@/components/router-link-menus/Menubar.vue'
 import PanelMenu from '@/components/router-link-menus/PanelMenu.vue'
 import Breadcrumb from '@/components/router-link-menus/Breadcrumb.vue'
 import { MenuItem } from '@/types'
@@ -62,7 +62,7 @@ const {
             <!-- Primary Navigation Menu -->
             <nav class="dynamic-bg shadow-sm">
                 <Container>
-                    <MenuBar
+                    <Menubar
                         :key="currentRoute"
                         :model="menuItems"
                         pt:root:class="px-0 py-0 border-0 rounded-none bg-transparent h-[var(--header-height)]!"
@@ -100,7 +100,7 @@ const {
                                 </Button>
                             </div>
                         </template>
-                    </MenuBar>
+                    </Menubar>
                 </Container>
             </nav>
 

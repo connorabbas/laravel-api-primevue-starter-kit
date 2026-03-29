@@ -54,7 +54,7 @@ const sidebarNavItems = computed(() => [
                         <Button
                             pt:root:class="flex items-center justify-start"
                             :label="item.title"
-                            :severity="item.active ? 'secondary' : ''"
+                            :severity="item.active ? undefined : 'secondary'"
                             :variant="item.active ? 'outlined' : 'text'"
                             :href="item.route"
                             fluid
