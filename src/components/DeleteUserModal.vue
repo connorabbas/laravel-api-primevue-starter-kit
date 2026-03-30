@@ -7,7 +7,7 @@ import { useFlashMessage } from '@/composables/useFlashMessage.js'
 import Password from 'primevue/password'
 import InputErrors from '@/components/InputErrors.vue'
 
-const modalOpen = defineModel<boolean>({ default: false })
+const visible = defineModel<boolean>('visible', { default: false })
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -28,7 +28,7 @@ const {
 const deleteAccount = () => {
     submitForm('/profile', {
         onSuccess: () => {
-            modalOpen.value = false
+            visible.value = false
             authStore.user = null
             router.push({ name: 'login' }).then(() => {
                 setFlashMessage('success', 'Your account has been deleted.')
@@ -47,7 +47,7 @@ const deleteAccount = () => {
 
 <template>
     <Dialog
-        v-model:visible="modalOpen"
+        v-model:visible="visible"
         class="w-[40rem]"
         position="center"
         header="Are you sure you want to delete your account?"
@@ -84,9 +84,9 @@ const deleteAccount = () => {
             <Button
                 class="mr-2"
                 label="Cancel"
-                plain
+                severity="secondary"
                 text
-                @click="modalOpen = false"
+                @click="visible = false"
             />
             <Button
                 :loading="deleting"
