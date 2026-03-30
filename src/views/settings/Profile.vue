@@ -137,7 +137,7 @@ const resendVerifyEmail = () => {
                         Delete your account and all of its resources
                     </template>
                     <template #content>
-                        <DeleteUserModal v-model="deleteUserModalOpen" />
+                        <DeleteUserModal v-model:visible="deleteUserModalOpen" />
                         <Message
                             severity="error"
                             pt:root:class="p-2"
