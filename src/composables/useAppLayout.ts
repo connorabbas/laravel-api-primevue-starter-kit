@@ -1,6 +1,6 @@
 import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
-import { LayoutGrid, House, Info, Settings, LogOut, ExternalLink, FileSearch, FolderGit2 } from 'lucide-vue-next'
+import { LayoutGrid, House, Info, Settings, LogOut, ExternalLink, FileSearch, FolderGit2 } from '@lucide/vue'
 import { useAuthStore } from '@/stores/auth'
 import { MenuItem } from '@/types'
 

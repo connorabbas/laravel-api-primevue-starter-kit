@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import PageTitleSection from '@/components/PageTitleSection.vue'
-import { KeyRound, Palette, UserRound } from 'lucide-vue-next'
+import { KeyRound, Palette, UserRound } from '@lucide/vue'
 
 const route = useRoute()
 const currentRoute = computed(() => route.name)

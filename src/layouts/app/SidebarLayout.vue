@@ -5,7 +5,7 @@ import {
     Menu as MenuIcon,
     PanelLeftClose,
     PanelLeftOpen
-} from 'lucide-vue-next'
+} from '@lucide/vue'
 import { useAppLayout } from '@/composables/useAppLayout'
 import Container from '@/components/Container.vue'
 import PopupMenuButton from '@/components/PopupMenuButton.vue'
