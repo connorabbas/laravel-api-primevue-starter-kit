@@ -15,12 +15,12 @@
         "lint": "eslint . --fix"
     },
     "dependencies": {
+        "@lucide/vue": "^1.7.0",
         "@primeuix/themes": "^2.0.0",
         "@tailwindcss/vite": "^4.1.13",
         "@vueuse/core": "^12.8.2",
         "@vueuse/integrations": "^13.9.0",
         "axios": "^1.12.2",
-        "lucide-vue-next": "^0.487.0",
         "nprogress": "^0.2.0",
         "pinia": "^2.1.7",
         "primevue": "^4.5.0",

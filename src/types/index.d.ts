@@ -1,6 +1,6 @@
 import { DataTableFilterMetaData } from 'primevue'
 import { MenuItem as PrimeVueMenuItem } from 'primevue/menuitem'
-import type { LucideIcon } from 'lucide-vue-next'
+import type { LucideIcon } from '@lucide/vue'
 import { RouteLocationNormalizedGeneric, RouteLocationRaw } from 'vue-router'
 
 export interface User {
